@@ -14,8 +14,19 @@ Write-Host "Starting script-init.ps1 ..."
 
 # define ordered hash table of filenames and GitHub links
 $odhashtb_filesghlinks = [ordered]@{
-    "functions.ps1" = "https://raw.githubusercontent.com/tedzhangzg/scripts/main/functions.ps1"
-    "urls.ps1" = "https://raw.githubusercontent.com/tedzhangzg/scripts/main/urls.ps1"
+    "functions.ps1" = "https://raw.githubusercontent.com/tedzhangzg/library-script-windows/main/functions.ps1"
+    "script-mainmenu.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-mainmenu.ps1"
+    "urls.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/urls.ps1"
+    "values.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/values.ps1"
+    "script-winget.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-winget.ps1"
+    "script-allapps.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-allapps.ps1"
+    "script-msoffice.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-msoffice.ps1"
+    "script-kms.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-kms.ps1"
+    "script-endusersettings.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-endusersettings.ps1"
+    "script-uninstall.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-uninstall.ps1"
+    "script-createnewuser.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-createnewuser.ps1"
+    "script-msstore.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-msstore.ps1"
+    "script-windowsupdate.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-windowsupdate.ps1"
 }
 
 # loop over all key value pairs
