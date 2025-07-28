@@ -53,9 +53,9 @@ $appnum_toinclude_dotNET8HB = 1
 $appnum_toinclude_dotNET8DRT = 1
 $appnum_toinclude_dotNET6HB = 1
 $appnum_toinclude_dotNET6DRT = 1
-$appnum_toinclude_dotNET31HB = 0
-$appnum_toinclude_dotNET31DRT = 0
-$appnum_toinclude_dotNET21HB = 0
+$appnum_toinclude_dotNET31HB = 1
+$appnum_toinclude_dotNET31DRT = 1
+$appnum_toinclude_dotNET21HB = 1
 # 
 $appnum_toinclude_dotNET481 = 0
 $appnum_toinclude_dotNET11 = 0
