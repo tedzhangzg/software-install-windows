@@ -207,10 +207,10 @@ Write-Host "175 WeChat"
 ##################################################
 Write-Host "---------- Utilities Apps ----------"
 Write-Host "181 TeamViewer"
-Write-Host "182 SevenZip WinRAR"
+Write-Host "182 Archiving - SevenZip WinRAR"
 Write-Host "183 VLC"
 Write-Host "184 Java 8"
-Write-Host "185 OpenVPN"
+Write-Host "185 VPN - OpenVPN WireGuard"
 Write-Host "186 Firefox"
 Write-Host "187 Thunderbird"
 Write-Host "188 OBS"
@@ -2818,6 +2818,47 @@ $app_wgname = "OpenVPNTechnologies.OpenVPNConnect"
 $dir_installer = "OpenVPN" + $arch_suffix
 $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\OpenVPN Connect\OpenVPN Connect.lnk"
+# 
+# main Install/Download/Execute
+if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+
+    if ($mode_onoffdown -eq 1) {
+        # Online
+        winget install --id $app_wgname -a $arch_suffix
+    } else {
+        # Download
+        if (-Not (Test-Path -Path $dir_installer)) {
+            $url = Get-URL-FromWinget $app_wgname $arch_suffix
+            Downloa-Installe $url $dir_installer
+        }
+        if ($mode_onoffdown -ne 3) {
+            # Offline
+            Instal-Ap $dir_installer $install_args
+        }
+    }
+    # copy shortcut
+    if (Test-Path -Path $path_file_shortcut) {
+        Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
+    }
+
+    Write-Host ""
+
+}
+# 
+# clear param
+Remove-Variable path_file_shortcut
+# 
+# done
+
+# WireGuard
+# 
+# param
+$app_num = 185
+$appnum_toinclude = $appnum_toinclude_WireGuard
+$app_wgname = "WireGuard.WireGuard"
+$dir_installer = "WireGuard" + $arch_suffix
+$install_args = "`/passive"
+$path_file_shortcut = "$dir_startmenuprograms_allusers\WireGuard.lnk"
 # 
 # main Install/Download/Execute
 if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
