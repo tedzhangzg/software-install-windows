@@ -14,7 +14,7 @@ Write-Host "Starting script-init.ps1 ..."
 
 # define ordered hash table of filenames and GitHub links
 $odhashtb_filesghlinks = [ordered]@{
-    "functions.ps1" = "https://raw.githubusercontent.com/tedzhangzg/library-script-windows/main/functions.ps1"
+    "functions.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/functions.ps1"
     "script-mainmenu.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-mainmenu.ps1"
     "urls.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/urls.ps1"
     "values.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/values.ps1"
