@@ -3125,8 +3125,8 @@ if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_t
                 Invoke-Item -Path $dir_installer
                 # 
                 # Ask
-                while ( ($manual_download_odt2016 -ne "y") -and ($manual_download_odt2016 -ne "n") ) {
-                    [char]$manual_download_odt2016 = Read-Host -Prompt "Enter letter - want to manually download ODT?: y , n "
+                while ($manual_download_odt2016 -notin @("y","n")) {
+                    $manual_download_odt2016 = (Read-Host -Prompt "Enter letter - want to manually download ODT?: y , n ").ToLower()
                 }
                 # 
                 # yes
