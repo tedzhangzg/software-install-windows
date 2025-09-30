@@ -40,7 +40,7 @@ Write-Host "(1) ARM64"
 Write-Host "(2) Intel x64"
 Write-Host "(3) Intel x86"
 # ask
-while ( ($app_installer_architecture -lt 2) -or ($app_installer_architecture -gt 3) ) {
+while ($app_installer_architecture -notin 2..3) {
     [int]$app_installer_architecture = Read-Host -Prompt "Enter number "
 }
 
@@ -85,7 +85,7 @@ Write-Host "Generally: above 20000 is Win11, below 20000 is Win10"
 Write-Host "(1) Windows 11"
 Write-Host "(2) Windows 10"
 # ask
-while ( ($win_version -lt 1) -or ($win_version -gt 2) ) {
+while ($win_version -notin 1..2) {
     [int]$win_version = Read-Host -Prompt "Enter number "
 }
 
@@ -98,7 +98,7 @@ Write-Host "Mode"
 Write-Host "(1) Online Install"
 Write-Host "(2) Offline Install"
 # ask
-while ( ($mode_onoffdown -lt 1) -or ($mode_onoffdown -gt 3) ) {
+while ($mode_onoffdown -notin 1..3) {
     [int]$mode_onoffdown = Read-Host -Prompt "Enter number "
 }
 
@@ -226,7 +226,7 @@ Write-Host ""
 
 # app numbers to install
 # from
-while ( ($appnum_toinstall_from -lt 0) -or ($appnum_toinstall_from -gt 200) ) {
+while ($appnum_toinstall_from -notin 1..200) {
     [int]$appnum_toinstall_from = Read-Host -Prompt "Enter number - App number to install from "
 }
 # to
@@ -245,7 +245,7 @@ $app_num = 1
 $appnum_toinclude = $appnum_toinclude_WinGet
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
     Start-Process -FilePath "powershell.exe" -ArgumentList ".\script-winget.ps1" -Wait
 }
 # 
@@ -289,7 +289,7 @@ $app_num = 3
 $appnum_toinclude = $appnum_toinclude_enableDevMode
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     Write-Host "Enabling Developer Mode ..."
     New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" -Name "AllowDevelopmentWithoutDevLicense" -PropertyType "DWORD" -Value "1" -Force | Out-Null
@@ -383,7 +383,7 @@ switch ([Environment]::OSVersion.Version.Build) {
 }
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     Write-Host "Enabling NetFx3 ..."
     if (-Not (Test-Path -Path "$dir_installer\sxs.zip")) {
@@ -412,7 +412,7 @@ $app_num = 12
 $appnum_toinclude = $appnum_toinclude_wincomponentWSL
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     Write-Host "Enabling Microsoft-Windows-Subsystem-Linux ..."
     Get-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
@@ -434,7 +434,7 @@ $app_num = 13
 $appnum_toinclude = $appnum_toinclude_wincomponentVMPlatform
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     Write-Host "Enabling VirtualMachinePlatform ..."
     Get-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
@@ -459,7 +459,7 @@ $dir_installer = "WSL2Kernel" + "x64"
 $install_args = "`/passive"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     # Download
     if (-Not (Test-Path -Path $dir_installer)) {
@@ -489,7 +489,7 @@ $app_num = 15
 $appnum_toinclude = $appnum_toinclude_wincomponentHypervisorPlatform
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     Write-Host "Enabling HypervisorPlatform ..."
     Get-WindowsOptionalFeature -Online -FeatureName "HypervisorPlatform" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
@@ -511,7 +511,7 @@ $app_num = 16
 $appnum_toinclude = $appnum_toinclude_wincomponentHyperV
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     Write-Host "Enabling Microsoft-Hyper-V ..."
     Get-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
@@ -533,7 +533,7 @@ $app_num = 17
 $appnum_toinclude = $appnum_toinclude_wincomponentContainers
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     Write-Host "Enabling Containers ..."
     Get-WindowsOptionalFeature -Online -FeatureName "Containers" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
@@ -555,7 +555,7 @@ $app_num = 19
 $appnum_toinclude = $appnum_toinclude_wincomponentNTVDM
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if (-Not [Environment]::Is64BitOperatingSystem) {
         Write-Host "Enabling NTVDM ..."
@@ -580,7 +580,7 @@ $app_num = 20
 $appnum_toinclude = $appnum_toinclude_wincomponentDisablePSv2
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     Write-Host "Disabling MicrosoftWindowsPowerShellV2Root ..."
     Get-WindowsOptionalFeature -Online -FeatureName "MicrosoftWindowsPowerShellV2Root" | Disable-WindowsOptionalFeature -Online -NoRestart | Out-Null
@@ -602,7 +602,7 @@ $app_num = 31
 $appnum_toinclude = $appnum_toinclude_wincomponentRemovePSISE
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     Write-Host "Removing Microsoft.Windows.PowerShell.ISE ..."
     Get-WindowsCapability -Online -Name "Microsoft.Windows.PowerShell.ISE*" | Remove-WindowsCapability -Online | Out-Null
@@ -627,7 +627,7 @@ $dir_installer = "dotNET8HB" + "x64x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -664,7 +664,7 @@ $dir_installer = "dotNET8DRT" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -701,7 +701,7 @@ $dir_installer = "dotNET8DRT" + $arch_suffix
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -739,7 +739,7 @@ $dir_installer = "dotNET6HB" + "x64x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -777,7 +777,7 @@ $dir_installer = "dotNET6DRT" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -815,7 +815,7 @@ $dir_installer = "dotNET6DRT" + $arch_suffix
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -853,7 +853,7 @@ $dir_installer = "dotNET31HB" + "x64x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -891,7 +891,7 @@ $dir_installer = "dotNET31DRT" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -929,7 +929,7 @@ $dir_installer = "dotNET31DRT" + $arch_suffix
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -967,7 +967,7 @@ $dir_installer = "dotNET21HB" + "x64x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1005,7 +1005,7 @@ $dir_installer = "Framework481" + "x64x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     # Download
     if (-Not (Test-Path -Path $dir_installer)) {
@@ -1038,7 +1038,7 @@ $dir_installer = "Framework11wSP1"
 $install_args = "`/passive"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -ne 3) {
 
@@ -1076,7 +1076,7 @@ $dir_installer = "VCPP_VCPP2005" + "x86"
 $install_args = "`/Q"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1113,7 +1113,7 @@ $dir_installer = "VCPP_VCPP2005" + $arch_suffix
 $install_args = "`/Q"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1150,7 +1150,7 @@ $dir_installer = "VCPP_VCPP2008" + "x86"
 $install_args = "`/qb `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1187,7 +1187,7 @@ $dir_installer = "VCPP_VCPP2008" + $arch_suffix
 $install_args = "`/qb `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1224,7 +1224,7 @@ $dir_installer = "VCPP_VCPP2010" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1261,7 +1261,7 @@ $dir_installer = "VCPP_VCPP2010" + $arch_suffix
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1298,7 +1298,7 @@ $dir_installer = "VCPP_VCPP2012" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1335,7 +1335,7 @@ $dir_installer = "VCPP_VCPP2012" + $arch_suffix
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1372,7 +1372,7 @@ $dir_installer = "VCPP_VCPP2013" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1409,7 +1409,7 @@ $dir_installer = "VCPP_VCPP2013" + $arch_suffix
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1446,7 +1446,7 @@ $dir_installer = "VCPP_VCPP2015plus" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1483,7 +1483,7 @@ $dir_installer = "VCPP_VCPP2015plus" + $arch_suffix
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1520,7 +1520,7 @@ $dir_installer = "VCPP_CPPDB11" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     # Download
     if (-Not (Test-Path -Path $dir_installer)) {
@@ -1551,7 +1551,7 @@ $dir_installer = "VCPP_CPPDB12" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     # Download
     if (-Not (Test-Path -Path $dir_installer)) {
@@ -1582,7 +1582,7 @@ $dir_installer = "Python3" + $arch_suffix
 $install_args = "`/passive InstallAllUsers=1 PrependPath=1"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -1618,7 +1618,7 @@ $dir_installer = "Python2" + $arch_suffix
 $install_args = "`/passive `/norestart ADDLOCAL=ALL"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -1655,7 +1655,7 @@ $install_args = "`/SILENT"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Sublime Text.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1693,7 +1693,7 @@ $app_num = 100
 $appnum_toinclude = $appnum_toinclude_RestartMidway
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
     if ($mode_onoffdown -ne 3) {
         # Restart
         Restart-Computer -Force
@@ -1716,7 +1716,7 @@ $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\PowerShell\PowerShell 7 (x64).lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -1756,7 +1756,7 @@ $dir_installer = "WinTerminal" + "x64x86"
 $install_args = ""
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -1798,7 +1798,7 @@ $install_args = "`/SILENT `/NORESTART `/MERGETASKS=!runcode"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Visual Studio Code\Visual Studio Code.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1837,7 +1837,7 @@ $app_num = 104
 $appnum_toinclude = $appnum_toinclude_WSL
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
 
     # set wsl2 as default
@@ -1892,7 +1892,7 @@ $dir_installer = "iTunes" + $arch_suffix
 $install_args = "`/qn `/norestart"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -1929,7 +1929,7 @@ $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Microsoft Edge.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -1971,7 +1971,7 @@ $dir_installer = "Teams" + $arch_suffix
 $install_args = "`/S"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -ne 3) {
         winget install --id $app_wgname
@@ -2014,7 +2014,7 @@ $install_args = "`/SILENT"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Skype\Skype.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2055,7 +2055,7 @@ $install_args = "`/AppSelect:MovieMaker `/AppSelect:Mail `/silent `/noceip `/noh
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Movie Maker.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     # Download
     if (-Not (Test-Path -Path $dir_installer)) {
@@ -2117,7 +2117,7 @@ $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Google Chrome.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -2159,7 +2159,7 @@ $install_args = "--silent"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Google Drive.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2200,7 +2200,7 @@ $dir_installer = "Messenger" + $arch_suffix
 $install_args = "`/passive"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -ne 3) {
         winget install --id $app_msstore_id --accept-source-agreements --accept-package-agreements
@@ -2232,7 +2232,7 @@ $path_file_shortcut = "$dir_startmenuprograms_allusers\Adobe Acrobat.lnk"
 # note for Acrobat XI it is "$dir_startmenuprograms_allusers\Adobe Acrobat XI Pro.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     # if ($false) {
     if ($mode_onoffdown -eq 1) {
@@ -2274,7 +2274,7 @@ $install_args = "`/NOLAUNCH"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Dropbox\Dropbox.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2315,7 +2315,7 @@ $install_args = "`/passive ZoomAutoUpdate='true'"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Zoom\Zoom Workplace.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2356,7 +2356,7 @@ $install_args = "-s"
 $path_file_shortcut = "$dir_startmenuprograms_currentuser\Discord Inc\Discord.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2397,7 +2397,7 @@ $install_args = "`/SILENT `/NORESTART"
 $path_file_shortcut = "$dir_startmenuprograms_currentuser\Telegram Desktop\Telegram.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2438,7 +2438,7 @@ $dir_installer = "WhatsApp" + $arch_suffix
 $install_args = "--silent"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -ne 3) {
         winget install --id $app_msstore_id --accept-source-agreements --accept-package-agreements
@@ -2480,7 +2480,7 @@ $install_args = "`/S"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\WeChat\WeChat.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2521,7 +2521,7 @@ $install_args = "`/S"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\TeamViewer.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2561,7 +2561,7 @@ $dir_installer = "TeamViewerQS13"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\TeamViewerQS.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     # Download
     if (-Not (Test-Path -Path $dir_installer)) {
@@ -2620,7 +2620,7 @@ $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\7-Zip\7-Zip File Manager.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2661,7 +2661,7 @@ $install_args = "`/S"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\WinRAR\WinRAR.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2702,7 +2702,7 @@ $install_args = "`/S"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\VideoLAN\VLC media player.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     # slow winget download, use offline
     if ($false) {
@@ -2744,7 +2744,7 @@ $dir_installer = "Java8" + "x86"
 $install_args = "`/s"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2781,7 +2781,7 @@ $dir_installer = "Java8" + $arch_suffix
 $install_args = "`/s"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
@@ -2820,7 +2820,7 @@ $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\OpenVPN Connect\OpenVPN Connect.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2861,7 +2861,7 @@ $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\WireGuard.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2902,7 +2902,7 @@ $install_args = "`-ms"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Firefox.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2943,7 +2943,7 @@ $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Thunderbird.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -2984,7 +2984,7 @@ $install_args = "`/S"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\OBS Studio\OBS Studio (64bit).lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -3025,7 +3025,7 @@ $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\LibreOffice\LibreOffice.lnk"
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     if ($mode_onoffdown -eq 1) {
         # Online
@@ -3062,7 +3062,7 @@ $app_num = 200
 $appnum_toinclude = $appnum_toinclude_Office
 # 
 # main Install/Download/Execute
-if (($appnum_toinstall_from -le $app_num) -and ($app_num -le $appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
 
     # Prepare
 
