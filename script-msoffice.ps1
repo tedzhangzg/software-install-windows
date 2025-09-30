@@ -223,7 +223,7 @@ $file_xml = "odtconfig.xml"
 Write-Host ""
 
 # Ask for Mode: Online Install , Offline Install, Download Only
-while (($null -eq $mode_onoffdown) -or ($mode_onoffdown -lt 1) -or ($mode_onoffdown -gt 3)) {
+while ($mode_onoffdown -notin 1..3) {
     [int]$mode_onoffdown = Read-Host -Prompt "Enter number - (1) Online Install , (2) Offline Install "
 }
 
@@ -247,7 +247,7 @@ foreach ($item in $list_office_versionnumber)  {
 }
 Write-Host "Other versions"
 Write-Host ""
-while (($null -eq $msoffice_ver_num) -or ($list_office_versionnumber -notcontains $msoffice_ver_num)) {
+while ($msoffice_ver_num -notin $list_office_versionnumber) {
     [int]$msoffice_ver_num = Read-Host -Prompt "Enter 3or4-digit number - Version: "
 }
 Write-Host "CONFIRMED - Version: $msoffice_ver_num"
@@ -327,7 +327,7 @@ Write-Host "Note: Some SKUs are strictly Retail-only , HomeBusiness / HomeStuden
 Write-Host "##################################################"
 Write-Host ""
 # select
-while (($null -eq $msoffice_sku_num) -or ($msoffice_sku_num -lt 1) -or ($msoffice_sku_num -gt $arra_officeselected.count)) {
+while ($msoffice_sku_num -notin 1..$arra_officeselected.count) {
     [int]$msoffice_sku_num = Read-Host -Prompt "Enter number - SKU: "
 }
 Write-Host "CONFIRMED - SKU: $msoffice_sku_num"
@@ -338,7 +338,7 @@ Write-Host ""
 Write-Host "List of Office bit (recommended 64-bit Office on 64-bit Windows)"
 Write-Host "64 : "
 Write-Host "32 : "
-while (($null -eq $msoffice_bit) -or (($msoffice_bit -ne 64) -and ($msoffice_bit -ne 32))) {
+while ($msoffice_bit -notin @(64,32)) {
     [int]$msoffice_bit = Read-Host -Prompt "Enter number - Bit "
 }
 Write-Host "CONFIRMED - Bit: $msoffice_bit"
@@ -351,7 +351,7 @@ Write-Host "1 : MatchOS"
 Write-Host "2 : MatchInstalled"
 Write-Host "3 : en-US"
 Write-Host "4 : zh-CN"
-while (($null -eq $msoffice_lang_num) -or ($msoffice_lang_num -lt 1) -or ($msoffice_lang_num -gt 5)) {
+while ($msoffice_lang_num -notin 1..5) {
     [int]$msoffice_lang_num = Read-Host -Prompt "Enter number - Language: "
 }
 Write-Host "CONFIRMED - Language: $msoffice_lang_num"
