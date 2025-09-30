@@ -26,33 +26,45 @@ Write-Host "Script - Windows Update"
 Write-Host "================================================================================"
 Write-Host ""
 
-# powershell execution policy
-Get-ExecutionPolicy -List
+# prep ps env
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+# do every time script is called
 
-# pre-req
+# install pre-req
 Install-PackageProvider -Name NuGet -Force
-Install-Module -Name "PSWindowsUpdate" -Force
-Import-Module -Name "PSWindowsUpdate" -Force
+Install-Module -Name PackageManagement -AllowClobber -Force
+Install-Module -Name PowerShellGet -AllowClobber -Force
 
-# list of commands
-Get-Command -Module "PSWindowsUpdate"
+# install mod
+Install-Module -Name PSWindowsUpdate -AllowClobber -Force
 
-# get update
+# get commands
+Get-Command -Module PSWindowsUpdate
+
+# get updates
 Get-WindowsUpdate
 Get-WindowsUpdate -UpdateType Driver
-# Get-WUHistory
+Get-WindowsUpdate -IsHidden
 
-# install
-# Install-WindowsUpdate
-# Get-WindowsUpdate -IgnoreUserInput -MicrosoftUpdate -ForceDownload -Install -AcceptAll -AutoReboot -Confirm:$false
+# install updates
+Install-WindowsUpdate
+Install-WindowsUpdate -AcceptAll -AutoReboot
+Get-WindowsUpdate -AcceptAll -Install -AutoReboot
+Install-WindowsUpdate -UpdateType Driver -AcceptAll -AutoReboot
+Install-WindowsUpdate -KBArticleID KB1234567 -AcceptAll -AutoReboot
+Install-WindowsUpdate -KBArticleID KB5010793,KB5009566 -AcceptAll -AutoReboot
 
-# install driver only
-Install-WindowsUpdate -Install -AcceptAll -UpdateType Driver -MicrosoftUpdate -ForceDownload -ForceInstall -IgnoreReboot -ErrorAction SilentlyContinue
-# repeat until no more update
+# hide updates
+# Hide-WindowsUpdate -KBArticleID KB1234567 -Hide -Confirm:$false
+# UnHide-WindowsUpdate -KBArticleID KB1234567 -Confirm:$false
 
-# hide update
-# Hide-WindowsUpdate -KBArticleID KB########
+# get history
+Get-WUHistory
+
+# check reboot
+Get-WURebootStatus
+
 
 Write-Host ""
 

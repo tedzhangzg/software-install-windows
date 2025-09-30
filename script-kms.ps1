@@ -82,12 +82,12 @@ Write-Host ""
 # ask
 if (Test-Path -Path $dir_origfile_offlinekms) {
     # check if input is from 1 to 9
-    while ( ($activation_method -lt 1) -or ($activation_method -gt 9) ) {
+    while ($activation_method -notin 1..9) {
         [int]$activation_method = Read-Host -Prompt "Enter number"
     }
 } else {
     # check if input is from 1 to 6
-    while ( ($activation_method -lt 1) -or ($activation_method -gt 6) ) {
+    while ($activation_method -notin 1..6) {
         [int]$activation_method = Read-Host -Prompt "Enter number"
     }
 }

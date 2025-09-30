@@ -50,8 +50,8 @@ Write-Host "Account AddTo Users ..."
 Add-LocalGroupMember -Group "Users" -Member $new_acc_name
 
 # make admin
-while ( ($make_account_admin -ne "y") -and ($make_account_admin -ne "n") ) {
-    [char]$make_account_admin = Read-Host -Prompt "Enter letter - Make account admin: y , n "
+while ($make_account_admin -notin @("y","n")) {
+    $make_account_admin = (Read-Host -Prompt "Enter letter - Make account admin: y , n ").ToLower()
 }
 if ($make_account_admin -eq "y") {
     Write-Host "Account AddTo Administrators ..."
