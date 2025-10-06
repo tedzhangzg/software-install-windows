@@ -50,48 +50,60 @@ Write-Host ""
 Function Instal-WinGe-Prereq() {
 
     # C++ Desktop Bridge 14 x86
-    # Param
+    # 
+    # param
     $url_appspecific = $url_cppdb_14_x86
     $dir_installer = "VCPP_CPPDB14" + "x86"
     $install_args = ""
-    # Install/Download/Execute
+    # 
+    # main Install/Download/Execute
+    # 
     # Download
     if (-Not (Test-Path -Path $dir_installer)) {
         $url = $url_appspecific
         Downloa-Installe $url $dir_installer
     }
+    # 
     # Install
     Instal-Ap $dir_installer $install_args
 
     # C++ Desktop Bridge 14 x64
-    if ([Environment]::Is64BitOperatingSystem) {
-        # Param
-        $url_appspecific = $url_cppdb_14_x64
-        $dir_installer = "VCPP_CPPDB14" + "x64"
-        $install_args = ""
-        # Install/Download/Execute
-        # Download
-        if (-Not (Test-Path -Path $dir_installer)) {
-            $url = $url_appspecific
-            Downloa-Installe $url $dir_installer
-        }
-        Instal-Ap $dir_installer $install_args
+    # 
+    # param
+    $url_appspecific = $url_cppdb_14_x64
+    $dir_installer = "VCPP_CPPDB14" + "x64"
+    $install_args = ""
+    # 
+    # main Install/Download/Execute
+    # 
+    # Download
+    if (-Not (Test-Path -Path $dir_installer)) {
+        $url = $url_appspecific
+        Downloa-Installe $url $dir_installer
     }
+    # 
+    # Install
+    Instal-Ap $dir_installer $install_args
 
     # NuGet Microsoft.UI.Xaml
-    # Param
+    # 
+    # param
     $url_appspecific = $url_nuget_msuixaml
     $dir_installer = "NuGetMSUIXaml"
     $install_args = ""
-    # Install/Download/Execute
+    # 
+    # main Install/Download/Execute
+    # 
     # Download
     if (-Not (Test-Path -Path $dir_installer)) {
         $url = $url_appspecific
         Downloa-Installe $url $dir_installer
         Get-ChildItem -Path $dir_installer | Rename-Item -NewName "microsoft.ui.xaml._ver_.zip"
     }
+    # 
     # Extract
     Expand-Archive -Path "$dir_installer\microsoft.ui.xaml._ver_.zip" -DestinationPath "$dir_installer\microsoft.ui.xaml._ver_"
+    # 
     # Install
     $dir_installer = "$dir_installer\microsoft.ui.xaml._ver_\tools\AppX\x64\Release"
     $install_args = ""
