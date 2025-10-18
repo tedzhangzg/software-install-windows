@@ -31,11 +31,7 @@ $url_cppdb_11_x86 = "https://download.microsoft.com/download/3/B/C/3BC60F47-6A7C
 
 # NuGet
 # Microsoft.UI.Xaml
-# 
-# latest
-$url_nuget_msuixaml = "https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml/2.8.7"
-# 
-# older
+# $url_nuget_msuixaml = "https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml/2.8.7"
 # $url_nuget_msuixaml = "https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml/2.7.3"
 
 # Windows Package Manager

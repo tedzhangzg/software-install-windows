@@ -47,6 +47,20 @@ Write-Host ""
 
 # Define Functions
 
+function Get-LatestVersion-MSUIXaml {
+    # 
+    # Get the list of Microsoft.UI.Xaml NuGet package versions
+    $url = "https://api.nuget.org/v3-flatcontainer/microsoft.ui.xaml/index.json"
+    $response = Invoke-RestMethod -Uri $url
+    # 
+    # Get the latest version, last item in the versions array
+    $latestVersion = $response.versions[-1]
+    # 
+    # Return the latest version
+    return $latestVersion
+    # 
+}
+
 Function Instal-WinGe-Prereq() {
 
     # C++ Desktop Bridge 14 x86
@@ -88,7 +102,11 @@ Function Instal-WinGe-Prereq() {
     # NuGet Microsoft.UI.Xaml
     # 
     # param
+    $latest_msuixaml = Get-LatestVersion-MSUIXaml
+    $url_nuget_msuixaml = "https://www.nuget.org/api/v2/package/microsoft.ui.xaml/$latest_msuixaml"
     $url_appspecific = $url_nuget_msuixaml
+    Write-Host $url_nuget_msuixaml
+    pause
     $dir_installer = "NuGetMSUIXaml"
     $install_args = ""
     # 
