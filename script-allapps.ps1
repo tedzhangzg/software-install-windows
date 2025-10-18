@@ -36,13 +36,18 @@ Write-Host "Processor architecture"
 # autodetect
 Write-Host "Autodetect processor architecture: $(Autodetect-ProcessorArchitecture)"
 # list
-Write-Host "(1) ARM64"
-Write-Host "(2) Intel x64"
-Write-Host "(3) Intel x86"
+Write-Host "(1) arm64"
+Write-Host "(2) x86_64"
+Write-Host "(3) i386"
+Write-Host "(4) ppc64"
+Write-Host "(5) ppc"
 # ask
-while ($app_installer_architecture -notin 2..3) {
-    [int]$app_installer_architecture = Read-Host -Prompt "Enter number "
+while ($app_installer_architecture -notin 1..2) {
+    # [int]$app_installer_architecture = Read-Host -Prompt "Enter number "
+    Write-Host "Enter number "
+    $app_installer_architecture = 2
 }
+Write-Host "CONFIRMED - architecture: $app_installer_architecture"
 
 # get architecture suffix
 switch ($app_installer_architecture) {
