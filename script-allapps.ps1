@@ -38,9 +38,9 @@ Write-Host "Autodetect processor architecture: $(Autodetect-ProcessorArchitectur
 # list
 Write-Host "(1) arm64"
 Write-Host "(2) x86_64"
-Write-Host "(3) i386"
-Write-Host "(4) ppc64"
-Write-Host "(5) ppc"
+Write-Host "(3) x86"
+Write-Host "(4) ia64"
+Write-Host "(5) ppc64"
 # ask
 while ($app_installer_architecture -notin 1..2) {
     # [int]$app_installer_architecture = Read-Host -Prompt "Enter number "
