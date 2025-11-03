@@ -315,12 +315,33 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
 $app_num = 11
 $appnum_toinclude = $appnum_toinclude_wincomponentdotNET35
 switch ([Environment]::OSVersion.Version.Build) {
+    {($_ -ge 26200) -and ($_ -le 26200)}
+    {
+        # build 26200
+        # Windows 11 version 25H2
+        # Windows 11 Enterprise LTSC ?
+        # Windows Server LTSC ?
+        # Windows Server version ?
+        $dir_installer = "netfx3\b26200x64"
+        break
+    }
     {($_ -ge 26100) -and ($_ -le 26100)}
     {
         # build 26100
         # Windows 11 version 24H2
-        # Windows Server 2025
         # Windows 11 Enterprise LTSC 2024
+        # Windows Server LTSC 2025
+        # Windows Server version ?
+        $dir_installer = "netfx3\b26100x64"
+        break
+    }
+    {($_ -ge 25398) -and ($_ -le 25398)}
+    {
+        # build 25398
+        # Windows 11 version ?
+        # Windows 11 Enterprise LTSC ?
+        # Windows Server LTSC ?
+        # Windows Server version 23H2
         $dir_installer = "netfx3\b26100x64"
         break
     }
@@ -328,35 +349,39 @@ switch ([Environment]::OSVersion.Version.Build) {
     {
         # build 20348
         # Windows ?
-        # Windows Server 2022
         # Windows ? Enterprise LTSC ?
+        # Windows Server LTSC 2022
+        # Windows Server version ?
         $dir_installer = "netfx3\b20348x64"
         break
     }
-    {($_ -ge 19041) -and ($_ -le 19045)}
+    {($_ -ge 19045) -and ($_ -le 19045)}
     {
-        # build 19041 to 19045
-        # Windows 10 version 2004 (19041) , 20H2 (19042) , 21H1 (19043) , 21H2 (19044) , 22H2 (19045)
-        # Windows Server ?
-        # Windows 10 Enterprise LTSC 2021 (19044)
-        # 
-        # check 64 vs 32 bit
-        if ([Environment]::Is64BitOperatingSystem) {
-            # Windows 10 x64
-            $dir_installer = "netfx3\b19044x64"
-        } else {
-            # Windows 10 x86
-            $dir_installer = "netfx3\b19044x86"
-        }
-        # end check 64 vs 32 bit
+        # build 19045
+        # Windows 10 version 22H2
+        # Windows ? Enterprise LTSC ?
+        # Windows Server LTSC ?
+        # Windows Server version ?
+        $dir_installer = "netfx3\b19045x64"
+        break
+    }
+    {($_ -ge 19044) -and ($_ -le 19044)}
+    {
+        # build 19044
+        # Windows 10 version 21H2
+        # Windows 10 Enterprise LTSC 2021
+        # Windows Server LTSC ?
+        # Windows Server version ?
+        $dir_installer = "netfx3\b19044x64"
         break
     }
     {($_ -ge 17763) -and ($_ -le 17763)}
     {
         # build 17763
         # Windows 10 version 1809
-        # Windows Server 2019
         # Windows 10 Enterprise LTSC 2019
+        # Windows Server LTSC 2019
+        # Windows Server version 1809
         $dir_installer = "netfx3\b17763x64"
         break
     }
@@ -364,8 +389,9 @@ switch ([Environment]::OSVersion.Version.Build) {
     {
         # build 14393
         # Windows 10 version 1607
-        # Windows Server 2016
         # Windows 10 Enterprise LTSB 2016
+        # Windows Server LTSC 2016
+        # Windows Server version ?
         $dir_installer = "netfx3\b14393x64"
         break
     }
@@ -373,8 +399,9 @@ switch ([Environment]::OSVersion.Version.Build) {
     {
         # build 10240
         # Windows 10 version 1507
-        # Windows Server ?
         # Windows 10 Enterprise LTSB 2015
+        # Windows Server LTSC ?
+        # Windows Server version ?
         $dir_installer = "netfx3\b10240x64"
         break
     }
