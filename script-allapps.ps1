@@ -73,11 +73,6 @@ switch ($app_installer_architecture) {
     }
 }
 
-# for x86
-if ($arch_suffix -eq "x86") {
-    Write-Host "Windows 32-bit selected"
-}
-
 Write-Host ""
 Write-Host ""
 
@@ -104,8 +99,11 @@ Write-Host "(1) Online Install"
 Write-Host "(2) Offline Install"
 # ask
 while ($mode_onoffdown -notin 1..3) {
-    [int]$mode_onoffdown = Read-Host -Prompt "Enter number "
+    # [int]$mode_onoffdown = Read-Host -Prompt "Enter number "
+    Write-Host "Enter number "
+    $mode_onoffdown = 1
 }
+Write-Host "CONFIRMED - mode: $mode_onoffdown"
 
 Write-Host ""
 Write-Host ""
