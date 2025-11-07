@@ -134,13 +134,11 @@ Write-Host "---------- Windows Capabilities ----------"
 Write-Host "31 remove - Microsoft.Windows.PowerShell.ISE"
 ##################################################
 Write-Host "---------- dot NET ----------"
-Write-Host "41 dot NET 8 HostingBundle"
-Write-Host "42 dot NET 8 DesktopRuntime"
-Write-Host "43 dot NET 6 HostingBundle"
-Write-Host "44 dot NET 6 DesktopRuntime"
-Write-Host "45 dot NET 3.1 HostingBundle"
-Write-Host "46 dot NET 3.1 DesktopRuntime"
-Write-Host "47 dot NET 2.1 HostingBundle"
+Write-Host "41 dot NET 10 HostingBundle DesktopRuntime"
+Write-Host "42 dot NET 8 HostingBundle DesktopRuntime"
+Write-Host "43 dot NET 6 HostingBundle DesktopRuntime"
+Write-Host "44 dot NET 3.1 HostingBundle DesktopRuntime"
+Write-Host "45 dot NET 2.1 HostingBundle"
 ##################################################
 Write-Host "---------- dot NET Framework ----------"
 Write-Host "51 dot NET Framework 4.8.1"
@@ -649,10 +647,121 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
 # 
 # done
 
-# dot NET 8 HostingBundle
+# dot NET 10 HostingBundle
 # 
 # param
 $app_num = 41
+$appnum_toinclude = $appnum_toinclude_dotNET10HB
+$app_wgname = "Microsoft.DotNet.HostingBundle.10"
+$dir_installer = "dotNET10HB" + "x64x86"
+$install_args = "`/passive `/norestart"
+# 
+# main Install/Download/Execute
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+
+    if ($false) {
+    # if ($mode_onoffdown -eq 1) {
+        # Online
+        winget install --id $app_wgname
+    } else {
+        # Download
+        if (-Not (Test-Path -Path $dir_installer)) {
+            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            Downloa-Installe $url $dir_installer
+        }
+        if ($mode_onoffdown -ne 3) {
+            # Offline
+            Instal-Ap $dir_installer $install_args
+        }
+    }
+
+    Write-Host ""
+
+}
+# 
+# clear param
+# Remove-Variable path_file_shortcut
+# 
+# done
+
+# dot NET 10 DesktopRuntime x86
+# 
+# param
+$app_num = 41
+$appnum_toinclude = $appnum_toinclude_dotNET10DRT
+$app_wgname = "Microsoft.DotNet.DesktopRuntime.10"
+$dir_installer = "dotNET10DRT" + "x86"
+$install_args = "`/passive `/norestart"
+# 
+# main Install/Download/Execute
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+
+    if ($false) {
+    # if ($mode_onoffdown -eq 1) {
+        # Online
+        winget install --id $app_wgname -a "x86"
+    } else {
+        # Download
+        if (-Not (Test-Path -Path $dir_installer)) {
+            $url = Get-URL-FromWinget $app_wgname "x86"
+            Downloa-Installe $url $dir_installer
+        }
+        if ($mode_onoffdown -ne 3) {
+            # Offline
+            Instal-Ap $dir_installer $install_args
+        }
+    }
+
+    Write-Host ""
+
+}
+# 
+# clear param
+# Remove-Variable path_file_shortcut
+# 
+# done
+
+# dot NET 10 DesktopRuntime x64
+# 
+# param
+$app_num = 41
+$appnum_toinclude = $appnum_toinclude_dotNET10DRT
+$app_wgname = "Microsoft.DotNet.DesktopRuntime.10"
+$dir_installer = "dotNET10DRT" + $arch_suffix
+$install_args = "`/passive `/norestart"
+# 
+# main Install/Download/Execute
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+
+    if ($false) {
+    # if ($mode_onoffdown -eq 1) {
+        # Online
+        winget install --id $app_wgname -a $arch_suffix
+    } else {
+        # Download
+        if (-Not (Test-Path -Path $dir_installer)) {
+            $url = Get-URL-FromWinget $app_wgname $arch_suffix
+            Downloa-Installe $url $dir_installer
+        }
+        if ($mode_onoffdown -ne 3) {
+            # Offline
+            Instal-Ap $dir_installer $install_args
+        }
+    }
+
+    Write-Host ""
+
+}
+# 
+# clear param
+# Remove-Variable path_file_shortcut
+# 
+# done
+
+# dot NET 8 HostingBundle
+# 
+# param
+$app_num = 42
 $appnum_toinclude = $appnum_toinclude_dotNET8HB
 $app_wgname = "Microsoft.DotNet.HostingBundle.8"
 $dir_installer = "dotNET8HB" + "x64x86"
@@ -801,7 +910,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
 # dot NET 6 DesktopRuntime x86
 # 
 # param
-$app_num = 44
+$app_num = 43
 $appnum_toinclude = $appnum_toinclude_dotNET6DRT
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.6"
 $url_appspecific = $url_dotnet6DRT_x86
@@ -839,7 +948,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
 # dot NET 6 DesktopRuntime x64
 # 
 # param
-$app_num = 44
+$app_num = 43
 $appnum_toinclude = $appnum_toinclude_dotNET6DRT
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.6"
 $url_appspecific = $url_dotnet6DRT_x64
@@ -877,7 +986,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
 # dot NET 3.1 HostingBundle
 # 
 # param
-$app_num = 45
+$app_num = 44
 $appnum_toinclude = $appnum_toinclude_dotNET31HB
 $app_wgname = "Microsoft.DotNet.HostingBundle.3_1"
 $url_appspecific = $url_dotnet31HB
@@ -915,7 +1024,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
 # dot NET 3.1 DesktopRuntime x86
 # 
 # param
-$app_num = 46
+$app_num = 44
 $appnum_toinclude = $appnum_toinclude_dotNET31DRT
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.3_1"
 $url_appspecific = $url_dotnet31DRT_x86
@@ -953,7 +1062,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
 # dot NET 3.1 DesktopRuntime x64
 # 
 # param
-$app_num = 46
+$app_num = 44
 $appnum_toinclude = $appnum_toinclude_dotNET31DRT
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.3_1"
 $url_appspecific = $url_dotnet31DRT_x64
@@ -991,7 +1100,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
 # dot NET 2.1 HostingBundle
 # 
 # param
-$app_num = 47
+$app_num = 45
 $appnum_toinclude = $appnum_toinclude_dotNET21HB
 # $app_wgname = "Microsoft.DotNet.HostingBundle.2_1"
 $url_appspecific = $url_dotnet21HB

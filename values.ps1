@@ -49,6 +49,8 @@ $appnum_toinclude_wincomponentNTVDM = 1
 $appnum_toinclude_wincomponentDisablePSv2 = 1
 $appnum_toinclude_wincomponentRemovePSISE = 1
 # 
+$appnum_toinclude_dotNET10HB = 0
+$appnum_toinclude_dotNET10DRT = 0
 $appnum_toinclude_dotNET8HB = 1
 $appnum_toinclude_dotNET8DRT = 1
 $appnum_toinclude_dotNET6HB = 1
