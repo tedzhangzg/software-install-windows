@@ -68,6 +68,7 @@ $appnum_toinclude_vcpp2010 = 1
 $appnum_toinclude_vcpp2012 = 1
 $appnum_toinclude_vcpp2013 = 1
 $appnum_toinclude_vcpp2015plus = 1
+$appnum_toinclude_vcpp14 = 1
 # 
 $appnum_toinclude_cppdb11 = 1
 $appnum_toinclude_cppdb12 = 1

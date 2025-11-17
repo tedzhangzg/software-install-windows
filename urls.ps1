@@ -16,6 +16,12 @@
 # Script to Add Microsoft Store
 $url_addmsstore = "https://github.com/kkkgo/LTSC-Add-MicrosoftStore/archive/refs/heads/master.zip"
 
+# Visual C++ Redistributable
+# 
+# vlatest
+# v2017-2026
+
+
 # C++ Runtime framework packages for Desktop Bridge
 # 
 # v14
@@ -64,14 +70,19 @@ $url_dotnetfw_11sp1 = "https://download.microsoft.com/download/8/b/4/8b4addd8-e9
 
 # Visual C++ Redistributable
 # 
-# v2015+
-$url_vcpp_2015Plus_a64 = "https://aka.ms/vs/17/release/vc_redist.arm64.exe"
-$url_vcpp_2015Plus_x64 = "https://aka.ms/vs/17/release/vc_redist.x64.exe"
-$url_vcpp_2015Plus_x86 = "https://aka.ms/vs/17/release/vc_redist.x86.exe"
+# v2017+
+$url_vcpp_14_a64 = "https://aka.ms/vc14/vc_redist.arm64.exe"
+$url_vcpp_14_x64 = "https://aka.ms/vc14/vc_redist.x64.exe"
+$url_vcpp_14_x86 = "https://aka.ms/vc14/vc_redist.x86.exe"
+# 
+# v2015-2022
+$url_vcpp_2015Plus_a64 = "https://download.visualstudio.microsoft.com/download/pr/d7450eb5-03e1-436d-9e7e-deb5fe4759b3/5139E1440C3A20B92153A4DB561C069A0175AAF76C276C3E5B6F56099EDCF4B0/VC_redist.arm64.exe"
+$url_vcpp_2015Plus_x64 = "https://download.visualstudio.microsoft.com/download/pr/73aabf2e-9532-4f68-99f7-3247081a619c/CC0FF0EB1DC3F5188AE6300FAEF32BF5BEEBA4BDD6E8E445A9184072096B713B/VC_redist.x64.exe"
+$url_vcpp_2015Plus_x86 = "https://download.visualstudio.microsoft.com/download/pr/73aabf2e-9532-4f68-99f7-3247081a619c/0C09F2611660441084CE0DF425C51C11E147E6447963C3690F97E0B25C55ED64/VC_redist.x86.exe"
 # 
 # v2013
-$url_vcpp_2013_x64 = "https://aka.ms/highdpimfc2013x64enu"
-$url_vcpp_2013_x86 = "https://aka.ms/highdpimfc2013x86enu"
+$url_vcpp_2013_x64 = "https://download.visualstudio.microsoft.com/download/pr/10912041/cee5d6bca2ddbcd039da727bf4acb48a/vcredist_x64.exe"
+$url_vcpp_2013_x86 = "https://download.visualstudio.microsoft.com/download/pr/10912113/5da66ddebb0ad32ebd4b922fd82e8e25/vcredist_x86.exe"
 # 
 # v2012
 $url_vcpp_2012_x64 = "https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe"

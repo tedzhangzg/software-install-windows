@@ -149,6 +149,7 @@ Write-Host "63 Visual C++ 2010"
 Write-Host "64 Visual C++ 2012"
 Write-Host "65 Visual C++ 2013"
 Write-Host "66 Visual C++ 2015+"
+Write-Host "67 Visual C++ 14"
 ##################################################
 Write-Host "---------- C++ Desktop Bridge ----------"
 Write-Host "71 C++ Desktop Bridge 11"
@@ -1632,6 +1633,84 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "x64x86"
+            Downloa-Installe $url $dir_installer
+        }
+        if ($mode_onoffdown -ne 3) {
+            # Offline
+            Instal-Ap $dir_installer $install_args
+        }
+    }
+
+    Write-Host ""
+
+}
+# 
+# clear param
+# Remove-Variable path_file_shortcut
+# 
+# done
+
+# Visual C++ 14 x86
+# 
+# param
+$app_num = 67
+$appnum_toinclude = $appnum_toinclude_vcpp14
+$app_wgname = "Microsoft.VCRedist.14.x86"
+$url_appspecific = $url_vcpp_14_x86
+$dir_installer = "VCPP_VCPP14" + "x86"
+$install_args = "`/passive `/norestart"
+# 
+# main Install/Download/Execute
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+
+    if ($false) {
+    # if ($mode_onoffdown -eq 1) {
+        # Online
+        winget install --id $app_wgname
+    } else {
+        # Download
+        if (-Not (Test-Path -Path $dir_installer)) {
+            # $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = $url_appspecific
+            Downloa-Installe $url $dir_installer
+        }
+        if ($mode_onoffdown -ne 3) {
+            # Offline
+            Instal-Ap $dir_installer $install_args
+        }
+    }
+
+    Write-Host ""
+
+}
+# 
+# clear param
+# Remove-Variable path_file_shortcut
+# 
+# done
+
+# Visual C++ 14 x64
+# 
+# param
+$app_num = 67
+$appnum_toinclude = $appnum_toinclude_vcpp14
+$app_wgname = "Microsoft.VCRedist.14.x64"
+$url_appspecific = $url_vcpp_14_x64
+$dir_installer = "VCPP_VCPP14" + $arch_suffix
+$install_args = "`/passive `/norestart"
+# 
+# main Install/Download/Execute
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_toinclude -eq 1)) {
+
+    if ($false) {
+    # if ($mode_onoffdown -eq 1) {
+        # Online
+        winget install --id $app_wgname
+    } else {
+        # Download
+        if (-Not (Test-Path -Path $dir_installer)) {
+            # $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = $url_appspecific
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
