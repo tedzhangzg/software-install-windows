@@ -39,11 +39,11 @@ $app_toinclude_WinGet = 1
 $app_toinclude_EnableDevMode = 1
 # 
 $app_toinclude_NetFx3 = 1
-$app_toinclude_Microsoft-Windows-Subsystem-Linux = 1
+$app_toinclude_MicrosoftWindowsSubsystemLinux = 1
 $app_toinclude_VirtualMachinePlatform = 1
 $app_toinclude_WSL2Kernel = 1
 $app_toinclude_HypervisorPlatform = 1
-$app_toinclude_Microsoft-Hyper-V = 1
+$app_toinclude_MicrosoftHyperV = 1
 $app_toinclude_Containers = 1
 $app_toinclude_NTVDM = 1
 $app_toinclude_MicrosoftWindowsPowerShellV2Root = 1

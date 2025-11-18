@@ -421,13 +421,13 @@ switch ([Environment]::OSVersion.Version.Build) {
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    Write-Host "Enabling NetFx3 ..."
+    Write-Host "Enabling $app_shortname ..."
     if (-Not (Test-Path -Path "$dir_installer\sxs.zip")) {
-        Get-WindowsOptionalFeature -Online -FeatureName "NetFx3" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
+        Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     } else {
         $dir_extract = $tmp_dir
         Expand-Archive -Path "$dir_installer\sxs.zip" -DestinationPath $dir_extract -Force
-        Get-WindowsOptionalFeature -Online -FeatureName "NetFx3" | Enable-WindowsOptionalFeature -Online -Source "$dir_extract\sxs" -All -NoRestart | Out-Null
+        Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -Source "$dir_extract\sxs" -All -NoRestart | Out-Null
         Get-ChildItem -Path $dir_extract -Recurse | Remove-Item -Recurse -Force
     }
     Write-Host "... Done enabling"
@@ -451,7 +451,8 @@ $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    Write-Host "Enabling Microsoft-Windows-Subsystem-Linux ..."
+    Write-Host "Enabling $app_shortname ..."
+    # Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Get-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Write-Host "... Done enabling"
 
@@ -474,8 +475,8 @@ $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    Write-Host "Enabling VirtualMachinePlatform ..."
-    Get-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
+    Write-Host "Enabling $app_shortname ..."
+    Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Write-Host "... Done enabling"
 
     Write-Host ""
@@ -531,8 +532,8 @@ $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    Write-Host "Enabling HypervisorPlatform ..."
-    Get-WindowsOptionalFeature -Online -FeatureName "HypervisorPlatform" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
+    Write-Host "Enabling $app_shortname ..."
+    Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Write-Host "... Done enabling"
 
     Write-Host ""
@@ -554,7 +555,8 @@ $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    Write-Host "Enabling Microsoft-Hyper-V ..."
+    Write-Host "Enabling $app_shortname ..."
+    # Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Get-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Write-Host "... Done enabling"
 
@@ -577,8 +579,8 @@ $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    Write-Host "Enabling Containers ..."
-    Get-WindowsOptionalFeature -Online -FeatureName "Containers" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
+    Write-Host "Enabling $app_shortname ..."
+    Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Write-Host "... Done enabling"
 
     Write-Host ""
@@ -601,8 +603,8 @@ $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
     if (-Not [Environment]::Is64BitOperatingSystem) {
-        Write-Host "Enabling NTVDM ..."
-        Get-WindowsOptionalFeature -Online -FeatureName "NTVDM" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
+        Write-Host "Enabling $app_shortname ..."
+        Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
         Write-Host "... Done enabling"
 
         Write-Host ""
@@ -626,8 +628,8 @@ $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    Write-Host "Disabling MicrosoftWindowsPowerShellV2Root ..."
-    Get-WindowsOptionalFeature -Online -FeatureName "MicrosoftWindowsPowerShellV2Root" | Disable-WindowsOptionalFeature -Online -NoRestart | Out-Null
+    Write-Host "Disabling $app_shortname ..."
+    Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Disable-WindowsOptionalFeature -Online -NoRestart | Out-Null
     Write-Host "... Done disabling"
 
     Write-Host ""
