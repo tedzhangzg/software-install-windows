@@ -656,7 +656,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
 $app_num = 41
 $appnum_toinclude = $appnum_toinclude_dotNET10HB
 $app_wgname = "Microsoft.DotNet.HostingBundle.10"
-$dir_installer = "dotNET10HB" + "x64x86"
+$dir_installer = "dotNET10HB" + "a64x64"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -669,7 +669,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -767,7 +767,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
 $app_num = 42
 $appnum_toinclude = $appnum_toinclude_dotNET8HB
 $app_wgname = "Microsoft.DotNet.HostingBundle.8"
-$dir_installer = "dotNET8HB" + "x64x86"
+$dir_installer = "dotNET8HB" + "a64x64"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -780,7 +780,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -879,7 +879,7 @@ $app_num = 43
 $appnum_toinclude = $appnum_toinclude_dotNET6HB
 $app_wgname = "Microsoft.DotNet.HostingBundle.6"
 $url_appspecific = $url_dotnet6HB
-$dir_installer = "dotNET6HB" + "x64x86"
+$dir_installer = "dotNET6HB" + "a64x64"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -892,7 +892,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -993,7 +993,7 @@ $app_num = 44
 $appnum_toinclude = $appnum_toinclude_dotNET31HB
 $app_wgname = "Microsoft.DotNet.HostingBundle.3_1"
 $url_appspecific = $url_dotnet31HB
-$dir_installer = "dotNET31HB" + "x64x86"
+$dir_installer = "dotNET31HB" + "a64x64"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1006,7 +1006,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1107,7 +1107,7 @@ $app_num = 45
 $appnum_toinclude = $appnum_toinclude_dotNET21HB
 # $app_wgname = "Microsoft.DotNet.HostingBundle.2_1"
 $url_appspecific = $url_dotnet21HB
-$dir_installer = "dotNET21HB" + "x64x86"
+$dir_installer = "dotNET21HB" + "a64x64"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1120,7 +1120,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1145,7 +1145,7 @@ $app_num = 51
 $appnum_toinclude = $appnum_toinclude_dotNET481
 $app_wgname = "Microsoft.DotNet.Framework.DeveloperPack_4"
 $url_appspecific = $url_dotnetfw_481
-$dir_installer = "Framework481" + "x64x86"
+$dir_installer = "Framework481" + "a64x64"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1229,7 +1229,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1266,7 +1266,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1303,7 +1303,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1340,7 +1340,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1377,7 +1377,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1414,7 +1414,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1451,7 +1451,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1488,7 +1488,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1525,7 +1525,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1562,7 +1562,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1599,7 +1599,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1636,7 +1636,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1674,7 +1674,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            # $url = Get-URL-FromWinget $app_wgname "x64x86"
+            # $url = Get-URL-FromWinget $app_wgname "a64x64"
             $url = $url_appspecific
             Downloa-Installe $url $dir_installer
         }
@@ -1713,7 +1713,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            # $url = Get-URL-FromWinget $app_wgname "x64x86"
+            # $url = Get-URL-FromWinget $app_wgname "a64x64"
             $url = $url_appspecific
             Downloa-Installe $url $dir_installer
         }
@@ -1933,7 +1933,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
 $app_num = 101
 $appnum_toinclude = $appnum_toinclude_PowerShell
 $app_wgname = "Microsoft.PowerShell"
-$dir_installer = "Powershell" + "x64x86"
+$dir_installer = "Powershell" + "a64x64"
 $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\PowerShell\PowerShell 7 (x64).lnk"
 # 
@@ -1946,7 +1946,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -1974,7 +1974,7 @@ Remove-Variable path_file_shortcut
 $app_num = 102
 $appnum_toinclude = $appnum_toinclude_WinTerminal
 $app_wgname = "Microsoft.WindowsTerminal"
-$dir_installer = "WinTerminal" + "x64x86"
+$dir_installer = "WinTerminal" + "a64x64"
 $install_args = ""
 # 
 # main Install/Download/Execute
@@ -1986,7 +1986,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -2070,7 +2070,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     # 
     # param
     $app_wgname = "Canonical.Ubuntu.2404"
-    $dir_installer = "WSLUbuntu" + "x64x86"
+    $dir_installer = "WSLUbuntu" + "a64x64"
     $install_args = ""
     # 
     # main Install/Download/Execute
@@ -2080,7 +2080,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -2231,7 +2231,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
 $app_num = 123
 $appnum_toinclude = $appnum_toinclude_Skype
 $app_wgname = "Microsoft.Skype"
-$dir_installer = "Skype" + "x64x86"
+$dir_installer = "Skype" + "a64x64"
 $install_args = "`/SILENT"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Skype\Skype.lnk"
 # 
@@ -2244,7 +2244,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -2272,7 +2272,7 @@ Remove-Variable path_file_shortcut
 $app_num = 124
 $appnum_toinclude = $appnum_toinclude_WinEssentials
 $url_appspecific = $url_winessentials_2012
-$dir_installer = "WindowsEssentials" + "x64x86"
+$dir_installer = "WindowsEssentials" + "a64x64"
 $install_args = "`/AppSelect:MovieMaker `/AppSelect:Mail `/silent `/noceip `/nohomepage `/nolaunch `/nomu `/nosearch `/notoolbarceip"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Movie Maker.lnk"
 # 
@@ -2376,7 +2376,7 @@ Remove-Variable path_file_shortcut
 $app_num = 132
 $appnum_toinclude = $appnum_toinclude_Drive
 $app_wgname = "Google.GoogleDrive"
-$dir_installer = "GoogleDrive" + "x64x86"
+$dir_installer = "GoogleDrive" + "a64x64"
 $install_args = "--silent"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Google Drive.lnk"
 # 
@@ -2389,7 +2389,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -2463,7 +2463,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -2697,7 +2697,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
 $app_num = 175
 $appnum_toinclude = $appnum_toinclude_WeChat
 $app_wgname = "Tencent.WeChat"
-$dir_installer = "WeChat" + "x64x86"
+$dir_installer = "WeChat" + "a64x64"
 $install_args = "`/S"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\WeChat\WeChat.lnk"
 # 
@@ -2710,7 +2710,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -3201,7 +3201,7 @@ Remove-Variable path_file_shortcut
 $app_num = 188
 $appnum_toinclude = $appnum_toinclude_OBS
 $app_wgname = "OBSProject.OBSStudio"
-$dir_installer = "OBS" + "x64x86"
+$dir_installer = "OBS" + "a64x64"
 $install_args = "`/S"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\OBS Studio\OBS Studio (64bit).lnk"
 # 
@@ -3214,7 +3214,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "x64x86"
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         if ($mode_onoffdown -ne 3) {
@@ -3242,7 +3242,7 @@ Remove-Variable path_file_shortcut
 $app_num = 190
 $appnum_toinclude = $appnum_toinclude_LibreOffice
 $app_wgname = "TheDocumentFoundation.LibreOffice"
-$dir_installer = "LibreOffice" + "x64x86"
+$dir_installer = "LibreOffice" + "a64x64"
 $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\LibreOffice\LibreOffice.lnk"
 # 
@@ -3340,7 +3340,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($appnum_to
                 # Also, Winget link may have error, manifest not updated
                 # end notes
                 # 
-                $url = Get-URL-FromWinget $app_wgname "x64x86"
+                $url = Get-URL-FromWinget $app_wgname "a64x64"
                 Downloa-Installe $url $dir_installer
                 # 
                 # check manually if file downloaded successfully
