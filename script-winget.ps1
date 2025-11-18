@@ -15,14 +15,6 @@
 
 Write-Host "Starting script-winget.ps1 ..."
 
-# include
-. ".\functions.ps1"
-. ".\urls.ps1"
-. ".\values.ps1"
-
-# var
-# $var = ""
-
 # Change Colours
 Clear-Host
 $host.UI.RawUI.BackgroundColor = "DarkGreen"
@@ -35,150 +27,9 @@ Write-Host "Script - Check and Install WinGet"
 Write-Host "================================================================================"
 Write-Host ""
 
-
-# Create temp folder
-$tmp_dir = "$env:TEMP\tempappdlinst"
-Creat-NewEmpty-Folde $tmp_dir
-
-
-Write-Host ""
-Write-Host ""
-
-
-# Define Functions
-
-function Get-LatestVersion-MSUIXaml {
-    # 
-    # Get the list of Microsoft.UI.Xaml NuGet package versions
-    $url = "https://api.nuget.org/v3-flatcontainer/microsoft.ui.xaml/index.json"
-    $response = Invoke-RestMethod -Uri $url
-    # 
-    # Get the latest version, last item in the versions array
-    $latestVersion = $response.versions[-1]
-    # 
-    # Return the latest version
-    return $latestVersion
-    # 
-}
-
-Function Instal-WinGe-Prereq() {
-
-    # C++ Desktop Bridge 14 x86
-    # 
-    # param
-    $app_shortname = "CPPDB14"
-    $url_appspecific = $url_CPPDB14_x86
-    $dir_installer = $app_shortname + "_" + "x86"
-    $install_args = ""
-    # 
-    # main Install/Download/Execute
-    # 
-    # Download
-    if (-Not (Test-Path -Path $dir_installer)) {
-        $url = $url_appspecific
-        Downloa-Installe $url $dir_installer
-    }
-    # 
-    # Install
-    Instal-Ap $dir_installer $install_args
-
-    # C++ Desktop Bridge 14 x64
-    # 
-    # param
-    $app_shortname = "CPPDB14"
-    $url_appspecific = $url_CPPDB14_x64
-    $dir_installer = $app_shortname + "_" + "x64"
-    $install_args = ""
-    # 
-    # main Install/Download/Execute
-    # 
-    # Download
-    if (-Not (Test-Path -Path $dir_installer)) {
-        $url = $url_appspecific
-        Downloa-Installe $url $dir_installer
-    }
-    # 
-    # Install
-    Instal-Ap $dir_installer $install_args
-
-    # NuGet Microsoft.UI.Xaml
-    # 
-    # param
-    $app_shortname = "NuGetMSUIXaml"
-    $latest_msuixaml = Get-LatestVersion-MSUIXaml
-    $url_NuGetMSUIXaml = "https://www.nuget.org/api/v2/package/microsoft.ui.xaml/$latest_msuixaml"
-    $url_appspecific = $url_NuGetMSUIXaml
-    $dir_installer = $app_shortname + "_" + "a64x64"
-    $install_args = ""
-    # 
-    # main Install/Download/Execute
-    # 
-    # Download
-    if (-Not (Test-Path -Path $dir_installer)) {
-        $url = $url_appspecific
-        Downloa-Installe $url $dir_installer
-        Get-ChildItem -Path $dir_installer | Rename-Item -NewName "microsoft.ui.xaml._ver_.zip"
-    }
-    # 
-    # Extract
-    Expand-Archive -Path "$dir_installer\microsoft.ui.xaml._ver_.zip" -DestinationPath "$dir_installer\microsoft.ui.xaml._ver_"
-    # 
-    # Install
-    $dir_installer = "$dir_installer\microsoft.ui.xaml._ver_\tools\AppX\x64\Release"
-    $install_args = ""
-    Instal-Ap $dir_installer $install_args
-
-}
-
-Function Instal-WinGe-Proper-Auto() {
-    # Param
-    $url_appspecific = $url_WinGet
-    $dir_installer = "WinGet"
-    $install_args = ""
-    # Install/Download/Execute
-    # Download
-    if (-Not (Test-Path -Path $dir_installer)) {
-        $url = $url_appspecific
-        Downloa-Installe $url $dir_installer
-    }
-    Instal-Ap $dir_installer $install_args
-}
-
-Function Instal-WinGe-Proper-Manual() {
-    # WinGet
-    Write-Host "Do this - Manual install"
-    Write-Host "##############################"
-    Write-Host "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    Write-Host "Double-click on file in the window that just opened"
-    Write-Host "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    Write-Host "##############################"
-    Invoke-Item -Path "WinGet"
-    Write-Host ""
-    Write-Host ""
-    Write-Host ""
-    Write-Host "Done?"
-    pause
-}
-
-
-# Run
-Instal-WinGe-Prereq
-Instal-WinGe-Proper-Auto
-
-try {
-    # Check
-    winget search --id "Google.Chrome" --accept-source-agreements
-} catch {
-    # Install manually
-    Write-Host ""
-    Write-Host ""
-    Write-Host ""
-    Write-Host "##################################################"
-    Write-Host "IMPORTANT!!! - Failed to auto install"
-    Write-Host "##################################################"
-    Write-Host ""
-    Instal-WinGe-Proper-Manual
-}
+Write-Host "Running script from winget.pro ..."
+irm winget.pro | iex
+Write-Host "... Done running script from winget.pro"
 
 Write-Host ""
 
