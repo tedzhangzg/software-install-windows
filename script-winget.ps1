@@ -23,12 +23,16 @@ Clear-Host
 
 Write-Host ""
 Write-Host "================================================================================"
-Write-Host "Script - Check and Install WinGet"
+Write-Host "Script - WinGet"
 Write-Host "================================================================================"
 Write-Host ""
 
 Write-Host "Running script from winget.pro ..."
+Write-Host ""
+Write-Host ""
 irm winget.pro | iex
+Write-Host ""
+Write-Host ""
 Write-Host "... Done running script from winget.pro"
 
 Write-Host ""

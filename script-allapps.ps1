@@ -446,14 +446,15 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 12
 $app_shortname = "Microsoft-Windows-Subsystem-Linux"
-$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
+$app_shortname_without_dashes = "MicrosoftWindowsSubsystemLinux"
+# $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname_without_dashes)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
     Write-Host "Enabling $app_shortname ..."
-    # Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
-    Get-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
+    Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Write-Host "... Done enabling"
 
     Write-Host ""
@@ -550,14 +551,15 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 16
 $app_shortname = "Microsoft-Hyper-V"
-$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
+$app_shortname_without_dashes = "MicrosoftHyperV"
+# $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname_without_dashes)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
     Write-Host "Enabling $app_shortname ..."
-    # Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
-    Get-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V" | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
+    Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Write-Host "... Done enabling"
 
     Write-Host ""
