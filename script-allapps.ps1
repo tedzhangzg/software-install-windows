@@ -493,7 +493,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 14
 $app_shortname = "WSL2Kernel"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$url_appspecific = $url_WSL2Kernel-x64
+$url_appspecific = $url_WSL2Kernel_x64
 $dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive"
 # 
@@ -936,7 +936,7 @@ $app_num = 43
 $app_shortname = "dotNETDR6"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.6"
-$url_appspecific = $url_dotNETDR6-x86
+$url_appspecific = $url_dotNETDR6_x86
 $dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
@@ -975,7 +975,7 @@ $app_num = 43
 $app_shortname = "dotNETDR6"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.6"
-$url_appspecific = $url_dotNETDR6-x64
+$url_appspecific = $url_dotNETDR6_x64
 $dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive `/norestart"
 # 
@@ -1053,7 +1053,7 @@ $app_num = 44
 $app_shortname = "dotNETDR31"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.3_1"
-$url_appspecific = $url_dotNETDR31-x86
+$url_appspecific = $url_dotNETDR31_x86
 $dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
@@ -1092,7 +1092,7 @@ $app_num = 44
 $app_shortname = "dotNETDR31"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.3_1"
-$url_appspecific = $url_dotNETDR31-x64
+$url_appspecific = $url_dotNETDR31_x64
 $dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive `/norestart"
 # 
@@ -1700,7 +1700,7 @@ $app_num = 67
 $app_shortname = "VCPP14"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.14.x86"
-$url_appspecific = $url_VCPP14-x86
+$url_appspecific = $url_VCPP14_x86
 $dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
@@ -1740,7 +1740,7 @@ $app_num = 67
 $app_shortname = "VCPP14"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.14.x64"
-$url_appspecific = $url_VCPP14-x64
+$url_appspecific = $url_VCPP14_x64
 $dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive `/norestart"
 # 
@@ -2061,9 +2061,9 @@ $app_shortname = "VSCode"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VisualStudioCode"
 if ($arch_name -eq "arm64") {
-    $url_appspecific = $url_VSCode-a64
+    $url_appspecific = $url_VSCode_a64
 } else {
-    $url_appspecific = $url_VSCode-x64
+    $url_appspecific = $url_VSCode_x64
 }
 $dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/SILENT `/NORESTART `/MERGETASKS=!runcode"
