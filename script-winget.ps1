@@ -66,8 +66,9 @@ Function Instal-WinGe-Prereq() {
     # C++ Desktop Bridge 14 x86
     # 
     # param
-    $url_appspecific = $url_cppdb_14_x86
-    $dir_installer = "VCPP_CPPDB14" + "x86"
+    $app_shortname = "CPPDB14"
+    $url_appspecific = $url_CPPDB14_x86
+    $dir_installer = $app_shortname + "_" + "x86"
     $install_args = ""
     # 
     # main Install/Download/Execute
@@ -84,8 +85,9 @@ Function Instal-WinGe-Prereq() {
     # C++ Desktop Bridge 14 x64
     # 
     # param
-    $url_appspecific = $url_cppdb_14_x64
-    $dir_installer = "VCPP_CPPDB14" + "x64"
+    $app_shortname = "CPPDB14"
+    $url_appspecific = $url_CPPDB14_x64
+    $dir_installer = $app_shortname + "_" + "x64"
     $install_args = ""
     # 
     # main Install/Download/Execute
@@ -102,12 +104,11 @@ Function Instal-WinGe-Prereq() {
     # NuGet Microsoft.UI.Xaml
     # 
     # param
+    $app_shortname = "NuGetMSUIXaml"
     $latest_msuixaml = Get-LatestVersion-MSUIXaml
-    $url_nuget_msuixaml = "https://www.nuget.org/api/v2/package/microsoft.ui.xaml/$latest_msuixaml"
-    $url_appspecific = $url_nuget_msuixaml
-    Write-Host $url_nuget_msuixaml
-    pause
-    $dir_installer = "NuGetMSUIXaml"
+    $url_NuGetMSUIXaml = "https://www.nuget.org/api/v2/package/microsoft.ui.xaml/$latest_msuixaml"
+    $url_appspecific = $url_NuGetMSUIXaml
+    $dir_installer = $app_shortname + "_" + "a64x64"
     $install_args = ""
     # 
     # main Install/Download/Execute
@@ -131,7 +132,7 @@ Function Instal-WinGe-Prereq() {
 
 Function Instal-WinGe-Proper-Auto() {
     # Param
-    $url_appspecific = $url_winget
+    $url_appspecific = $url_WinGet
     $dir_installer = "WinGet"
     $install_args = ""
     # Install/Download/Execute
