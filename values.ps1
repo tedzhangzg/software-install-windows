@@ -72,6 +72,7 @@ $app_toinclude_VCPP14 = 1
 # 
 $app_toinclude_CPPDB11 = 1
 $app_toinclude_CPPDB12 = 1
+$app_toinclude_CPPDB14 = 1
 # 
 $app_toinclude_Python3 = 1
 $app_toinclude_Python2 = 0

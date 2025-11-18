@@ -249,7 +249,7 @@ Write-Host ""
 # param
 $app_num = 1
 $app_shortname = "WinGet"
-$app_toinclude = $app_toinclude_WinGet
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
@@ -294,7 +294,7 @@ if (($mode_onoffdown -ne 2) -and ([System.Environment]::OSVersion.Version.Major 
 # param
 $app_num = 3
 $app_shortname = "EnableDevMode"
-$app_toinclude = $app_toinclude_enableDevMode
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
@@ -317,7 +317,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 11
 $app_shortname = "NetFx3"
-$app_toinclude = $app_toinclude_wincomponentdotNET35
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 switch ([Environment]::OSVersion.Version.Build) {
     {($_ -ge 26200) -and ($_ -le 26200)}
     {
@@ -446,7 +446,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 12
 $app_shortname = "Microsoft-Windows-Subsystem-Linux"
-$app_toinclude = $app_toinclude_wincomponentWSL
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
@@ -469,7 +469,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 13
 $app_shortname = "VirtualMachinePlatform"
-$app_toinclude = $app_toinclude_wincomponentVMPlatform
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
@@ -492,9 +492,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 14
 $app_shortname = "WSL2Kernel"
-$app_toinclude = $app_toinclude_LinuxKernelUpdate
-$url_appspecific = $url_wsl2kernel_x64
-$dir_installer = "WSL2Kernel" + "x64"
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
+$url_appspecific = $url_WSL2Kernel-x64
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive"
 # 
 # main Install/Download/Execute
@@ -526,7 +526,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 15
 $app_shortname = "HypervisorPlatform"
-$app_toinclude = $app_toinclude_wincomponentHypervisorPlatform
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
@@ -549,7 +549,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 16
 $app_shortname = "Microsoft-Hyper-V"
-$app_toinclude = $app_toinclude_wincomponentHyperV
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
@@ -572,7 +572,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 17
 $app_shortname = "Containers"
-$app_toinclude = $app_toinclude_wincomponentContainers
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
@@ -595,7 +595,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 19
 $app_shortname = "NTVDM"
-$app_toinclude = $app_toinclude_wincomponentNTVDM
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
@@ -621,7 +621,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 20
 $app_shortname = "MicrosoftWindowsPowerShellV2Root"
-$app_toinclude = $app_toinclude_wincomponentDisablePSv2
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
@@ -644,7 +644,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 31
 $app_shortname = "PowerShellISE"
-$app_toinclude = $app_toinclude_wincomponentRemovePSISE
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
@@ -667,9 +667,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 41
 $app_shortname = "dotNETHB10"
-$app_toinclude = $app_toinclude_dotNET10HB
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.HostingBundle.10"
-$dir_installer = "dotNET10HB" + "a64x64"
+$dir_installer = $app_shortname + "-" + "a64x64"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -705,9 +705,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 41
 $app_shortname = "dotNETDR10"
-$app_toinclude = $app_toinclude_dotNET10DRT
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.10"
-$dir_installer = "dotNET10DRT" + "x86"
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -743,9 +743,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 41
 $app_shortname = "dotNETDR10"
-$app_toinclude = $app_toinclude_dotNET10DRT
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.10"
-$dir_installer = "dotNET10DRT" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -781,9 +781,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 42
 $app_shortname = "dotNETHB8"
-$app_toinclude = $app_toinclude_dotNET8HB
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.HostingBundle.8"
-$dir_installer = "dotNET8HB" + "a64x64"
+$dir_installer = $app_shortname + "-" + "a64x64"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -819,9 +819,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 42
 $app_shortname = "dotNETDR8"
-$app_toinclude = $app_toinclude_dotNET8DRT
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.8"
-$dir_installer = "dotNET8DRT" + "x86"
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -857,9 +857,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 42
 $app_shortname = "dotNETDR8"
-$app_toinclude = $app_toinclude_dotNET8DRT
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.8"
-$dir_installer = "dotNET8DRT" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -895,10 +895,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 43
 $app_shortname = "dotNETHB6"
-$app_toinclude = $app_toinclude_dotNET6HB
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.HostingBundle.6"
-$url_appspecific = $url_dotnet6HB
-$dir_installer = "dotNET6HB" + "a64x64"
+$url_appspecific = $url_dotNETHB6
+$dir_installer = $app_shortname + "-" + "a64x64"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -934,10 +934,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 43
 $app_shortname = "dotNETDR6"
-$app_toinclude = $app_toinclude_dotNET6DRT
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.6"
-$url_appspecific = $url_dotnet6DRT_x86
-$dir_installer = "dotNET6DRT" + "x86"
+$url_appspecific = $url_dotNETDR6-x86
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -973,10 +973,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 43
 $app_shortname = "dotNETDR6"
-$app_toinclude = $app_toinclude_dotNET6DRT
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.6"
-$url_appspecific = $url_dotnet6DRT_x64
-$dir_installer = "dotNET6DRT" + $arch_name
+$url_appspecific = $url_dotNETDR6-x64
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1012,10 +1012,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 44
 $app_shortname = "dotNETHB31"
-$app_toinclude = $app_toinclude_dotNET31HB
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.HostingBundle.3_1"
-$url_appspecific = $url_dotnet31HB
-$dir_installer = "dotNET31HB" + "a64x64"
+$url_appspecific = $url_dotNETHB31
+$dir_installer = $app_shortname + "-" + "a64x64"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1051,10 +1051,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 44
 $app_shortname = "dotNETDR31"
-$app_toinclude = $app_toinclude_dotNET31DRT
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.3_1"
-$url_appspecific = $url_dotnet31DRT_x86
-$dir_installer = "dotNET31DRT" + "x86"
+$url_appspecific = $url_dotNETDR31-x86
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1090,10 +1090,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 44
 $app_shortname = "dotNETDR31"
-$app_toinclude = $app_toinclude_dotNET31DRT
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.DesktopRuntime.3_1"
-$url_appspecific = $url_dotnet31DRT_x64
-$dir_installer = "dotNET31DRT" + $arch_name
+$url_appspecific = $url_dotNETDR31-x64
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1129,10 +1129,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 45
 $app_shortname = "dotNETHB21"
-$app_toinclude = $app_toinclude_dotNET21HB
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # $app_wgname = "Microsoft.DotNet.HostingBundle.2_1"
-$url_appspecific = $url_dotnet21HB
-$dir_installer = "dotNET21HB" + "a64x64"
+$url_appspecific = $url_dotNETHB21
+$dir_installer = $app_shortname + "-" + "a64x64"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1168,10 +1168,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 51
 $app_shortname = "dotNETFw481"
-$app_toinclude = $app_toinclude_dotNET481
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.DotNet.Framework.DeveloperPack_4"
-$url_appspecific = $url_dotnetfw_481
-$dir_installer = "Framework481" + "a64x64"
+$url_appspecific = $url_dotNETFw481
+$dir_installer = $app_shortname + "-" + "a64x64"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1202,7 +1202,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 52
 $app_shortname = "dotNETFw11"
-$app_toinclude = $app_toinclude_dotNET11
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # $app_wgname = "Microsoft.DotNet.Framework.DeveloperPack_1_1"
 $dir_extr_dotnetfw11 = "C:\DotNetFramework11wSP1"
 $dir_installer = "Framework11wSP1"
@@ -1242,9 +1242,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 61
 $app_shortname = "VCPP2005"
-$app_toinclude = $app_toinclude_vcpp2005
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.2005.x86"
-$dir_installer = "VCPP_VCPP2005" + "x86"
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/Q"
 # 
 # main Install/Download/Execute
@@ -1280,9 +1280,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 61
 $app_shortname = "VCPP2005"
-$app_toinclude = $app_toinclude_vcpp2005
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.2005.x64"
-$dir_installer = "VCPP_VCPP2005" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/Q"
 # 
 # main Install/Download/Execute
@@ -1318,9 +1318,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 62
 $app_shortname = "VCPP2008"
-$app_toinclude = $app_toinclude_vcpp2008
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.2008.x86"
-$dir_installer = "VCPP_VCPP2008" + "x86"
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/qb `/norestart"
 # 
 # main Install/Download/Execute
@@ -1356,9 +1356,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 62
 $app_shortname = "VCPP2008"
-$app_toinclude = $app_toinclude_vcpp2008
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.2008.x64"
-$dir_installer = "VCPP_VCPP2008" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/qb `/norestart"
 # 
 # main Install/Download/Execute
@@ -1394,9 +1394,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 63
 $app_shortname = "VCPP2010"
-$app_toinclude = $app_toinclude_vcpp2010
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.2010.x86"
-$dir_installer = "VCPP_VCPP2010" + "x86"
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1432,9 +1432,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 63
 $app_shortname = "VCPP2010"
-$app_toinclude = $app_toinclude_vcpp2010
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.2010.x64"
-$dir_installer = "VCPP_VCPP2010" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1470,9 +1470,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 64
 $app_shortname = "VCPP2012"
-$app_toinclude = $app_toinclude_vcpp2012
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.2012.x86"
-$dir_installer = "VCPP_VCPP2012" + "x86"
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1508,9 +1508,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 64
 $app_shortname = "VCPP2012"
-$app_toinclude = $app_toinclude_vcpp2012
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.2012.x64"
-$dir_installer = "VCPP_VCPP2012" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1546,9 +1546,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 65
 $app_shortname = "VCPP2013"
-$app_toinclude = $app_toinclude_vcpp2013
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.2013.x86"
-$dir_installer = "VCPP_VCPP2013" + "x86"
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1584,9 +1584,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 65
 $app_shortname = "VCPP2013"
-$app_toinclude = $app_toinclude_vcpp2013
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.2013.x64"
-$dir_installer = "VCPP_VCPP2013" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1622,9 +1622,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 66
 $app_shortname = "VCPP2015plus"
-$app_toinclude = $app_toinclude_vcpp2015plus
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.2015+.x86"
-$dir_installer = "VCPP_VCPP2015plus" + "x86"
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1660,9 +1660,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 66
 $app_shortname = "VCPP2015plus"
-$app_toinclude = $app_toinclude_vcpp2015plus
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.2015+.x64"
-$dir_installer = "VCPP_VCPP2015plus" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1698,10 +1698,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 67
 $app_shortname = "VCPP14"
-$app_toinclude = $app_toinclude_vcpp14
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.14.x86"
-$url_appspecific = $url_vcpp_14_x86
-$dir_installer = "VCPP_VCPP14" + "x86"
+$url_appspecific = $url_VCPP14-x86
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1738,10 +1738,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 67
 $app_shortname = "VCPP14"
-$app_toinclude = $app_toinclude_vcpp14
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VCRedist.14.x64"
-$url_appspecific = $url_vcpp_14_x64
-$dir_installer = "VCPP_VCPP14" + $arch_name
+$url_appspecific = $url_VCPP14-x64
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1778,9 +1778,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 71
 $app_shortname = "CPPDB11"
-$app_toinclude = $app_toinclude_cppdb11
-$url_appspecific = $url_cppdb_11_x86
-$dir_installer = "VCPP_CPPDB11" + "x86"
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
+$url_appspecific = $url_CPPDB11
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1810,9 +1810,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 72
 $app_shortname = "CPPDB12"
-$app_toinclude = $app_toinclude_cppdb12
-$url_appspecific = $url_cppdb_12_x86
-$dir_installer = "VCPP_CPPDB12" + "x86"
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
+$url_appspecific = $url_CPPDB12
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/passive `/norestart"
 # 
 # main Install/Download/Execute
@@ -1842,9 +1842,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 81
 $app_shortname = "Python3"
-$app_toinclude = $app_toinclude_Python3
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Python.Python.3.13"
-$dir_installer = "Python3" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive InstallAllUsers=1 PrependPath=1"
 # 
 # main Install/Download/Execute
@@ -1879,9 +1879,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 82
 $app_shortname = "Python2"
-$app_toinclude = $app_toinclude_Python2
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Python.Python.2"
-$dir_installer = "Python2" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive `/norestart ADDLOCAL=ALL"
 # 
 # main Install/Download/Execute
@@ -1916,9 +1916,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 91
 $app_shortname = "SublimeText"
-$app_toinclude = $app_toinclude_SublimeText
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "SublimeHQ.SublimeText.4"
-$dir_installer = "SublimeText" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/SILENT"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Sublime Text.lnk"
 # 
@@ -1959,7 +1959,7 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 100
 $app_shortname = "RestartMidway"
-$app_toinclude = $app_toinclude_RestartMidway
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
@@ -1979,9 +1979,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 101
 $app_shortname = "PowerShell"
-$app_toinclude = $app_toinclude_PowerShell
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.PowerShell"
-$dir_installer = "Powershell" + "a64x64"
+$dir_installer = $app_shortname + "-" + "a64x64"
 $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\PowerShell\PowerShell 7 (x64).lnk"
 # 
@@ -2021,9 +2021,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 102
 $app_shortname = "WinTerminal"
-$app_toinclude = $app_toinclude_WinTerminal
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.WindowsTerminal"
-$dir_installer = "WinTerminal" + "a64x64"
+$dir_installer = $app_shortname + "-" + "a64x64"
 $install_args = ""
 # 
 # main Install/Download/Execute
@@ -2058,14 +2058,14 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 103
 $app_shortname = "VSCode"
-$app_toinclude = $app_toinclude_VSCode
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VisualStudioCode"
 if ($arch_name -eq "arm64") {
-    $url_appspecific = $url_vscode_a64
+    $url_appspecific = $url_VSCode-a64
 } else {
-    $url_appspecific = $url_vscode_x64
+    $url_appspecific = $url_VSCode-x64
 }
-$dir_installer = "VSCode" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/SILENT `/NORESTART `/MERGETASKS=!runcode"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Visual Studio Code\Visual Studio Code.lnk"
 # 
@@ -2107,7 +2107,7 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 104
 $app_shortname = "WSL"
-$app_toinclude = $app_toinclude_WSL
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
@@ -2120,8 +2120,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     # Linux Distro
     # 
     # param
+    $app_shortname = "Ubuntu2404"
     $app_wgname = "Canonical.Ubuntu.2404"
-    $dir_installer = "WSLUbuntu" + "a64x64"
+    $dir_installer = $app_shortname + "-" + "a64x64"
     $install_args = ""
     # 
     # main Install/Download/Execute
@@ -2160,9 +2161,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 111
 $app_shortname = "iTunes"
-$app_toinclude = $app_toinclude_iTunes
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Apple.iTunes"
-$dir_installer = "iTunes" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/qn `/norestart"
 # 
 # main Install/Download/Execute
@@ -2197,9 +2198,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 121
 $app_shortname = "Edge"
-$app_toinclude = $app_toinclude_Edge
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.Edge"
-$dir_installer = "Edge" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Microsoft Edge.lnk"
 # 
@@ -2240,10 +2241,10 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 122
 $app_shortname = "Teams"
-$app_toinclude = $app_toinclude_Teams
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.Teams"
 $app_msstore_id = "XP8BT8DW290MPQ"
-$dir_installer = "Teams" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/S"
 # 
 # main Install/Download/Execute
@@ -2284,9 +2285,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 123
 $app_shortname = "Skype"
-$app_toinclude = $app_toinclude_Skype
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.Skype"
-$dir_installer = "Skype" + "a64x64"
+$dir_installer = $app_shortname + "-" + "a64x64"
 $install_args = "`/SILENT"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Skype\Skype.lnk"
 # 
@@ -2326,9 +2327,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 124
 $app_shortname = "WinEssentials2012"
-$app_toinclude = $app_toinclude_WinEssentials
-$url_appspecific = $url_winessentials_2012
-$dir_installer = "WindowsEssentials" + "a64x64"
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
+$url_appspecific = $url_WinEssentials2012
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/AppSelect:MovieMaker `/AppSelect:Mail `/silent `/noceip `/nohomepage `/nolaunch `/nomu `/nosearch `/notoolbarceip"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Movie Maker.lnk"
 # 
@@ -2389,9 +2390,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 131
 $app_shortname = "Chrome"
-$app_toinclude = $app_toinclude_Chrome
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Google.Chrome"
-$dir_installer = "Chrome" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Google Chrome.lnk"
 # 
@@ -2432,9 +2433,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 132
 $app_shortname = "Drive"
-$app_toinclude = $app_toinclude_Drive
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Google.GoogleDrive"
-$dir_installer = "GoogleDrive" + "a64x64"
+$dir_installer = $app_shortname + "-" + "a64x64"
 $install_args = "--silent"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Google Drive.lnk"
 # 
@@ -2474,10 +2475,10 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 141
 $app_shortname = "Messenger"
-$app_toinclude = $app_toinclude_Messenger
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Meta.Messenger"
 $app_msstore_id = "9WZDNCRF0083"
-$dir_installer = "Messenger" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive"
 # 
 # main Install/Download/Execute
@@ -2502,13 +2503,13 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 151
 $app_shortname = "AcrobatReader"
-$app_toinclude = $app_toinclude_AcrobatReader
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 if ($arch_name -eq "x64") {
     $app_wgname = "Adobe.Acrobat.Reader.64-bit"
 } else {
     $app_wgname = "Adobe.Acrobat.Reader.32-bit"
 }
-$dir_installer = "AcrobatReader" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/sPB `/rs"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Adobe Acrobat.lnk"
 # note for Acrobat XI it is "$dir_startmenuprograms_allusers\Adobe Acrobat XI Pro.lnk"
@@ -2550,9 +2551,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 161
 $app_shortname = "Dropbox"
-$app_toinclude = $app_toinclude_Dropbox
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Dropbox.Dropbox"
-$dir_installer = "Dropbox" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/NOLAUNCH"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Dropbox\Dropbox.lnk"
 # 
@@ -2592,9 +2593,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 171
 $app_shortname = "Zoom"
-$app_toinclude = $app_toinclude_Zoom
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Zoom.Zoom"
-$dir_installer = "Zoom" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive ZoomAutoUpdate='true'"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Zoom\Zoom Workplace.lnk"
 # 
@@ -2634,9 +2635,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 172
 $app_shortname = "Discord"
-$app_toinclude = $app_toinclude_Discord
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Discord.Discord"
-$dir_installer = "Discord" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "-s"
 $path_file_shortcut = "$dir_startmenuprograms_currentuser\Discord Inc\Discord.lnk"
 # 
@@ -2676,9 +2677,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 173
 $app_shortname = "Telegram"
-$app_toinclude = $app_toinclude_Telegram
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Telegram.TelegramDesktop"
-$dir_installer = "Telegram" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/SILENT `/NORESTART"
 $path_file_shortcut = "$dir_startmenuprograms_currentuser\Telegram Desktop\Telegram.lnk"
 # 
@@ -2718,10 +2719,10 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 174
 $app_shortname = "WhatsApp"
-$app_toinclude = $app_toinclude_WhatsApp
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "WhatsApp.WhatsApp"
 $app_msstore_id = "9NKSQGP7F2NH"
-$dir_installer = "WhatsApp" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "--silent"
 # 
 # main Install/Download/Execute
@@ -2761,9 +2762,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 175
 $app_shortname = "WeChat"
-$app_toinclude = $app_toinclude_WeChat
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Tencent.WeChat"
-$dir_installer = "WeChat" + "a64x64"
+$dir_installer = $app_shortname + "-" + "a64x64"
 $install_args = "`/S"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\WeChat\WeChat.lnk"
 # 
@@ -2803,9 +2804,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 181
 $app_shortname = "TeamViewerLatest"
-$app_toinclude = $app_toinclude_TeamViewer
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "TeamViewer.TeamViewer"
-$dir_installer = "TeamViewerLatest" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/S"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\TeamViewer.lnk"
 # 
@@ -2845,9 +2846,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 181
 $app_shortname = "TeamViewerQS13"
-$app_toinclude = $app_toinclude_TeamViewer
-$url_appspecific = $url_teamviewerqs_13
-$dir_installer = "TeamViewerQS13"
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
+$url_appspecific = $url_TeamViewerQS13
+$dir_installer = $app_shortname + "-" + "x86"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\TeamViewerQS.lnk"
 # 
 # main Install/Download/Execute
@@ -2904,9 +2905,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 182
 $app_shortname = "SevenZip"
-$app_toinclude = $app_toinclude_SevenZip
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "7zip.7zip"
-$dir_installer = "SevenZip" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\7-Zip\7-Zip File Manager.lnk"
 # 
@@ -2946,9 +2947,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 182
 $app_shortname = "WinRAR"
-$app_toinclude = $app_toinclude_WinRAR
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "RARLab.WinRAR"
-$dir_installer = "WinRAR" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/S"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\WinRAR\WinRAR.lnk"
 # 
@@ -2988,9 +2989,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 183
 $app_shortname = "VLC"
-$app_toinclude = $app_toinclude_VLC
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "VideoLAN.VLC"
-$dir_installer = "VLC" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/S"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\VideoLAN\VLC media player.lnk"
 # 
@@ -3032,9 +3033,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 184
 $app_shortname = "Java8"
-$app_toinclude = $app_toinclude_Java8
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Oracle.JavaRuntimeEnvironment"
-$dir_installer = "Java8" + "x86"
+$dir_installer = $app_shortname + "-" + "x86"
 $install_args = "`/s"
 # 
 # main Install/Download/Execute
@@ -3070,9 +3071,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 184
 $app_shortname = "Java8"
-$app_toinclude = $app_toinclude_Java8
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Oracle.JavaRuntimeEnvironment"
-$dir_installer = "Java8" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/s"
 # 
 # main Install/Download/Execute
@@ -3109,9 +3110,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # param
 $app_num = 185
 $app_shortname = "OpenVPN"
-$app_toinclude = $app_toinclude_OpenVPN
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "OpenVPNTechnologies.OpenVPNConnect"
-$dir_installer = "OpenVPN" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\OpenVPN Connect\OpenVPN Connect.lnk"
 # 
@@ -3151,9 +3152,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 185
 $app_shortname = "WireGuard"
-$app_toinclude = $app_toinclude_WireGuard
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "WireGuard.WireGuard"
-$dir_installer = "WireGuard" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\WireGuard.lnk"
 # 
@@ -3193,9 +3194,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 186
 $app_shortname = "Firefox"
-$app_toinclude = $app_toinclude_Firefox
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Mozilla.Firefox"
-$dir_installer = "Firefox" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`-ms"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Firefox.lnk"
 # 
@@ -3235,9 +3236,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 187
 $app_shortname = "Thunderbird"
-$app_toinclude = $app_toinclude_Thunderbird
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Mozilla.Thunderbird"
-$dir_installer = "Thunderbird" + $arch_name
+$dir_installer = $app_shortname + "-" + $arch_name
 $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Thunderbird.lnk"
 # 
@@ -3277,9 +3278,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 188
 $app_shortname = "OBS"
-$app_toinclude = $app_toinclude_OBS
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "OBSProject.OBSStudio"
-$dir_installer = "OBS" + "a64x64"
+$dir_installer = $app_shortname + "-" + "a64x64"
 $install_args = "`/S"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\OBS Studio\OBS Studio (64bit).lnk"
 # 
@@ -3319,9 +3320,9 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 190
 $app_shortname = "LibreOffice"
-$app_toinclude = $app_toinclude_LibreOffice
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "TheDocumentFoundation.LibreOffice"
-$dir_installer = "LibreOffice" + "a64x64"
+$dir_installer = $app_shortname + "-" + "a64x64"
 $install_args = "`/passive"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\LibreOffice\LibreOffice.lnk"
 # 
@@ -3361,7 +3362,7 @@ Remove-Variable path_file_shortcut
 # param
 $app_num = 200
 $app_shortname = "MSOffice"
-$app_toinclude = $app_toinclude_Office
+$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
@@ -3461,7 +3462,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     $install_args = "`/extract:`"$dir_setupexe_odt2013`" `/quiet"
     # Download
     if (-Not (Test-Path -Path $dir_installer)) {
-        $url = $url_odt2013
+        $url = $url_ODT2013
         Downloa-Installe $url $dir_installer
     }
     # Offline

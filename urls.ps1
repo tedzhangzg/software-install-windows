@@ -14,7 +14,7 @@
 
 
 # Script to Add Microsoft Store
-$url_addmsstore = "https://github.com/kkkgo/LTSC-Add-MicrosoftStore/archive/refs/heads/master.zip"
+$url_AddMSStore = "https://github.com/kkkgo/LTSC-Add-MicrosoftStore/archive/refs/heads/master.zip"
 
 # Visual C++ Redistributable
 # 
@@ -25,15 +25,15 @@ $url_addmsstore = "https://github.com/kkkgo/LTSC-Add-MicrosoftStore/archive/refs
 # C++ Runtime framework packages for Desktop Bridge
 # 
 # v14
-$url_cppdb_14_a64 = "https://aka.ms/Microsoft.VCLibs.arm64.14.00.Desktop.appx"
-$url_cppdb_14_x64 = "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
-$url_cppdb_14_x86 = "https://aka.ms/Microsoft.VCLibs.x86.14.00.Desktop.appx"
+$url_CPPDB14-a64 = "https://aka.ms/Microsoft.VCLibs.arm64.14.00.Desktop.appx"
+$url_CPPDB14-x64 = "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
+$url_CPPDB14-x86 = "https://aka.ms/Microsoft.VCLibs.x86.14.00.Desktop.appx"
 # 
 # v12
-$url_cppdb_12_x86 = "https://download.microsoft.com/download/2/1/F/21F05B77-C444-46C0-B357-7EBC78C95CE2/vc_uwpdesktop.120.exe"
+$url_CPPDB12 = "https://download.microsoft.com/download/2/1/F/21F05B77-C444-46C0-B357-7EBC78C95CE2/vc_uwpdesktop.120.exe"
 # 
 # v11
-$url_cppdb_11_x86 = "https://download.microsoft.com/download/3/B/C/3BC60F47-6A7C-4D46-8CFB-C2E746EF336E/vc_uwpdesktop.110.exe"
+$url_CPPDB11 = "https://download.microsoft.com/download/3/B/C/3BC60F47-6A7C-4D46-8CFB-C2E746EF336E/vc_uwpdesktop.110.exe"
 
 # NuGet
 # Microsoft.UI.Xaml
@@ -41,7 +41,7 @@ $url_cppdb_11_x86 = "https://download.microsoft.com/download/3/B/C/3BC60F47-6A7C
 # $url_nuget_msuixaml = "https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml/2.7.3"
 
 # Windows Package Manager
-$url_winget = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+$url_WinGet = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
 
 # dot NET
 # 
@@ -124,7 +124,7 @@ $url_Java8_jdk-x86 = "https://javadl.oracle.com/webapps/download/GetFile/1.8.0_2
 $url_Java10_jdk-x64 = "https://javadl.oracle.com/webapps/download/GetFile/10.0.2+13/19aef61b38124481863b1413dce1855f/windows-i586/jdk-10.0.2_windows-x64_bin.exe"
 
 # Office 2013 ODT
-$url_odt2013 = "https://download.microsoft.com/download/6/2/3/6230F7A2-D8A9-478B-AC5C-57091B632FCF/officedeploymenttool_x86_5031-1000.exe"
+$url_ODT2013 = "https://download.microsoft.com/download/6/2/3/6230F7A2-D8A9-478B-AC5C-57091B632FCF/officedeploymenttool_x86_5031-1000.exe"
 
 # KMS
 $url_msactscript = "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/master/MAS/All-In-One-Version-KL/MAS_AIO.cmd"
