@@ -35,95 +35,96 @@
 ##################################################
 # Try not to touch these few important apps
 ##################################################
-$appnum_toinclude_WinGet = 1
-$appnum_toinclude_enableDevMode = 1
+$app_toinclude_WinGet = 1
+$app_toinclude_EnableDevMode = 1
 # 
-$appnum_toinclude_wincomponentdotNET35 = 1
-$appnum_toinclude_wincomponentWSL = 1
-$appnum_toinclude_wincomponentVMPlatform = 1
-$appnum_toinclude_LinuxKernelUpdate = 1
-$appnum_toinclude_wincomponentHypervisorPlatform = 1
-$appnum_toinclude_wincomponentHyperV = 1
-$appnum_toinclude_wincomponentContainers = 1
-$appnum_toinclude_wincomponentNTVDM = 1
-$appnum_toinclude_wincomponentDisablePSv2 = 1
-$appnum_toinclude_wincomponentRemovePSISE = 1
+$app_toinclude_NetFx3 = 1
+$app_toinclude_Microsoft-Windows-Subsystem-Linux = 1
+$app_toinclude_VirtualMachinePlatform = 1
+$app_toinclude_WSL2Kernel = 1
+$app_toinclude_HypervisorPlatform = 1
+$app_toinclude_Microsoft-Hyper-V = 1
+$app_toinclude_Containers = 1
+$app_toinclude_NTVDM = 1
+$app_toinclude_MicrosoftWindowsPowerShellV2Root = 1
+$app_toinclude_PowerShellISE = 1
 # 
-$appnum_toinclude_dotNET10HB = 1
-$appnum_toinclude_dotNET10DRT = 1
-$appnum_toinclude_dotNET8HB = 1
-$appnum_toinclude_dotNET8DRT = 1
-$appnum_toinclude_dotNET6HB = 1
-$appnum_toinclude_dotNET6DRT = 1
-$appnum_toinclude_dotNET31HB = 0
-$appnum_toinclude_dotNET31DRT = 0
-$appnum_toinclude_dotNET21HB = 0
+$app_toinclude_dotNETHB10 = 1
+$app_toinclude_dotNETDR10 = 1
+$app_toinclude_dotNETHB8 = 1
+$app_toinclude_dotNETDR8 = 1
+$app_toinclude_dotNETHB6 = 1
+$app_toinclude_dotNETDR6 = 1
+$app_toinclude_dotNETHB31 = 0
+$app_toinclude_dotNETDR31 = 0
+$app_toinclude_dotNETHB21 = 0
 # 
-$appnum_toinclude_dotNET481 = 0
-$appnum_toinclude_dotNET11 = 0
+$app_toinclude_dotNETFw481 = 0
+$app_toinclude_dotNETFw11 = 0
 # 
-$appnum_toinclude_vcpp2005 = 1
-$appnum_toinclude_vcpp2008 = 1
-$appnum_toinclude_vcpp2010 = 1
-$appnum_toinclude_vcpp2012 = 1
-$appnum_toinclude_vcpp2013 = 1
-$appnum_toinclude_vcpp2015plus = 1
-$appnum_toinclude_vcpp14 = 1
+$app_toinclude_VCPP2005 = 1
+$app_toinclude_VCPP2008 = 1
+$app_toinclude_VCPP2010 = 1
+$app_toinclude_VCPP2012 = 1
+$app_toinclude_VCPP2013 = 1
+$app_toinclude_VCPP2015plus = 1
+$app_toinclude_VCPP14 = 1
 # 
-$appnum_toinclude_cppdb11 = 1
-$appnum_toinclude_cppdb12 = 1
+$app_toinclude_CPPDB11 = 1
+$app_toinclude_CPPDB12 = 1
 # 
-$appnum_toinclude_Python3 = 1
-$appnum_toinclude_Python2 = 0
+$app_toinclude_Python3 = 1
+$app_toinclude_Python2 = 0
 # 
-$appnum_toinclude_SublimeText = 0
+$app_toinclude_SublimeText = 0
 ##################################################
-$appnum_toinclude_RestartMidway = 1
+$app_toinclude_RestartMidway = 1
 ##################################################
-$appnum_toinclude_PowerShell = 1
-$appnum_toinclude_WinTerminal = 1
-$appnum_toinclude_VSCode = 1
-$appnum_toinclude_WSL = 0
+$app_toinclude_PowerShell = 1
+$app_toinclude_WinTerminal = 1
+$app_toinclude_VSCode = 1
+$app_toinclude_WSL = 0
 # 
-$appnum_toinclude_iTunes = 0
+$app_toinclude_iTunes = 0
 # 
-$appnum_toinclude_Edge = 0
-$appnum_toinclude_Teams = 1
-$appnum_toinclude_Skype = 0
-$appnum_toinclude_WinEssentials = 1
+$app_toinclude_Edge = 0
+$app_toinclude_Teams = 1
+$app_toinclude_Skype = 0
+$app_toinclude_WinEssentials2012 = 1
 # 
-$appnum_toinclude_Chrome = 1
-$appnum_toinclude_Drive = 1
+$app_toinclude_Chrome = 1
+$app_toinclude_Drive = 1
 # 
-$appnum_toinclude_Messenger = 0
+$app_toinclude_Messenger = 0
 # 
-$appnum_toinclude_AcrobatReader = 1
+$app_toinclude_AcrobatReader = 1
 # 
-$appnum_toinclude_Dropbox = 0
+$app_toinclude_Dropbox = 0
 # 
-$appnum_toinclude_Zoom = 1
-$appnum_toinclude_Discord = 0
-$appnum_toinclude_Telegram = 1
-$appnum_toinclude_WhatsApp = 1
-$appnum_toinclude_WeChat = 0
+$app_toinclude_Zoom = 1
+$app_toinclude_Discord = 0
+$app_toinclude_Telegram = 1
+$app_toinclude_WhatsApp = 1
+$app_toinclude_WeChat = 0
 # 
-$appnum_toinclude_TeamViewer = 1
-$appnum_toinclude_SevenZip = 1
-$appnum_toinclude_WinRAR = 0
-$appnum_toinclude_VLC = 1
-$appnum_toinclude_Java8 = 0
-$appnum_toinclude_OpenVPN = 0
-$appnum_toinclude_WireGuard = 0
-$appnum_toinclude_Firefox = 1
-$appnum_toinclude_Thunderbird = 0
-$appnum_toinclude_OBS = 0
-$appnum_toinclude_LibreOffice = 0
+$app_toinclude_TeamViewerLatest = 1
+$app_toinclude_TeamViewerQS13 = 1
+$app_toinclude_SevenZip = 1
+$app_toinclude_WinRAR = 0
+$app_toinclude_VLC = 1
+$app_toinclude_Java8 = 0
+$app_toinclude_OpenVPN = 0
+$app_toinclude_WireGuard = 0
+$app_toinclude_Firefox = 1
+$app_toinclude_Thunderbird = 0
+$app_toinclude_OBS = 0
+$app_toinclude_LibreOffice = 0
 # 
-$appnum_toinclude_Office = 1
+$app_toinclude_MSOffice = 1
 ##################################################
 # Evaluated values
 # Do not touch
-# $appnum_toinclude_LibreOffice = (&{If($appnum_toinclude_MSOffice) {0} Else {1}})
+# $app_toinclude_LibreOffice = (&{If($app_toinclude_MSOffice) {0} Else {1}})
 ##################################################
 
 
