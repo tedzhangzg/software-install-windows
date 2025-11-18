@@ -75,6 +75,12 @@ Function Autodetect-ProcessorArchitecture() {
             # Done
             break
         }
+        4 {
+            # 4
+            $processorArchitecture = "SH-X"
+            # Done
+            break
+        }
         5 {
             # 5
             $processorArchitecture = "ARM"
@@ -83,13 +89,37 @@ Function Autodetect-ProcessorArchitecture() {
         }
         6 {
             # 6
-            $processorArchitecture = "ia64"
+            $processorArchitecture = "IA-64"
+            # Done
+            break
+        }
+        7 {
+            # 7
+            $processorArchitecture = "Alpha64"
+            # Done
+            break
+        }
+        8 {
+            # 8
+            $processorArchitecture = "MIPS64"
             # Done
             break
         }
         9 {
             # 9
             $processorArchitecture = "x64"
+            # Done
+            break
+        }
+        10 {
+            # 10
+            $processorArchitecture = "IA32"
+            # Done
+            break
+        }
+        11 {
+            # 11
+            $processorArchitecture = "Reserved"
             # Done
             break
         }
