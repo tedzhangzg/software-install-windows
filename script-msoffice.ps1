@@ -211,7 +211,7 @@ $arra_office2013 = @()
 $hashtabl_office2013.keys | ForEach-Object { $arra_office2013 += $_ }
 
 # For x86, change some values
-if ($arch_suffix -eq "x86") {
+if ($arch_name -eq "x86") {
     # Office
     # Overwrites value
     $msoffice_bit = 32
