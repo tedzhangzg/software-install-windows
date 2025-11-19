@@ -1847,7 +1847,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 81
 $app_shortname = "Python3"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Python.Python.3.13"
+$app_wgname = "Python.Python.3.14"
 $dir_installer = $app_shortname + "_" + $arch_name
 $install_args = "`/passive InstallAllUsers=1 PrependPath=1"
 # 
@@ -3374,11 +3374,13 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     # Prepare
 
     # define locations
+    # 
     # original downloaded file
-    $dir_origfile_odt2016Plus = "ODT2016Plus"
+    $dir_origfile_odt2016plus = "ODT2016plus"
     $dir_origfile_odt2013 = "ODT2013"
+    # 
     # extracted setup.exe file
-    $dir_setupexe_odt2016Plus = "$env:ProgramFiles\OfficeDeploymentTool"
+    $dir_setupexe_odt2016plus = "$env:ProgramFiles\OfficeDeploymentTool"
     if ([Environment]::Is64BitOperatingSystem) {
         $dir_setupexe_odt2013 = "${env:ProgramFiles(x86)}\Office2013DeploymentTool"
     } else {
@@ -3386,10 +3388,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     }
 
     # if setup.exe does not exist, create empty folders
-    New-Item -ItemType "directory" -Path $dir_setupexe_odt2016Plus -Force | Out-Null
-    if (-Not (Test-Path -Path "$dir_setupexe_odt2016Plus\setup.exe")) {
+    New-Item -ItemType "directory" -Path $dir_setupexe_odt2016plus -Force | Out-Null
+    if (-Not (Test-Path -Path "$dir_setupexe_odt2016plus\setup.exe")) {
         # Del
-        Get-ChildItem -Path $dir_setupexe_odt2016Plus -Recurse | Remove-Item -Recurse -Force
+        Get-ChildItem -Path $dir_setupexe_odt2016plus -Recurse | Remove-Item -Recurse -Force
     }
     New-Item -ItemType "directory" -Path $dir_setupexe_odt2013 -Force | Out-Null
     if (-Not (Test-Path -Path "$dir_setupexe_odt2013\setup.exe")) {
@@ -3400,8 +3402,8 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     # Extract ODT2016Plus
     # param
     $app_wgname = "Microsoft.OfficeDeploymentTool"
-    $dir_installer = $dir_origfile_odt2016Plus
-    $install_args = "`/extract:`"$dir_setupexe_odt2016Plus`" `/quiet"
+    $dir_installer = $dir_origfile_odt2016plus
+    $install_args = "`/extract:`"$dir_setupexe_odt2016plus`" `/quiet"
     # 
     # notes
     # if original file does not exist,
@@ -3439,14 +3441,14 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
                 # yes
                 if ($manual_download_odt2016 -eq "y") {
                     # manually download ODT
-                    Creat-NewEmpty-Folde $dir_origfile_odt2016Plus
+                    Creat-NewEmpty-Folde $dir_origfile_odt2016plus
                     Write-Host "Manually download latest ODT into Downloads folder"
                     pause
                     Start-Process "https://www.microsoft.com/en-us/download/details.aspx?id=49117"
                     Write-Host "Done?"
                     pause
                     # move
-                    Get-ChildItem -Path "$HOME\Downloads" -Filter officedeploymenttool*.exe | ForEach-Object { Move-Item -Path $_.FullName -Destination $dir_origfile_odt2016Plus -Force }
+                    Get-ChildItem -Path "$HOME\Downloads" -Filter officedeploymenttool*.exe | ForEach-Object { Move-Item -Path $_.FullName -Destination $dir_origfile_odt2016plus -Force }
 
                 }
             }

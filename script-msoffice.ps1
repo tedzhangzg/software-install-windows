@@ -258,35 +258,35 @@ Write-Host ""
 switch ($msoffice_ver_num) {
     365 {
         # Office 365
-        $dir_setup = $dir_setupexe_odt2016Plus
+        $dir_setup = $dir_setupexe_odt2016plus
         $hashtabl_officeselected = $hashtabl_office365
         $arra_officeselected = $arra_office365
         break
     }
     2024 {
         # Office 2024
-        $dir_setup = $dir_setupexe_odt2016Plus
+        $dir_setup = $dir_setupexe_odt2016plus
         $hashtabl_officeselected = $hashtabl_office2024
         $arra_officeselected = $arra_office2024
         break
     }
     2021 {
         # Office 2021
-        $dir_setup = $dir_setupexe_odt2016Plus
+        $dir_setup = $dir_setupexe_odt2016plus
         $hashtabl_officeselected = $hashtabl_office2021
         $arra_officeselected = $arra_office2021
         break
     }
     2019 {
         # Office 2019
-        $dir_setup = $dir_setupexe_odt2016Plus
+        $dir_setup = $dir_setupexe_odt2016plus
         $hashtabl_officeselected = $hashtabl_office2019
         $arra_officeselected = $arra_office2019
         break
     }
     2016 {
         # Office 2016
-        $dir_setup = $dir_setupexe_odt2016Plus
+        $dir_setup = $dir_setupexe_odt2016plus
         $hashtabl_officeselected = $hashtabl_office2016
         $arra_officeselected = $arra_office2016
         break
