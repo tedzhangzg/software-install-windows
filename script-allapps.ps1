@@ -1220,7 +1220,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
         Write-Host "Installing $dir_installer ..."
 
         # Expand
-        Get-ChildItem -Path $dir_installer -Filter *.zip | Expand-Archive -DestinationPath "C:\" -Force
+        Get-ChildItem -Path $dir_installer -Filter *.zip | Expand-Archive -DestinationPath $env:SystemDrive -Force
 
         # Install
         Start-Process -FilePath "$dir_extr_dotnetfw11\netfx.msi" -ArgumentList "`/passive" -Wait
