@@ -1208,8 +1208,8 @@ $app_num = 52
 $app_shortname = "dotNETFw11"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # $app_wgname = "Microsoft.DotNet.Framework.DeveloperPack_1_1"
-$dir_extr_dotnetfw11 = "C:\DotNetFramework11wSP1"
 $dir_installer = $app_shortname + "_" + "x86"
+$dir_ext_installer = $dir_installer + "_ext"
 $install_args = "`/passive"
 # 
 # main Install/Download/Execute
@@ -1220,13 +1220,13 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
         Write-Host "Installing $dir_installer ..."
 
         # Expand
-        Get-ChildItem -Path $dir_installer -Filter *.zip | Expand-Archive -DestinationPath $env:SystemDrive -Force
+        Get-ChildItem -Path $dir_installer -Filter *.zip | Expand-Archive -DestinationPath $dir_ext_installer -Force
 
         # Install
-        Start-Process -FilePath "$dir_extr_dotnetfw11\netfx.msi" -ArgumentList "`/passive" -Wait
+        Start-Process -FilePath "$dir_ext_installer\netfx.msi" -ArgumentList "`/passive" -Wait
 
         # Remove
-        Remove-Item -Path $dir_extr_dotnetfw11 -Recurse -Force
+        Remove-Item -Path $dir_ext_installer -Recurse -Force
 
         Write-Host "... Done Installing $dir_installer"
 
