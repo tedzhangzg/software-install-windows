@@ -1223,7 +1223,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
         Get-ChildItem -Path $dir_installer -Filter *.zip | Expand-Archive -DestinationPath $dir_ext_installer -Force
 
         # Install
-        Start-Process -FilePath "$dir_ext_installer\netfx.msi" -ArgumentList "`/passive" -Wait
+        Start-Process -FilePath "$dir_ext_installer\DotNetFramework11wSP1\netfx.msi" -ArgumentList "`/passive" -Wait
 
         # Remove
         Remove-Item -Path $dir_ext_installer -Recurse -Force
