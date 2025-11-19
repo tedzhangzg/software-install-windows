@@ -1209,7 +1209,7 @@ $app_shortname = "dotNETFw11"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # $app_wgname = "Microsoft.DotNet.Framework.DeveloperPack_1_1"
 $dir_extr_dotnetfw11 = "C:\DotNetFramework11wSP1"
-$dir_installer = "Framework11wSP1"
+$dir_installer = $app_shortname + "_" + "x86"
 $install_args = "`/passive"
 # 
 # main Install/Download/Execute
