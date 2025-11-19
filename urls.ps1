@@ -8,10 +8,6 @@
 
 # Write-Host "Starting urls.ps1 ..."
 
-# To download and include
-# Invoke-Expression $($(Invoke-WebRequest "https://raw.githubusercontent.com/tedzhangzg/scripts/main/urls.ps1" -UseBasicParsing).Content)
-
-
 
 # Script to Add Microsoft Store
 $url_AddMSStore = "https://github.com/kkkgo/LTSC-Add-MicrosoftStore/archive/refs/heads/master.zip"

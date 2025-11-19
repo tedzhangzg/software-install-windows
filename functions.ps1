@@ -8,10 +8,6 @@
 
 # Write-Host "Starting functions.ps1 ..."
 
-# To download and include
-# Invoke-Expression $($(Invoke-WebRequest "https://raw.githubusercontent.com/tedzhangzg/scripts/main/functions.ps1" -UseBasicParsing).Content)
-
-
 
 # Clear Powershell History
 # 
