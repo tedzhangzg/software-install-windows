@@ -101,7 +101,7 @@ if ((1 -le $activation_method) -and ($activation_method -le 6)) {
     # check if folder exist (assume file exist when folder exist)
     if (-Not(Test-Path -Path $dir_origfile_onlinekms)) {
         # actual download
-        Downloa-Installe "$url_msactscript" "$dir_origfile_onlinekms"
+        Downloa-Installe "$url_MAS_githubraw" "$dir_origfile_onlinekms"
     }
     # Copy
     Get-ChildItem -Path $dir_origfile_onlinekms -Recurse -Filter *.cmd | ForEach-Object { Copy-Item -Path $_.FullName -Destination $dir_extractedfile_kms -Recurse }

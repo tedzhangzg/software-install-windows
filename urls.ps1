@@ -9,37 +9,27 @@
 # Write-Host "Starting urls.ps1 ..."
 
 
-# Script to Add Microsoft Store
+# script to add Microsoft Store
 $url_AddMSStore = "https://github.com/kkkgo/LTSC-Add-MicrosoftStore/archive/refs/heads/master.zip"
 
-# Visual C++ Redistributable
-# 
-# vlatest
-# v2017-2026
-
-
-# C++ Runtime framework packages for Desktop Bridge
-# 
-# v14
-$url_CPPDB14_a64 = "https://aka.ms/Microsoft.VCLibs.arm64.14.00.Desktop.appx"
-$url_CPPDB14_x64 = "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
-$url_CPPDB14_x86 = "https://aka.ms/Microsoft.VCLibs.x86.14.00.Desktop.appx"
-# 
-# v12
-$url_CPPDB12 = "https://download.microsoft.com/download/2/1/F/21F05B77-C444-46C0-B357-7EBC78C95CE2/vc_uwpdesktop.120.exe"
-# 
-# v11
-$url_CPPDB11 = "https://download.microsoft.com/download/3/B/C/3BC60F47-6A7C-4D46-8CFB-C2E746EF336E/vc_uwpdesktop.110.exe"
-
-# NuGet
-# Microsoft.UI.Xaml
-# $url_NuGetMSUIXaml = "https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml/2.8.7"
-# $url_NuGetMSUIXaml = "https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml/2.7.3"
-
-# Windows Package Manager
-$url_WinGet = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+# Microsoft A Script
+$url_MAS = "get.activated.win"
+$url_MAS_old = "massgrave.dev/get"
+$url_MAS_githubraw = "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/master/MAS/All-In-One-Version-KL/MAS_AIO.cmd"
 
 # dot NET
+# 
+# v10
+# $url_dotNETHB10 = ""
+# $url_dotNETDR10_a64 = ""
+# $url_dotNETDR10_x64 = ""
+# $url_dotNETDR10_x86 = ""
+# 
+# v8
+# $url_dotNETHB8 = ""
+# $url_dotNETDR8_a64 = ""
+# $url_dotNETDR8_x64 = ""
+# $url_dotNETDR8_x86 = ""
 # 
 # v6
 $url_dotNETHB6 = "https://builds.dotnet.microsoft.com/dotnet/aspnetcore/Runtime/6.0.36/dotnet-hosting-6.0.36-win.exe"
@@ -96,7 +86,20 @@ $url_VCPP2008_x86 = "https://download.microsoft.com/download/5/D/8/5D8C65CB-C849
 $url_VCPP2005_x64 = "https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x64.EXE"
 $url_VCPP2005_x86 = "https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x86.EXE"
 
-# Linux kernel update package x64
+# C++ Runtime framework packages for Desktop Bridge
+# 
+# v14
+$url_CPPDB14_a64 = "https://aka.ms/Microsoft.VCLibs.arm64.14.00.Desktop.appx"
+$url_CPPDB14_x64 = "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
+$url_CPPDB14_x86 = "https://aka.ms/Microsoft.VCLibs.x86.14.00.Desktop.appx"
+# 
+# v12
+$url_CPPDB12 = "https://download.microsoft.com/download/2/1/F/21F05B77-C444-46C0-B357-7EBC78C95CE2/vc_uwpdesktop.120.exe"
+# 
+# v11
+$url_CPPDB11 = "https://download.microsoft.com/download/3/B/C/3BC60F47-6A7C-4D46-8CFB-C2E746EF336E/vc_uwpdesktop.110.exe"
+
+# Linux kernel update for WSL2
 $url_WSL2Kernel_a64 = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_arm64.msi"
 $url_WSL2Kernel_x64 = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
 
@@ -121,9 +124,6 @@ $url_Java10_jdk_x64 = "https://javadl.oracle.com/webapps/download/GetFile/10.0.2
 
 # Office 2013 ODT
 $url_ODT2013 = "https://download.microsoft.com/download/6/2/3/6230F7A2-D8A9-478B-AC5C-57091B632FCF/officedeploymenttool_x86_5031-1000.exe"
-
-# KMS
-$url_msactscript = "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/master/MAS/All-In-One-Version-KL/MAS_AIO.cmd"
 
 # Write-Host ""
 
