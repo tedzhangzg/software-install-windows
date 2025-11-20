@@ -143,13 +143,13 @@ Function Autodetect-ProcessorArchitecture() {
 # Usage
 # Autodetect-OSBit
 # 
-Function Autodetect-OSBit() {
+Function Autodetect-Bit-OS() {
 
     # Return
     if ([Environment]::Is64BitOperatingSystem) {
-        return "x64"
+        return "64"
     } else {
-        return "x86"
+        return "32"
     }
 
 }
