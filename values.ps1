@@ -49,14 +49,14 @@ $app_toinclude_NTVDM = 1
 $app_toinclude_MicrosoftWindowsPowerShellV2Root = 1
 $app_toinclude_PowerShellISE = 1
 # 
-$app_toinclude_dotNETHB10 = 1
+$app_toinclude_dotNETHB10 = 0
 $app_toinclude_dotNETDR10 = 1
-$app_toinclude_dotNETHB8 = 1
+$app_toinclude_dotNETHB8 = 0
 $app_toinclude_dotNETDR8 = 1
-$app_toinclude_dotNETHB6 = 1
+$app_toinclude_dotNETHB6 = 0
 $app_toinclude_dotNETDR6 = 1
 $app_toinclude_dotNETHB31 = 0
-$app_toinclude_dotNETDR31 = 0
+$app_toinclude_dotNETDR31 = 1
 $app_toinclude_dotNETHB21 = 0
 # 
 $app_toinclude_dotNETFw481 = 0
@@ -67,12 +67,12 @@ $app_toinclude_VCPP2008 = 1
 $app_toinclude_VCPP2010 = 1
 $app_toinclude_VCPP2012 = 1
 $app_toinclude_VCPP2013 = 1
-$app_toinclude_VCPP2015plus = 1
+$app_toinclude_VCPP2015plus = 0
 $app_toinclude_VCPP14 = 1
 # 
 $app_toinclude_CPPDB11 = 1
 $app_toinclude_CPPDB12 = 1
-$app_toinclude_CPPDB14 = 1
+$app_toinclude_CPPDB14 = 0
 # 
 $app_toinclude_Python3 = 1
 $app_toinclude_Python2 = 0
