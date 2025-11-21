@@ -82,10 +82,14 @@ Write-Host "Windows Version"
 Write-Host "Autodetect Windows Build: $([System.Environment]::OSVersion.Version.Build)"
 Write-Host "Generally: above 20000 is Win11, below 20000 is Win10"
 # list
-Write-Host "(1) Windows 11"
-Write-Host "(2) Windows 10"
+Write-Host "(11) Windows 11 - Windows 10.0.22000 or later"
+Write-Host "(10) Windows 10 - Windows 10.0.17763 (1809) to 10.0.19045 (22H2)"
+Write-Host "(8) Windows 8.1 - Windows 6.3"
+Write-Host "(7) Windows 7 - Windows 6.1"
+Write-Host "(6) Windows Vista - Windows 6.0"
+Write-Host "(5) Windows XP - Windows 5.1"
 # ask
-while ($win_version -notin 1..2) {
+while ($win_version -notin 10..11) {
     [int]$win_version = Read-Host -Prompt "Enter number "
 }
 
