@@ -28,43 +28,31 @@ Write-Host "====================================================================
 Write-Host ""
 
 
-# Create temp folder
-$tmp_dir = "$env:TEMP\tempappdlinst"
-Creat-NewEmpty-Folde $tmp_dir
-
-
 Write-Host ""
 Write-Host ""
 
 
 # Microsoft Store
 
-# Param
-$dir_installer = "AddMSStore"
+# param
+$app_shortname = "Script_AddMSStore"
+$dir_installer = $app_shortname
 $install_args = ""
-# Install/Download/Execute
+
+# main Install/Download/Execute
+# 
 # Download
 if (-Not (Test-Path -Path $dir_installer)) {
-    $url = $url_addmsstore
+    $url = $url_script_LTSCAddMSStore
     Downloa-Installe $url $dir_installer
 }
-
+# 
 # Expand
 Get-ChildItem -Path $dir_installer -Recurse -Filter *.zip | ForEach-Object { Expand-Archive -Path $_.FullName -DestinationPath $dir_installer -Force }
 Get-ChildItem -Path $dir_installer -Recurse -Filter *.zip | ForEach-Object { Remove-Item -Path $_.FullName -Recurse -Force }
-
+# 
 # Install
-# Only the C++ Runtime Desktop Bridge
-# Get-ChildItem -Path $dir_installer -Recurse -Filter "*vclibs*" | ForEach-Object { Add-AppxPackage -Path $_.FullName }
-# Full Microsoft Store
 Get-ChildItem -Path $dir_installer -Recurse -Filter *.cmd | ForEach-Object { Start-Process -FilePath $_.FullName -Wait }
-
-
-Write-Host ""
-
-# final
-
-Clear-PSHistory
 
 Write-Host ""
 

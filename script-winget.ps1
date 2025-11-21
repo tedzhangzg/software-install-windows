@@ -15,6 +15,14 @@
 
 Write-Host "Starting script-winget.ps1 ..."
 
+# include
+. ".\functions.ps1"
+. ".\urls.ps1"
+. ".\values.ps1"
+
+# var
+# $var = ""
+
 # Change Colours
 Clear-Host
 $host.UI.RawUI.BackgroundColor = "DarkGreen"
@@ -30,7 +38,7 @@ Write-Host ""
 Write-Host "Running script from winget.pro ..."
 Write-Host ""
 Write-Host ""
-irm winget.pro | iex
+irm $url_script_WinGetInstall | iex
 Write-Host ""
 Write-Host ""
 Write-Host "... Done running script from winget.pro"

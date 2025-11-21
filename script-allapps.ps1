@@ -21,10 +21,6 @@ Write-Host "Starting script-allapps.ps1 ..."
 # var
 # $var = ""
 
-# create temp folder
-$tmp_dir = "$env:TEMP\tempappdlinst"
-Creat-NewEmpty-Folde $tmp_dir
-
 Write-Host ""
 Write-Host "================================================================================"
 Write-Host "Script - Install all apps"
@@ -425,7 +421,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     if (-Not (Test-Path -Path "$dir_installer\sxs.zip")) {
         Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     } else {
-        $dir_extract = $tmp_dir
+        $dir_extract = "extracted_SXS"
         Expand-Archive -Path "$dir_installer\sxs.zip" -DestinationPath $dir_extract -Force
         Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -Source "$dir_extract\sxs" -All -NoRestart | Out-Null
         Get-ChildItem -Path $dir_extract -Recurse | Remove-Item -Recurse -Force
@@ -3498,7 +3494,6 @@ Stop-Process -Name "GoogleDrive*" -Force
 Stop-Process -Name "Dropbox*" -Force
 
 # clear
-Remov-Folde $tmp_dir
 # Clear-RecycleBin -Force
 Clear-PSHistory
 
