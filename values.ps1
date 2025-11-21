@@ -56,7 +56,7 @@ $app_toinclude_dotNETDR8 = 1
 $app_toinclude_dotNETHB6 = 0
 $app_toinclude_dotNETDR6 = 1
 $app_toinclude_dotNETHB31 = 0
-$app_toinclude_dotNETDR31 = 1
+$app_toinclude_dotNETDR31 = 0
 $app_toinclude_dotNETHB21 = 0
 # 
 $app_toinclude_dotNETFw481 = 0
@@ -88,7 +88,7 @@ $app_toinclude_WSL = 0
 # 
 $app_toinclude_iTunes = 0
 # 
-$app_toinclude_Edge = 0
+$app_toinclude_Edge = 1
 $app_toinclude_Teams = 1
 $app_toinclude_Skype = 0
 $app_toinclude_WinEssentials2012 = 1
