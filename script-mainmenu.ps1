@@ -30,7 +30,8 @@ function Show-Menu {
     Write-Host "    2) Edit list of apps for Script1"
     Write-Host ""
     Write-Host "    4) All config"
-    Write-Host "    5) Create new admin user"
+    # Write-Host "    5) Create new admin user"
+    Write-Host "    6) Windows 11 Debloat"
     Write-Host ""
     Write-Host "    7) KMS"
     Write-Host ""
@@ -39,8 +40,7 @@ function Show-Menu {
     Write-Host ""
     Write-Host "    Others"
     Write-Host "    11) Install WinGet"
-    Write-Host "    12) Add Microsoft Store (on EnterpriseLTSC and WinServer)"
-    # Write-Host "    13) Microsoft Office"
+    Write-Host "    12) Add Microsoft Store"
     Write-Host ""
 }
 
@@ -66,6 +66,11 @@ Do {
             Start-Process -FilePath "notepad.exe" -ArgumentList "values.ps1" -Wait
             break
         }
+        3 {
+            # 3
+            Write-Host "Do nothing ..."
+            break
+        }
         4 {
             # 4
             Start-Process -FilePath "powershell.exe" -ArgumentList ".\script-endusersettings.ps1" -Wait
@@ -76,6 +81,13 @@ Do {
             Start-Process -FilePath "powershell.exe" -ArgumentList ".\script-createnewuser.ps1" -Wait
             break
         }
+        6 {
+            # 6
+            Write-Host ""
+            Write-Host "Running Script Win11Debloat ..."
+            & ([scriptblock]::Create((irm $url_script_W11Debloat)))
+            break
+        }
         7 {
             # 7
             # start of old code
@@ -84,14 +96,8 @@ Do {
             # 
             # start of new code
             Write-Host ""
-            Write-Host "Installing KMS ..."
-            try {
-                # new
-                irm https://get.activated.win | iex
-            } catch {
-                # old
-                irm https://massgrave.dev/get | iex
-            }
+            Write-Host "Running Script MAS ..."
+            irm $url_script_MAS | iex
             # end of new code
             break
         }
@@ -113,11 +119,6 @@ Do {
         12 {
             # 12
             Start-Process -FilePath "powershell.exe" -ArgumentList ".\script-msstore.ps1" -Wait
-            break
-        }
-        13 {
-            # 13
-            Start-Process -FilePath "powershell.exe" -ArgumentList ".\script-msoffice.ps1" -Wait
             break
         }
         default {
