@@ -29,12 +29,6 @@ $host.UI.RawUI.BackgroundColor = "DarkGreen"
 # $host.UI.RawUI.ForegroundColor = "DarkYellow"
 Clear-Host
 
-Write-Host ""
-Write-Host "================================================================================"
-Write-Host "Script - WinGet"
-Write-Host "================================================================================"
-Write-Host ""
-
 Write-Host "Running script from winget.pro ..."
 Write-Host ""
 Write-Host ""
