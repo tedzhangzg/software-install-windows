@@ -82,12 +82,14 @@ Write-Host "Windows Version"
 Write-Host "Autodetect Windows Build: $([System.Environment]::OSVersion.Version.Build)"
 Write-Host "Generally: above 20000 is Win11, below 20000 is Win10"
 # list
-Write-Host "(11) Windows 11 - Windows 10.0.22000 or later"
-Write-Host "(10) Windows 10 - Windows 10.0.17763 (1809) to 10.0.19045 (22H2)"
-Write-Host "(8) Windows 8.1 - Windows 6.3"
-Write-Host "(7) Windows 7 - Windows 6.1"
-Write-Host "(6) Windows Vista - Windows 6.0"
-Write-Host "(5) Windows XP - Windows 5.1"
+Write-Host "(11) Windows 11" # Windows 10.0.22000 or later
+Write-Host "(10) Windows 10" # Windows 10.0.17763 (1809) to 10.0.19045 (22H2)
+# Write-Host "(8) Windows 8.1" # Windows 6.3
+# Write-Host "(8) Windows 8" # Windows 6.2
+Write-Host "(7) Windows 7" # Windows 6.1
+# Write-Host "(6) Windows Vista" # Windows 6.0
+Write-Host "(5) Windows XP" # Windows 5.1
+# Write-Host "(5) Windows 2000" # Windows 5.0
 # ask
 while ($win_version -notin 10..11) {
     [int]$win_version = Read-Host -Prompt "Enter number "
@@ -2064,11 +2066,7 @@ $app_num = 103
 $app_shortname = "VSCode"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_wgname = "Microsoft.VisualStudioCode"
-if ($arch_name -eq "arm64") {
-    $url_appspecific = $url_VSCode_a64
-} else {
-    $url_appspecific = $url_VSCode_x64
-}
+$url_appspecific = (Get-Variable -Name $("url_VSCode_" + $arch_name)).Value
 $dir_installer = $app_shortname + "_" + $arch_name
 $install_args = "`/SILENT `/NORESTART `/MERGETASKS=!runcode"
 $path_file_shortcut = "$dir_startmenuprograms_allusers\Visual Studio Code\Visual Studio Code.lnk"
