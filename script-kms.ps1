@@ -27,7 +27,7 @@ Write-Host "Starting script-kms.ps1 ..."
 Write-Host "Running script from get.activated.win ..."
 Write-Host ""
 Write-Host ""
-irm $url_script_MAS | iex
+irm "https://$url_script_shortMAS" | iex
 Write-Host ""
 Write-Host ""
 Write-Host "... Done running script from get.activated.win"

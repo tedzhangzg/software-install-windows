@@ -18,7 +18,7 @@ $url_script_WinGetInstall = "winget.pro"
 $url_script_AddMSStore = "https://github.com/kkkgo/LTSC-Add-MicrosoftStore/archive/refs/heads/master.zip"
 
 # github - massgravel/Microsoft-Activation-Scripts
-$url_script_MAS = "https://get.activated.win"
+$url_script_shortMAS = "get.activated.win"
 $url_script_directMAS = "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/master/MAS/All-In-One-Version-KL/MAS_AIO.cmd"
 
 # github - Raphire/Win11Debloat
