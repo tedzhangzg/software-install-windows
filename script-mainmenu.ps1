@@ -97,7 +97,13 @@ Do {
             # start of new code
             Write-Host ""
             Write-Host "Running Script MAS ..."
-            irm https://get.activated.win | iex
+            try {
+                # try
+                irm "https://$url_script_shortMAS" | iex
+            } catch {
+                # catch
+                iex (curl.exe -s --doh-url https://1.1.1.1/dns-query https://$url_script_shortMAS | Out-String)
+            }
             # end of new code
             break
         }
