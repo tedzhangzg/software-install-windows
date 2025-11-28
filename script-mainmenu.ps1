@@ -97,7 +97,7 @@ Do {
             # start of new code
             Write-Host ""
             Write-Host "Running Script MAS ..."
-            irm "https://$url_script_shortMAS" | iex
+            irm https://get.activated.win | iex
             # end of new code
             break
         }
