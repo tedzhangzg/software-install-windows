@@ -2209,10 +2209,9 @@ $path_file_shortcut = "$dir_startmenuprograms_allusers\Microsoft Edge.lnk"
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    if ($false) {
-    # if ($mode_onoffdown -eq 1) {
+    if ($mode_onoffdown -eq 1) {
         # Online
-        winget install --id $app_wgname -a $arch_name
+        winget install --id $app_wgname -a $arch_name --force
     } else {
         # Download
         if (-Not (Test-Path -Path $dir_installer)) {
