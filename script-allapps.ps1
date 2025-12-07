@@ -2999,9 +2999,7 @@ $path_file_shortcut = "$dir_startmenuprograms_allusers\VideoLAN\VLC media player
 # main Install/Download/Execute
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    # slow winget download, use offline
-    if ($false) {
-    # if ($mode_onoffdown -eq 1) {
+    if ($mode_onoffdown -eq 1) {
         # Online
         winget install --id $app_wgname -a $arch_name
     } else {
