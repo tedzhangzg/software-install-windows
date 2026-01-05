@@ -67,7 +67,6 @@ $app_toinclude_VCPP2008 = 1
 $app_toinclude_VCPP2010 = 1
 $app_toinclude_VCPP2012 = 1
 $app_toinclude_VCPP2013 = 1
-$app_toinclude_VCPP2015plus = 0
 $app_toinclude_VCPP14 = 1
 # 
 $app_toinclude_CPPDB11 = 1

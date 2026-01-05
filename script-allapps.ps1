@@ -152,8 +152,7 @@ Write-Host "62 Visual C++ 2008"
 Write-Host "63 Visual C++ 2010"
 Write-Host "64 Visual C++ 2012"
 Write-Host "65 Visual C++ 2013"
-Write-Host "66 Visual C++ 2015+"
-Write-Host "67 Visual C++ 14"
+Write-Host "66 Visual C++ 14"
 ##################################################
 Write-Host "---------- C++ Desktop Bridge ----------"
 Write-Host "71 C++ Desktop Bridge 11"
@@ -1811,11 +1810,11 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # 
 # done
 
-# Visual C++ 2015+ x86
+# Visual C++ 14 x86
 # 
 # param
 $app_num = 66
-$app_shortname = "VCPP2015plus"
+$app_shortname = "VCPP14"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main
@@ -1851,11 +1850,11 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # 
 # done
 
-# Visual C++ 2015+ x64
+# Visual C++ 14 x64
 # 
 # param
 $app_num = 66
-$app_shortname = "VCPP2015plus"
+$app_shortname = "VCPP14"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main
@@ -1891,11 +1890,11 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # 
 # done
 
-# Visual C++ 2015+ arm64
+# Visual C++ 14 arm64
 # 
 # param
 $app_num = 66
-$app_shortname = "VCPP2015plus"
+$app_shortname = "VCPP14"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main
@@ -1914,132 +1913,6 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
         # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
-            Downloa-Installe $url $dir_installer
-        }
-        # install
-        if ($mode_onoffdown -ne 3) {
-            Instal-Ap $dir_installer $install_args
-        }
-    }
-
-    # done
-    Write-Host ""
-    # clear param
-    # Remove-Variable path_file_shortcut
-
-}
-# 
-# done
-
-# Visual C++ 14 x86
-# 
-# param
-$app_num = 67
-$app_shortname = "VCPP14"
-$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-# 
-# main
-if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
-
-    # param
-    $app_wgname = "Microsoft.VCRedist.14.x86"
-    $url_appspecific = $url_VCPP14_x86
-    $dir_installer = $app_shortname + "_" + "x86"
-    $install_args = "`/passive `/norestart"
-
-    if ($false) {
-    # if ($mode_onoffdown -eq 1) {
-        # pkgmgr
-        winget install --id $app_wgname # -a $arch_name
-    } else {
-        # download
-        if (-Not (Test-Path -Path $dir_installer)) {
-            # $url = Get-URL-FromWinget $app_wgname "a64x64"
-            $url = $url_appspecific
-            Downloa-Installe $url $dir_installer
-        }
-        # install
-        if ($mode_onoffdown -ne 3) {
-            Instal-Ap $dir_installer $install_args
-        }
-    }
-
-    # done
-    Write-Host ""
-    # clear param
-    # Remove-Variable path_file_shortcut
-
-}
-# 
-# done
-
-# Visual C++ 14 x64
-# 
-# param
-$app_num = 67
-$app_shortname = "VCPP14"
-$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-# 
-# main
-if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
-
-    # param
-    $app_wgname = "Microsoft.VCRedist.14.x64"
-    $url_appspecific = $url_VCPP14_x64
-    $dir_installer = $app_shortname + "_" + "x64"
-    $install_args = "`/passive `/norestart"
-
-    if ($false) {
-    # if ($mode_onoffdown -eq 1) {
-        # pkgmgr
-        winget install --id $app_wgname # -a $arch_name
-    } else {
-        # download
-        if (-Not (Test-Path -Path $dir_installer)) {
-            # $url = Get-URL-FromWinget $app_wgname "a64x64"
-            $url = $url_appspecific
-            Downloa-Installe $url $dir_installer
-        }
-        # install
-        if ($mode_onoffdown -ne 3) {
-            Instal-Ap $dir_installer $install_args
-        }
-    }
-
-    # done
-    Write-Host ""
-    # clear param
-    # Remove-Variable path_file_shortcut
-
-}
-# 
-# done
-
-# Visual C++ 14 arm64
-# 
-# param
-$app_num = 67
-$app_shortname = "VCPP14"
-$app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-# 
-# main
-if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
-
-    # param
-    $app_wgname = "Microsoft.VCRedist.14.arm64"
-    $url_appspecific = $url_VCPP14_arm64
-    $dir_installer = $app_shortname + "_" + "arm64"
-    $install_args = "`/passive `/norestart"
-
-    if ($false) {
-    # if ($mode_onoffdown -eq 1) {
-        # pkgmgr
-        winget install --id $app_wgname # -a $arch_name
-    } else {
-        # download
-        if (-Not (Test-Path -Path $dir_installer)) {
-            # $url = Get-URL-FromWinget $app_wgname "a64x64"
-            $url = $url_appspecific
             Downloa-Installe $url $dir_installer
         }
         # install
@@ -2181,7 +2054,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     if ($mode_onoffdown -eq 1) {
         # pkgmgr
-        winget install --id $app_wgname -a $arch_name
+        winget install --id $app_wgname # -a $arch_name
     } else {
         # download
         if (-Not (Test-Path -Path $dir_installer)) {
@@ -2215,18 +2088,18 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # param
     $app_wgname = "SublimeHQ.SublimeText.4"
-    $dir_installer = $app_shortname + "_" + $arch_name
+    $dir_installer = $app_shortname + "_" + "a64x64"
     $install_args = "`/SILENT"
     $path_file_shortcut = "$dir_startmenuprograms_allusers\Sublime Text.lnk"
 
-    if ($false) {
-    # if ($mode_onoffdown -eq 1) {
+    # if ($false) {
+    if ($mode_onoffdown -eq 1) {
         # pkgmgr
-        winget install --id $app_wgname -a $arch_name
+        winget install --id $app_wgname # -a $arch_name
     } else {
         # download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname $arch_name
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         # install
