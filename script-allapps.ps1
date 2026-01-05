@@ -45,7 +45,6 @@ Write-Host "(3) x86"
 while ($app_installer_architecture -notin 1..2) {
     # [int]$app_installer_architecture = Read-Host -Prompt "Enter number "
     Write-Host "Enter number "
-    $app_installer_architecture = 2
 }
 Write-Host "CONFIRMED - architecture: $app_installer_architecture"
 
@@ -265,21 +264,17 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
 ##################################################
 ##################################################
-# special section
 # test WinGet
 ##################################################
 if (($mode_onoffdown -ne 2) -and ([System.Environment]::OSVersion.Version.Major -ge 10)) {
-
+    
+    Write-Host ""
     try {
         winget search --id "Google.Chrome" --accept-source-agreements
-        Write-Host ""
-        winget -v
+        Write-Host "winget version - $(winget -v)"
     } catch {
-        Write-Host ""
-        Write-Host "Error"
-        Write-Host "WinGet is not installed"
-        Write-Host "Please install WinGet before continuing"
-        Write-Host ""
+        Write-Host "Error - WinGet not installed ..."
+        Write-Host "Please install WinGet before continuing ..."
         Write-Host ""
         Write-Host "Script terminated ..."
         pause
@@ -321,37 +316,33 @@ $app_num = 11
 $app_shortname = "NetFx3"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 switch ([Environment]::OSVersion.Version.Build) {
-    {($_ -ge 26200) -and ($_ -le 26200)}
+    { $_ -in 26100..26200 }
     {
         # build 26200
         # Windows 11 version 25H2
         # Windows 11 Enterprise LTSC ?
         # Windows Server LTSC ?
         # Windows Server version ?
-        $dir_installer = "netfx3\b26200x64"
-        break
-    }
-    {($_ -ge 26100) -and ($_ -le 26100)}
-    {
+        # 
         # build 26100
         # Windows 11 version 24H2
         # Windows 11 Enterprise LTSC 2024
         # Windows Server LTSC 2025
         # Windows Server version ?
-        $dir_installer = "netfx3\b26100x64"
+        $dir_installer = "netfx3\b26100" + "_" + $arch_name
         break
     }
-    {($_ -ge 25398) -and ($_ -le 25398)}
+    { $_ -in 25398..25398 }
     {
         # build 25398
         # Windows 11 version ?
         # Windows 11 Enterprise LTSC ?
         # Windows Server LTSC ?
         # Windows Server version 23H2
-        $dir_installer = "netfx3\b26100x64"
+        $dir_installer = "netfx3\b25398x64"
         break
     }
-    {($_ -ge 20348) -and ($_ -le 20348)}
+    { $_ -in 20348..20348 }
     {
         # build 20348
         # Windows ?
@@ -361,18 +352,14 @@ switch ([Environment]::OSVersion.Version.Build) {
         $dir_installer = "netfx3\b20348x64"
         break
     }
-    {($_ -ge 19045) -and ($_ -le 19045)}
+    { $_ -in 19041..19045 }
     {
         # build 19045
         # Windows 10 version 22H2
         # Windows ? Enterprise LTSC ?
         # Windows Server LTSC ?
         # Windows Server version ?
-        $dir_installer = "netfx3\b19045x64"
-        break
-    }
-    {($_ -ge 19044) -and ($_ -le 19044)}
-    {
+        # 
         # build 19044
         # Windows 10 version 21H2
         # Windows 10 Enterprise LTSC 2021
@@ -381,7 +368,7 @@ switch ([Environment]::OSVersion.Version.Build) {
         $dir_installer = "netfx3\b19044x64"
         break
     }
-    {($_ -ge 17763) -and ($_ -le 17763)}
+    { $_ -in 17763..17763 }
     {
         # build 17763
         # Windows 10 version 1809
@@ -391,7 +378,7 @@ switch ([Environment]::OSVersion.Version.Build) {
         $dir_installer = "netfx3\b17763x64"
         break
     }
-    {($_ -ge 14393) -and ($_ -le 14393)}
+    { $_ -in 14393..14393 }
     {
         # build 14393
         # Windows 10 version 1607
@@ -401,7 +388,7 @@ switch ([Environment]::OSVersion.Version.Build) {
         $dir_installer = "netfx3\b14393x64"
         break
     }
-    {($_ -ge 10240) -and ($_ -le 10240)}
+    { $_ -in 10240..10240 }
     {
         # build 10240
         # Windows 10 version 1507
@@ -415,7 +402,7 @@ switch ([Environment]::OSVersion.Version.Build) {
     {
         # default
         Write-Host "unknown build"
-        $dir_installer = "netfx3\b19044x64"
+        $dir_installer = "netfx3\b26100x64"
         break
     }
 }

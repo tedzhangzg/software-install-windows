@@ -36,7 +36,7 @@
 # Try not to touch these few important apps
 ##################################################
 $app_toinclude_WinGet = 1
-$app_toinclude_EnableDevMode = 1
+$app_toinclude_EnableDevMode = 0
 # 
 $app_toinclude_NetFx3 = 1
 $app_toinclude_MicrosoftWindowsSubsystemLinux = 1
