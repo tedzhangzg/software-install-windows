@@ -43,8 +43,7 @@ Write-Host "(3) x86"
 # Write-Host "(9) x86-16"
 # ask
 while ($app_installer_architecture -notin 1..2) {
-    # [int]$app_installer_architecture = Read-Host -Prompt "Enter number "
-    Write-Host "Enter number "
+    [int]$app_installer_architecture = Read-Host -Prompt "Enter number "
 }
 Write-Host "CONFIRMED - architecture: $app_installer_architecture"
 
