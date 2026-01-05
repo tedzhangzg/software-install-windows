@@ -251,7 +251,7 @@ $app_num = 1
 $app_shortname = "WinGet"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
     Start-Process -FilePath "powershell.exe" -ArgumentList ".\script-winget.ps1" -Wait
 }
@@ -270,7 +270,9 @@ if (($mode_onoffdown -ne 2) -and ([System.Environment]::OSVersion.Version.Major 
     Write-Host ""
     try {
         winget search --id "Google.Chrome" --accept-source-agreements
+        Write-Host "##############################"
         Write-Host "winget version - $(winget -v)"
+        Write-Host "##############################"
     } catch {
         Write-Host "Error - WinGet not installed ..."
         Write-Host "Please install WinGet before continuing ..."
@@ -292,7 +294,7 @@ $app_num = 3
 $app_shortname = "EnableDevMode"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
     Write-Host "Enabling Developer Mode ..."
@@ -406,9 +408,10 @@ switch ([Environment]::OSVersion.Version.Build) {
     }
 }
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # install
     Write-Host "Enabling $app_shortname ..."
     if (-Not (Test-Path -Path "$dir_installer\sxs.zip")) {
         Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
@@ -420,6 +423,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     }
     Write-Host "... Done enabling"
 
+    # done
     Write-Host ""
 
 }
@@ -438,13 +442,15 @@ $app_shortname_without_dashes = "MicrosoftWindowsSubsystemLinux"
 # $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname_without_dashes)).Value
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # install
     Write-Host "Enabling $app_shortname ..."
     Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Write-Host "... Done enabling"
 
+    # done
     Write-Host ""
 
 }
@@ -461,13 +467,15 @@ $app_num = 13
 $app_shortname = "VirtualMachinePlatform"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # install
     Write-Host "Enabling $app_shortname ..."
     Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Write-Host "... Done enabling"
 
+    # done
     Write-Host ""
 
 }
@@ -483,25 +491,29 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 14
 $app_shortname = "WSL2Kernel"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$url_appspecific = $url_WSL2Kernel_x64
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    # Download
+    # param
+    $url_appspecific = $url_WSL2Kernel_x64
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive"
+
+    # download
     if (-Not (Test-Path -Path $dir_installer)) {
         $url = $url_appspecific
         Downloa-Installe $url $dir_installer
     }
+    # install
     if ($mode_onoffdown -ne 3) {
-        # Offline
         Instal-Ap $dir_installer $install_args
     }
+
     # set wsl2 as default
     wsl --set-default-version 2
 
+    # done
     Write-Host ""
 
 }
@@ -518,13 +530,15 @@ $app_num = 15
 $app_shortname = "HypervisorPlatform"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # install
     Write-Host "Enabling $app_shortname ..."
     Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Write-Host "... Done enabling"
 
+    # done
     Write-Host ""
 
 }
@@ -543,13 +557,15 @@ $app_shortname_without_dashes = "MicrosoftHyperV"
 # $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname_without_dashes)).Value
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # install
     Write-Host "Enabling $app_shortname ..."
     Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Write-Host "... Done enabling"
 
+    # done
     Write-Host ""
 
 }
@@ -566,13 +582,15 @@ $app_num = 17
 $app_shortname = "Containers"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # install
     Write-Host "Enabling $app_shortname ..."
     Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
     Write-Host "... Done enabling"
 
+    # done
     Write-Host ""
 
 }
@@ -589,14 +607,16 @@ $app_num = 19
 $app_shortname = "NTVDM"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # install
     if (-Not [Environment]::Is64BitOperatingSystem) {
         Write-Host "Enabling $app_shortname ..."
         Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
         Write-Host "... Done enabling"
 
+        # done
         Write-Host ""
 
     }
@@ -615,13 +635,15 @@ $app_num = 20
 $app_shortname = "MicrosoftWindowsPowerShellV2Root"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # install
     Write-Host "Disabling $app_shortname ..."
     Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Disable-WindowsOptionalFeature -Online -NoRestart | Out-Null
     Write-Host "... Done disabling"
 
+    # done
     Write-Host ""
 
 }
@@ -638,13 +660,15 @@ $app_num = 31
 $app_shortname = "PowerShellISE"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # install
     Write-Host "Removing Microsoft.Windows.PowerShell.ISE ..."
     Get-WindowsCapability -Online -Name "Microsoft.Windows.PowerShell.ISE*" | Remove-WindowsCapability -Online | Out-Null
     Write-Host "... Done removing"
 
+    # done
     Write-Host ""
 
 }
@@ -660,29 +684,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 41
 $app_shortname = "dotNETHB10"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.DotNet.HostingBundle.10"
-$dir_installer = $app_shortname + "_" + "a64x64"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.DotNet.HostingBundle.10"
+    $dir_installer = $app_shortname + "_" + "a64x64"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -698,29 +725,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 41
 $app_shortname = "dotNETDR10"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.DotNet.DesktopRuntime.10"
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.DotNet.DesktopRuntime.10"
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a "x86"
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "x86"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -736,29 +766,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 41
 $app_shortname = "dotNETDR10"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.DotNet.DesktopRuntime.10"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.DotNet.DesktopRuntime.10"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -774,29 +807,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 42
 $app_shortname = "dotNETHB8"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.DotNet.HostingBundle.8"
-$dir_installer = $app_shortname + "_" + "a64x64"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.DotNet.HostingBundle.8"
+    $dir_installer = $app_shortname + "_" + "a64x64"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -812,29 +848,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 42
 $app_shortname = "dotNETDR8"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.DotNet.DesktopRuntime.8"
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.DotNet.DesktopRuntime.8"
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a "x86"
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "x86"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -850,29 +889,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 42
 $app_shortname = "dotNETDR8"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.DotNet.DesktopRuntime.8"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.DotNet.DesktopRuntime.8"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -888,30 +930,33 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 43
 $app_shortname = "dotNETHB6"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.DotNet.HostingBundle.6"
-$url_appspecific = $url_dotNETHB6
-$dir_installer = $app_shortname + "_" + "a64x64"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.DotNet.HostingBundle.6"
+    $url_appspecific = $url_dotNETHB6
+    $dir_installer = $app_shortname + "_" + "a64x64"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -927,30 +972,33 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 43
 $app_shortname = "dotNETDR6"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.DotNet.DesktopRuntime.6"
-$url_appspecific = $url_dotNETDR6_x86
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.DotNet.DesktopRuntime.6"
+    $url_appspecific = $url_dotNETDR6_x86
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a "x86"
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "x86"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -966,30 +1014,33 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 43
 $app_shortname = "dotNETDR6"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.DotNet.DesktopRuntime.6"
-$url_appspecific = $url_dotNETDR6_x64
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.DotNet.DesktopRuntime.6"
+    $url_appspecific = $url_dotNETDR6_x64
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1005,30 +1056,33 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 44
 $app_shortname = "dotNETHB31"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.DotNet.HostingBundle.3_1"
-$url_appspecific = $url_dotNETHB31
-$dir_installer = $app_shortname + "_" + "a64x64"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.DotNet.HostingBundle.3_1"
+    $url_appspecific = $url_dotNETHB31
+    $dir_installer = $app_shortname + "_" + "a64x64"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1044,30 +1098,33 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 44
 $app_shortname = "dotNETDR31"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.DotNet.DesktopRuntime.3_1"
-$url_appspecific = $url_dotNETDR31_x86
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.DotNet.DesktopRuntime.3_1"
+    $url_appspecific = $url_dotNETDR31_x86
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a "x86"
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "x86"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1083,30 +1140,33 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 44
 $app_shortname = "dotNETDR31"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.DotNet.DesktopRuntime.3_1"
-$url_appspecific = $url_dotNETDR31_x64
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.DotNet.DesktopRuntime.3_1"
+    $url_appspecific = $url_dotNETDR31_x64
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1122,30 +1182,33 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 45
 $app_shortname = "dotNETHB21"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-# $app_wgname = "Microsoft.DotNet.HostingBundle.2_1"
-$url_appspecific = $url_dotNETHB21
-$dir_installer = $app_shortname + "_" + "a64x64"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    # $app_wgname = "Microsoft.DotNet.HostingBundle.2_1"
+    $url_appspecific = $url_dotNETHB21
+    $dir_installer = $app_shortname + "_" + "a64x64"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1161,25 +1224,28 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 51
 $app_shortname = "dotNETFw481"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.DotNet.Framework.DeveloperPack_4"
-$url_appspecific = $url_dotNETFw481
-$dir_installer = $app_shortname + "_" + "a64x64"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    # Download
+    # param
+    $app_wgname = "Microsoft.DotNet.Framework.DeveloperPack_4"
+    $url_appspecific = $url_dotNETFw481
+    $dir_installer = $app_shortname + "_" + "a64x64"
+    $install_args = "`/passive `/norestart"
+
+    # download
     if (-Not (Test-Path -Path $dir_installer)) {
         $url = $url_appspecific
         Downloa-Installe $url $dir_installer
         Get-ChildItem -Path $dir_installer | Rename-Item -NewName "ndp481-x86-x64-allos-enu.exe"
     }
+    # install
     if ($mode_onoffdown -ne 3) {
-        # Offline
         Instal-Ap $dir_installer $install_args
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1195,13 +1261,15 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 52
 $app_shortname = "dotNETFw11"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-# $app_wgname = "Microsoft.DotNet.Framework.DeveloperPack_1_1"
-$dir_installer = $app_shortname + "_" + "x86"
-$dir_ext_installer = $dir_installer + "_ext"
-$install_args = "`/passive"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    # $app_wgname = "Microsoft.DotNet.Framework.DeveloperPack_1_1"
+    $dir_installer = $app_shortname + "_" + "x86"
+    $dir_ext_installer = $dir_installer + "_ext"
+    $install_args = "`/passive"
 
     if ($mode_onoffdown -ne 3) {
 
@@ -1220,6 +1288,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1235,29 +1304,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 61
 $app_shortname = "VCPP2005"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.2005.x86"
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/Q"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.2005.x86"
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/Q"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1273,29 +1345,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 61
 $app_shortname = "VCPP2005"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.2005.x64"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/Q"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.2005.x64"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/Q"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1311,29 +1386,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 62
 $app_shortname = "VCPP2008"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.2008.x86"
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/qb `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.2008.x86"
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/qb `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1349,29 +1427,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 62
 $app_shortname = "VCPP2008"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.2008.x64"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/qb `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.2008.x64"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/qb `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1387,29 +1468,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 63
 $app_shortname = "VCPP2010"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.2010.x86"
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.2010.x86"
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1425,29 +1509,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 63
 $app_shortname = "VCPP2010"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.2010.x64"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.2010.x64"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1463,29 +1550,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 64
 $app_shortname = "VCPP2012"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.2012.x86"
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.2012.x86"
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1501,29 +1591,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 64
 $app_shortname = "VCPP2012"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.2012.x64"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.2012.x64"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1539,29 +1632,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 65
 $app_shortname = "VCPP2013"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.2013.x86"
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.2013.x86"
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1577,29 +1673,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 65
 $app_shortname = "VCPP2013"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.2013.x64"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.2013.x64"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1615,29 +1714,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 66
 $app_shortname = "VCPP2015plus"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.2015+.x86"
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.2015+.x86"
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1653,29 +1755,32 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 66
 $app_shortname = "VCPP2015plus"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.2015+.x64"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.2015+.x64"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1691,31 +1796,34 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 67
 $app_shortname = "VCPP14"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.14.x86"
-$url_appspecific = $url_VCPP14_x86
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.14.x86"
+    $url_appspecific = $url_VCPP14_x86
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             # $url = Get-URL-FromWinget $app_wgname "a64x64"
             $url = $url_appspecific
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1731,31 +1839,34 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 67
 $app_shortname = "VCPP14"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VCRedist.14.x64"
-$url_appspecific = $url_VCPP14_x64
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Microsoft.VCRedist.14.x64"
+    $url_appspecific = $url_VCPP14_x64
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive `/norestart"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             # $url = Get-URL-FromWinget $app_wgname "a64x64"
             $url = $url_appspecific
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1771,23 +1882,26 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 71
 $app_shortname = "CPPDB11"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$url_appspecific = $url_CPPDB11
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    # Download
+    # param
+    $url_appspecific = $url_CPPDB11
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/passive `/norestart"
+
+    # download
     if (-Not (Test-Path -Path $dir_installer)) {
         $url = $url_appspecific
         Downloa-Installe $url $dir_installer
     }
+    # install
     if ($mode_onoffdown -ne 3) {
-        # Offline
         Instal-Ap $dir_installer $install_args
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1803,23 +1917,26 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 72
 $app_shortname = "CPPDB12"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$url_appspecific = $url_CPPDB12
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/passive `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    # Download
+    # param
+    $url_appspecific = $url_CPPDB12
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/passive `/norestart"
+
+    # download
     if (-Not (Test-Path -Path $dir_installer)) {
         $url = $url_appspecific
         Downloa-Installe $url $dir_installer
     }
+    # install
     if ($mode_onoffdown -ne 3) {
-        # Offline
         Instal-Ap $dir_installer $install_args
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1835,28 +1952,31 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 81
 $app_shortname = "Python3"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Python.Python.3.14"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive InstallAllUsers=1 PrependPath=1"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Python.Python.3.14"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive InstallAllUsers=1 PrependPath=1"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1872,28 +1992,31 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 82
 $app_shortname = "Python2"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Python.Python.2"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive `/norestart ADDLOCAL=ALL"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Python.Python.2"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive `/norestart ADDLOCAL=ALL"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1909,34 +2032,38 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 91
 $app_shortname = "SublimeText"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "SublimeHQ.SublimeText.4"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/SILENT"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\Sublime Text.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "SublimeHQ.SublimeText.4"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/SILENT"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\Sublime Text.lnk"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -1953,7 +2080,7 @@ $app_num = 100
 $app_shortname = "RestartMidway"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
     if ($mode_onoffdown -ne 3) {
         # Restart
@@ -1972,33 +2099,37 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 101
 $app_shortname = "PowerShell"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.PowerShell"
-$dir_installer = $app_shortname + "_" + "a64x64"
-$install_args = "`/passive"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\PowerShell\PowerShell 7 (x64).lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Microsoft.PowerShell"
+    $dir_installer = $app_shortname + "_" + "a64x64"
+    $install_args = "`/passive"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\PowerShell\PowerShell 7 (x64).lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2014,28 +2145,31 @@ Remove-Variable path_file_shortcut
 $app_num = 102
 $app_shortname = "WinTerminal"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.WindowsTerminal"
-$dir_installer = $app_shortname + "_" + "a64x64"
-$install_args = ""
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Microsoft.WindowsTerminal"
+    $dir_installer = $app_shortname + "_" + "a64x64"
+    $install_args = ""
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2051,36 +2185,41 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 103
 $app_shortname = "VSCode"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.VisualStudioCode"
-$url_appspecific = (Get-Variable -Name $("url_VSCode_" + $arch_name)).Value
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/SILENT `/NORESTART `/MERGETASKS=!runcode"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\Visual Studio Code\Visual Studio Code.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+
+    $app_wgname = "Microsoft.VisualStudioCode"
+    $url_appspecific = (Get-Variable -Name $("url_VSCode_" + $arch_name)).Value
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/SILENT `/NORESTART `/MERGETASKS=!runcode"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\Visual Studio Code\Visual Studio Code.lnk"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = $url_appspecific
             Downloa-Installe $url $dir_installer
             Get-ChildItem -Path $dir_installer | Rename-Item -NewName "VSCodeSetup-_ver_$arch_name.exe"
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2097,15 +2236,15 @@ $app_num = 104
 $app_shortname = "WSL"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
 
     # set wsl2 as default
     wsl --set-default-version 2
 
-
-    # Linux Distro
+    # linux distro
     # 
     # param
     $app_shortname = "Ubuntu2404"
@@ -2113,29 +2252,27 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     $dir_installer = $app_shortname + "_" + "a64x64"
     $install_args = ""
     # 
-    # main Install/Download/Execute
+    # main
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
-
-    # Initialise
+    # init
     # ubuntu2004.exe
 
-
+    # done
     Write-Host ""
-
 
 }
 # 
@@ -2150,28 +2287,31 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 111
 $app_shortname = "iTunes"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Apple.iTunes"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/qn `/norestart"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Apple.iTunes"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/qn `/norestart"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2187,33 +2327,37 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 121
 $app_shortname = "Edge"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.Edge"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\Microsoft Edge.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Microsoft.Edge"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\Microsoft Edge.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name --force
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnkn
     # if (Test-Path -Path $path_file_shortcut) {
         # Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     # }
 
+    # done
     Write-Host ""
 
 }
@@ -2229,36 +2373,25 @@ Remove-Variable path_file_shortcut
 $app_num = 122
 $app_shortname = "Teams"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.Teams"
-$app_msstore_id = "XP8BT8DW290MPQ"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/S"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Microsoft.Teams"
+    $app_msstore_id = "XP8BT8DW290MPQ"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/S"
+
+    # install
     if ($mode_onoffdown -ne 3) {
         winget install --id $app_wgname
         # winget install --id $app_msstore_id --accept-source-agreements --accept-package-agreements
         Write-Host ""
     }
 
-    # if ($mode_onoffdown -eq 1) {
-    #     # Online
-    #     winget install --id $app_wgname -a $arch_name
-    # } else {
-    #     # Download
-    #     if (-Not (Test-Path -Path $dir_installer)) {
-    #         $url = Get-URL-FromWinget $app_wgname $arch_name
-    #         Downloa-Installe $url $dir_installer
-    #     }
-    #     if ($mode_onoffdown -ne 3) {
-    #         # Offline
-    #         Instal-Ap $dir_installer $install_args
-    #     }
-    # }
-
-    # Write-Host ""
+    # done
+    Write-Host ""
 
 }
 # 
@@ -2273,33 +2406,37 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 123
 $app_shortname = "Skype"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Microsoft.Skype"
-$dir_installer = $app_shortname + "_" + "a64x64"
-$install_args = "`/SILENT"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\Skype\Skype.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Microsoft.Skype"
+    $dir_installer = $app_shortname + "_" + "a64x64"
+    $install_args = "`/SILENT"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\Skype\Skype.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnkn
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2315,29 +2452,32 @@ Remove-Variable path_file_shortcut
 $app_num = 124
 $app_shortname = "WinEssentials2012"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$url_appspecific = $url_WinEssentials2012
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/AppSelect:MovieMaker `/AppSelect:Mail `/silent `/noceip `/nohomepage `/nolaunch `/nomu `/nosearch `/notoolbarceip"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\Movie Maker.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    # Download
+    # param
+    $url_appspecific = $url_WinEssentials2012
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/AppSelect:MovieMaker `/AppSelect:Mail `/silent `/noceip `/nohomepage `/nolaunch `/nomu `/nosearch `/notoolbarceip"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\Movie Maker.lnk"
+
+    # download
     if (-Not (Test-Path -Path $dir_installer)) {
         $url = $url_appspecific
         Downloa-Installe $url $dir_installer
     }
+    # install
     if ($mode_onoffdown -ne 3) {
-        # Offline
         Instal-Ap $dir_installer $install_args
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
     # 
-    # copy other shortcuts
+    # cp lnk others
     # 
     # photo gallery
     $path_file_shortcut = "$dir_startmenuprograms_allusers\Photo Gallery.lnk"
@@ -2363,6 +2503,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
         # Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     # }
 
+    # done
     Write-Host ""
 
 }
@@ -2378,34 +2519,38 @@ Remove-Variable path_file_shortcut
 $app_num = 131
 $app_shortname = "Chrome"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Google.Chrome"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\Google Chrome.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Google.Chrome"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\Google Chrome.lnk"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2421,33 +2566,37 @@ Remove-Variable path_file_shortcut
 $app_num = 132
 $app_shortname = "Drive"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Google.GoogleDrive"
-$dir_installer = $app_shortname + "_" + "a64x64"
-$install_args = "--silent"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\Google Drive.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Google.GoogleDrive"
+    $dir_installer = $app_shortname + "_" + "a64x64"
+    $install_args = "--silent"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\Google Drive.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2463,19 +2612,23 @@ Remove-Variable path_file_shortcut
 $app_num = 141
 $app_shortname = "Messenger"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Meta.Messenger"
-$app_msstore_id = "9WZDNCRF0083"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Meta.Messenger"
+    $app_msstore_id = "9WZDNCRF0083"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive"
+
+    # install
     if ($mode_onoffdown -ne 3) {
         winget install --id $app_msstore_id --accept-source-agreements --accept-package-agreements
         Write-Host ""
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2491,39 +2644,43 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 151
 $app_shortname = "AcrobatReader"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-if ($arch_name -eq "x64") {
-    $app_wgname = "Adobe.Acrobat.Reader.64-bit"
-} else {
-    $app_wgname = "Adobe.Acrobat.Reader.32-bit"
-}
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/sPB `/rs"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\Adobe Acrobat.lnk"
-# note for Acrobat XI it is "$dir_startmenuprograms_allusers\Adobe Acrobat XI Pro.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    if ($arch_name -eq "x64") {
+        $app_wgname = "Adobe.Acrobat.Reader.64-bit"
+    } else {
+        $app_wgname = "Adobe.Acrobat.Reader.32-bit"
+    }
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/sPB `/rs"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\Adobe Acrobat.lnk"
+    # note for Acrobat XI it is "$dir_startmenuprograms_allusers\Adobe Acrobat XI Pro.lnk"
 
     # if ($false) {
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2539,33 +2696,37 @@ Remove-Variable path_file_shortcut
 $app_num = 161
 $app_shortname = "Dropbox"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Dropbox.Dropbox"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/NOLAUNCH"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\Dropbox\Dropbox.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Dropbox.Dropbox"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/NOLAUNCH"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\Dropbox\Dropbox.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2581,33 +2742,37 @@ Remove-Variable path_file_shortcut
 $app_num = 171
 $app_shortname = "Zoom"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Zoom.Zoom"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive ZoomAutoUpdate='true'"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\Zoom\Zoom Workplace.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Zoom.Zoom"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive ZoomAutoUpdate='true'"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\Zoom\Zoom Workplace.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2623,33 +2788,37 @@ Remove-Variable path_file_shortcut
 $app_num = 172
 $app_shortname = "Discord"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Discord.Discord"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "-s"
-$path_file_shortcut = "$dir_startmenuprograms_currentuser\Discord Inc\Discord.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Discord.Discord"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "-s"
+    $path_file_shortcut = "$dir_startmenuprograms_currentuser\Discord Inc\Discord.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_currentuser" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2665,33 +2834,37 @@ Remove-Variable path_file_shortcut
 $app_num = 173
 $app_shortname = "Telegram"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Telegram.TelegramDesktop"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/SILENT `/NORESTART"
-$path_file_shortcut = "$dir_startmenuprograms_currentuser\Telegram Desktop\Telegram.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Telegram.TelegramDesktop"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/SILENT `/NORESTART"
+    $path_file_shortcut = "$dir_startmenuprograms_currentuser\Telegram Desktop\Telegram.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_currentuser" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2707,13 +2880,15 @@ Remove-Variable path_file_shortcut
 $app_num = 174
 $app_shortname = "WhatsApp"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "WhatsApp.WhatsApp"
-$app_msstore_id = "9NKSQGP7F2NH"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "--silent"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "WhatsApp.WhatsApp"
+    $app_msstore_id = "9NKSQGP7F2NH"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "--silent"
 
     if ($mode_onoffdown -ne 3) {
         winget install --id $app_msstore_id --accept-source-agreements --accept-package-agreements
@@ -2721,20 +2896,21 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     }
 
     # if ($mode_onoffdown -eq 1) {
-    #     # Online
+    #     # pkgmgr
     #     winget install --id $app_wgname -a $arch_name
     # } else {
-    #     # Download
+    #     # download
     #     if (-Not (Test-Path -Path $dir_installer)) {
     #         $url = Get-URL-FromWinget $app_wgname $arch_name
     #         Downloa-Installe $url $dir_installer
     #     }
+    #.    # install
     #     if ($mode_onoffdown -ne 3) {
-    #         # Offline
     #         Instal-Ap $dir_installer $install_args
     #     }
     # }
 
+    # done
     # Write-Host ""
 
 }
@@ -2750,33 +2926,37 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 175
 $app_shortname = "WeChat"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Tencent.WeChat"
-$dir_installer = $app_shortname + "_" + "a64x64"
-$install_args = "`/S"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\WeChat\WeChat.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Tencent.WeChat"
+    $dir_installer = $app_shortname + "_" + "a64x64"
+    $install_args = "`/S"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\WeChat\WeChat.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2792,33 +2972,37 @@ Remove-Variable path_file_shortcut
 $app_num = 181
 $app_shortname = "TeamViewerLatest"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "TeamViewer.TeamViewer"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/S"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\TeamViewer.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "TeamViewer.TeamViewer"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/S"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\TeamViewer.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+    
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2834,14 +3018,16 @@ Remove-Variable path_file_shortcut
 $app_num = 181
 $app_shortname = "TeamViewerQS13"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$url_appspecific = $url_TeamViewerQS13
-$dir_installer = $app_shortname + "_" + "x86"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\TeamViewerQS.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    # Download
+    # param
+    $url_appspecific = $url_TeamViewerQS13
+    $dir_installer = $app_shortname + "_" + "x86"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\TeamViewerQS.lnk"
+
+    # download
     if (-Not (Test-Path -Path $dir_installer)) {
         $url = $url_appspecific
         Downloa-Installe $url $dir_installer
@@ -2873,11 +3059,13 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
         "... Done Copying"
 
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2893,33 +3081,37 @@ Remove-Variable path_file_shortcut
 $app_num = 182
 $app_shortname = "SevenZip"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "7zip.7zip"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\7-Zip\7-Zip File Manager.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "7zip.7zip"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\7-Zip\7-Zip File Manager.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2935,33 +3127,37 @@ Remove-Variable path_file_shortcut
 $app_num = 182
 $app_shortname = "WinRAR"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "RARLab.WinRAR"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/S"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\WinRAR\WinRAR.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "RARLab.WinRAR"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/S"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\WinRAR\WinRAR.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -2977,33 +3173,37 @@ Remove-Variable path_file_shortcut
 $app_num = 183
 $app_shortname = "VLC"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "VideoLAN.VLC"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/S"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\VideoLAN\VLC media player.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "VideoLAN.VLC"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/S"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\VideoLAN\VLC media player.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -3019,29 +3219,32 @@ Remove-Variable path_file_shortcut
 $app_num = 184
 $app_shortname = "Java8"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Oracle.JavaRuntimeEnvironment"
-$dir_installer = $app_shortname + "_" + "x86"
-$install_args = "`/s"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Oracle.JavaRuntimeEnvironment"
+    $dir_installer = $app_shortname + "_" + "x86"
+    $install_args = "`/s"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a "x86"
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "x86"
             Downloa-Installe $url $dir_installer
             Get-ChildItem -Path $dir_installer | Rename-Item -NewName "jre-8u_ver_-windows-i586.exe"
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -3057,30 +3260,33 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 184
 $app_shortname = "Java8"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Oracle.JavaRuntimeEnvironment"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/s"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+    # param
+    $app_wgname = "Oracle.JavaRuntimeEnvironment"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/s"
 
     if ($false) {
     # if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
             Get-ChildItem -Path $dir_installer | Rename-Item -NewName "jre-8u_ver_-windows-x64.exe"
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
 
+    # done
     Write-Host ""
 
 }
@@ -3096,33 +3302,37 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 $app_num = 185
 $app_shortname = "OpenVPN"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "OpenVPNTechnologies.OpenVPNConnect"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\OpenVPN Connect\OpenVPN Connect.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "OpenVPNTechnologies.OpenVPNConnect"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\OpenVPN Connect\OpenVPN Connect.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -3138,33 +3348,37 @@ Remove-Variable path_file_shortcut
 $app_num = 185
 $app_shortname = "WireGuard"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "WireGuard.WireGuard"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\WireGuard.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "WireGuard.WireGuard"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\WireGuard.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -3180,33 +3394,37 @@ Remove-Variable path_file_shortcut
 $app_num = 186
 $app_shortname = "Firefox"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Mozilla.Firefox"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`-ms"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\Firefox.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Mozilla.Firefox"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`-ms"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\Firefox.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -3222,33 +3440,37 @@ Remove-Variable path_file_shortcut
 $app_num = 187
 $app_shortname = "Thunderbird"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "Mozilla.Thunderbird"
-$dir_installer = $app_shortname + "_" + $arch_name
-$install_args = "`/passive"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\Thunderbird.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "Mozilla.Thunderbird"
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/passive"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\Thunderbird.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -3264,33 +3486,37 @@ Remove-Variable path_file_shortcut
 $app_num = 188
 $app_shortname = "OBS"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "OBSProject.OBSStudio"
-$dir_installer = $app_shortname + "_" + "a64x64"
-$install_args = "`/S"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\OBS Studio\OBS Studio (64bit).lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "OBSProject.OBSStudio"
+    $dir_installer = $app_shortname + "_" + "a64x64"
+    $install_args = "`/S"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\OBS Studio\OBS Studio (64bit).lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -3306,33 +3532,37 @@ Remove-Variable path_file_shortcut
 $app_num = 190
 $app_shortname = "LibreOffice"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
-$app_wgname = "TheDocumentFoundation.LibreOffice"
-$dir_installer = $app_shortname + "_" + "a64x64"
-$install_args = "`/passive"
-$path_file_shortcut = "$dir_startmenuprograms_allusers\LibreOffice\LibreOffice.lnk"
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
+    # param
+    $app_wgname = "TheDocumentFoundation.LibreOffice"
+    $dir_installer = $app_shortname + "_" + "a64x64"
+    $install_args = "`/passive"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\LibreOffice\LibreOffice.lnk"
+
     if ($mode_onoffdown -eq 1) {
-        # Online
+        # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
-        # Download
+        # download
         if (-Not (Test-Path -Path $dir_installer)) {
             $url = Get-URL-FromWinget $app_wgname $arch_name
             Downloa-Installe $url $dir_installer
         }
+        # install
         if ($mode_onoffdown -ne 3) {
-            # Offline
             Instal-Ap $dir_installer $install_args
         }
     }
-    # copy shortcut
+    
+    # cp lnk
     if (Test-Path -Path $path_file_shortcut) {
         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
     }
 
+    # done
     Write-Host ""
 
 }
@@ -3349,10 +3579,10 @@ $app_num = 200
 $app_shortname = "MSOffice"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
-# main Install/Download/Execute
+# main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
-    # Prepare
+    # param
 
     # define locations
     # 
@@ -3397,10 +3627,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
         # use winget or manual download
         if ($false) {
         # if ($mode_onoffdown -eq 1) {
-            # Online
+            # pkgmgr
             winget install --id $app_wgname
         } else {
-            # Download
+            # download
             if (-Not (Test-Path -Path $dir_installer)) {
                 # 
                 # notes
@@ -3433,9 +3663,9 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
                 }
             }
+            # install
             if ($false) {
             # if ($mode_onoffdown -ne 3) {
-                # Offline
                 Instal-Ap $dir_installer $install_args
             }
         }
@@ -3447,12 +3677,12 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     # param
     $dir_installer = $dir_origfile_odt2013
     $install_args = "`/extract:`"$dir_setupexe_odt2013`" `/quiet"
-    # Download
+    # download
     if (-Not (Test-Path -Path $dir_installer)) {
         $url = $url_ODT2013
         Downloa-Installe $url $dir_installer
     }
-    # Offline
+    # install
     Get-ChildItem -Path $dir_installer -Recurse -Filter *.exe | % { Start-Process -FilePath $_.FullName -ArgumentList $install_args -Wait }
 
 
@@ -3460,6 +3690,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     .\script-msoffice.ps1
 
 
+    # done
     Write-Host ""
 
 }

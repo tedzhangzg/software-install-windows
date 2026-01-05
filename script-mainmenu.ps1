@@ -44,7 +44,7 @@ function Show-Menu {
     Write-Host ""
 }
 
-# main loop
+# main
 # shows menu when other scripts are finished
 Do {
 

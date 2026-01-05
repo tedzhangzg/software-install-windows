@@ -39,7 +39,7 @@ $app_shortname = "Script_AddMSStore"
 $dir_installer = $app_shortname
 $install_args = ""
 
-# main Install/Download/Execute
+# main
 # 
 # Download
 if (-Not (Test-Path -Path $dir_installer)) {
