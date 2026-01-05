@@ -55,7 +55,7 @@ $url_dotNETHB21 = "https://builds.dotnet.microsoft.com/dotnet/aspnetcore/Runtime
 # dot NET Framework
 # 
 # v4.8.1
-$url_dotNETFw481 = "https://go.microsoft.com/fwlink/?linkid=2203305"
+$url_dotNETFw481 = "https://download.microsoft.com/download/4/b/2/cd00d4ed-ebdd-49ee-8a33-eabc3d1030e3/NDP481-x86-x64-AllOS-ENU.exe"
 # 
 # v1.1 and SP1
 $url_dotNETFw11_rtm = "https://raw.githubusercontent.com/not001praween001/stockMN-exe/master/stockMN_1.3.1/dotnetfx.exe"
