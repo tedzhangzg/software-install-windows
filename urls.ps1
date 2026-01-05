@@ -111,7 +111,7 @@ $url_WSL2Kernel_a64 = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl
 $url_WSL2Kernel_x64 = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
 
 # Visual Studio Code
-$url_VSCode_a64 = "https://code.visualstudio.com/sha/download?build=stable&os=win32-arm64"
+$url_VSCode_arm64 = "https://code.visualstudio.com/sha/download?build=stable&os=win32-arm64"
 $url_VSCode_x64 = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64"
 $url_VSCode_x86 = "https://code.visualstudio.com/sha/download?build=stable&os=win32"
 

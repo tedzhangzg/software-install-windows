@@ -31,6 +31,8 @@ Clear-Host
 
 Write-Host "Running script from winget.pro ..."
 Write-Host ""
+Write-Host "Press enter if stuck ..."
+Write-Host ""
 Write-Host ""
 irm $url_script_WinGetInstall | iex
 Write-Host ""
