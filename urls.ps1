@@ -28,19 +28,19 @@ $url_script_W11Debloat = "debloat.raphi.re"
 # 
 # v10
 # $url_dotNETHB10 = ""
-# $url_dotNETDR10_a64 = ""
+# $url_dotNETDR10_arm64 = ""
 # $url_dotNETDR10_x64 = ""
 # $url_dotNETDR10_x86 = ""
 # 
 # v8
 # $url_dotNETHB8 = ""
-# $url_dotNETDR8_a64 = ""
+# $url_dotNETDR8_arm64 = ""
 # $url_dotNETDR8_x64 = ""
 # $url_dotNETDR8_x86 = ""
 # 
 # v6
 $url_dotNETHB6 = "https://builds.dotnet.microsoft.com/dotnet/aspnetcore/Runtime/6.0.36/dotnet-hosting-6.0.36-win.exe"
-$url_dotNETDR6_a64 = "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/6.0.36/windowsdesktop-runtime-6.0.36-win-arm64.exe"
+$url_dotNETDR6_arm64 = "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/6.0.36/windowsdesktop-runtime-6.0.36-win-arm64.exe"
 $url_dotNETDR6_x64 = "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/6.0.36/windowsdesktop-runtime-6.0.36-win-x64.exe"
 $url_dotNETDR6_x86 = "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/6.0.36/windowsdesktop-runtime-6.0.36-win-x86.exe"
 # 
@@ -64,12 +64,12 @@ $url_dotNETFw11_sp1 = "https://download.microsoft.com/download/8/b/4/8b4addd8-e9
 # Visual C++ Redistributable
 # 
 # v14
-$url_VCPP14_a64 = "https://aka.ms/vc14/vc_redist.arm64.exe"
+$url_VCPP14_arm64 = "https://aka.ms/vc14/vc_redist.arm64.exe"
 $url_VCPP14_x64 = "https://aka.ms/vc14/vc_redist.x64.exe"
 $url_VCPP14_x86 = "https://aka.ms/vc14/vc_redist.x86.exe"
 # 
 # v2015plus
-$url_VCPP2015plus_a64 = "https://download.visualstudio.microsoft.com/download/pr/d7450eb5-03e1-436d-9e7e-deb5fe4759b3/5139E1440C3A20B92153A4DB561C069A0175AAF76C276C3E5B6F56099EDCF4B0/VC_redist.arm64.exe"
+$url_VCPP2015plus_arm64 = "https://download.visualstudio.microsoft.com/download/pr/d7450eb5-03e1-436d-9e7e-deb5fe4759b3/5139E1440C3A20B92153A4DB561C069A0175AAF76C276C3E5B6F56099EDCF4B0/VC_redist.arm64.exe"
 $url_VCPP2015plus_x64 = "https://download.visualstudio.microsoft.com/download/pr/73aabf2e-9532-4f68-99f7-3247081a619c/CC0FF0EB1DC3F5188AE6300FAEF32BF5BEEBA4BDD6E8E445A9184072096B713B/VC_redist.x64.exe"
 $url_VCPP2015plus_x86 = "https://download.visualstudio.microsoft.com/download/pr/73aabf2e-9532-4f68-99f7-3247081a619c/0C09F2611660441084CE0DF425C51C11E147E6447963C3690F97E0B25C55ED64/VC_redist.x86.exe"
 # 
@@ -96,7 +96,7 @@ $url_VCPP2005_x86 = "https://download.microsoft.com/download/8/B/4/8B42259F-5D70
 # C++ Runtime framework packages for Desktop Bridge
 # 
 # v14
-$url_CPPDB14_a64 = "https://aka.ms/Microsoft.VCLibs.arm64.14.00.Desktop.appx"
+$url_CPPDB14_arm64 = "https://aka.ms/Microsoft.VCLibs.arm64.14.00.Desktop.appx"
 $url_CPPDB14_x64 = "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx"
 $url_CPPDB14_x86 = "https://aka.ms/Microsoft.VCLibs.x86.14.00.Desktop.appx"
 # 
@@ -107,13 +107,12 @@ $url_CPPDB12 = "https://download.microsoft.com/download/2/1/F/21F05B77-C444-46C0
 $url_CPPDB11 = "https://download.microsoft.com/download/3/B/C/3BC60F47-6A7C-4D46-8CFB-C2E746EF336E/vc_uwpdesktop.110.exe"
 
 # Linux kernel update for WSL2
-$url_WSL2Kernel_a64 = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_arm64.msi"
+$url_WSL2Kernel_arm64 = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_arm64.msi"
 $url_WSL2Kernel_x64 = "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
 
 # Visual Studio Code
 $url_VSCode_arm64 = "https://code.visualstudio.com/sha/download?build=stable&os=win32-arm64"
 $url_VSCode_x64 = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64"
-$url_VSCode_x86 = "https://code.visualstudio.com/sha/download?build=stable&os=win32"
 
 # Windows Essentials 2012
 $url_WinEssentials2012 = "https://archive.org/download/wlsetup-all_201802/wlsetup-all.exe"
