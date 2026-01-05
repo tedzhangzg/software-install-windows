@@ -253,10 +253,12 @@ $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
     Start-Process -FilePath "powershell.exe" -ArgumentList ".\script-winget.ps1" -Wait
+    # 
+    # done
+    Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -300,12 +302,12 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" -Name "AllowDevelopmentWithoutDevLicense" -PropertyType "DWORD" -Value "1" -Force | Out-Null
     Write-Host "... Done enabling"
 
+    # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -424,11 +426,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -451,11 +452,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -476,11 +476,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -514,11 +513,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -539,11 +537,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -566,11 +563,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -591,11 +587,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -614,16 +609,14 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
         Write-Host "Enabling $app_shortname ..."
         Get-WindowsOptionalFeature -Online -FeatureName $app_shortname | Enable-WindowsOptionalFeature -Online -All -NoRestart | Out-Null
         Write-Host "... Done enabling"
-
-        # done
-        Write-Host ""
-
     }
 
+    # done
+    Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
+
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -644,11 +637,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -669,11 +661,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -710,11 +701,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -752,11 +742,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -794,11 +783,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -836,11 +824,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -877,11 +864,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -919,11 +905,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -961,11 +946,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1003,11 +987,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1045,11 +1028,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1088,11 +1070,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1131,11 +1112,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1174,11 +1154,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1216,11 +1195,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1259,11 +1237,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1302,11 +1279,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1344,11 +1320,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1387,11 +1362,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1430,11 +1404,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1471,11 +1444,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1512,11 +1484,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1553,11 +1524,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1594,11 +1564,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1635,11 +1604,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1676,11 +1644,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1717,11 +1684,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1758,11 +1724,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1799,11 +1764,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1840,11 +1804,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1881,11 +1844,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1922,11 +1884,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -1963,11 +1924,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2006,11 +1966,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2049,11 +2008,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2092,11 +2050,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2127,11 +2084,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2162,11 +2118,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2202,11 +2157,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2242,11 +2196,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2289,11 +2242,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2310,10 +2262,11 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
         # Restart
         Restart-Computer -Force
     }
+    # done
+    Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2356,11 +2309,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2397,11 +2349,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2447,11 +2398,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2500,11 +2450,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2541,11 +2490,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2588,11 +2536,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2619,11 +2566,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2684,11 +2630,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2731,11 +2676,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2778,11 +2722,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2809,11 +2752,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2879,11 +2821,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2926,11 +2867,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -2973,11 +2913,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3020,11 +2959,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3067,11 +3005,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3098,11 +3035,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3145,11 +3081,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3192,11 +3127,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3255,11 +3189,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3302,11 +3235,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3349,11 +3281,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3396,11 +3327,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3438,11 +3368,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3481,11 +3410,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3528,11 +3456,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3575,11 +3502,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3622,11 +3548,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3669,11 +3594,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3716,11 +3640,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3763,11 +3686,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-Remove-Variable path_file_shortcut
 # 
 # done
 
@@ -3891,11 +3813,10 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # done
     Write-Host ""
+    # clear param
+    # Remove-Variable path_file_shortcut
 
 }
-# 
-# clear param
-# Remove-Variable path_file_shortcut
 # 
 # done
 
