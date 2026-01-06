@@ -89,7 +89,6 @@ $app_toinclude_iTunes = 0
 # 
 $app_toinclude_Edge = 1
 $app_toinclude_Teams = 1
-$app_toinclude_Skype = 0
 $app_toinclude_WinEssentials2012 = 1
 # 
 $app_toinclude_Chrome = 1
