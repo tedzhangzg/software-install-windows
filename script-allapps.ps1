@@ -34,7 +34,7 @@ Write-Host "Autodetect processor architecture: $(Autodetect-ProcessorArchitectur
 # list
 Write-Host "(1) arm64"
 Write-Host "(2) x64"
-Write-Host "(3) x86"
+# Write-Host "(3) x86"
 # Write-Host "(4) arm"
 # Write-Host "(5) ia64"
 # Write-Host "(6) ppc"
@@ -2049,7 +2049,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # param
     $app_wgname = "Python.Python.2"
-    $dir_installer = $app_shortname + "_" + $arch_name
+    $dir_installer = $app_shortname + "_" + "a64x64"
     $install_args = "`/passive `/norestart ADDLOCAL=ALL"
 
     if ($mode_onoffdown -eq 1) {
@@ -2058,7 +2058,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     } else {
         # download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname $arch_name
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         # install
@@ -2207,7 +2207,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     # if ($false) {
     if ($mode_onoffdown -eq 1) {
         # pkgmgr
-        winget install --id $app_wgname -a $arch_name
+        winget install --id $app_wgname # -a $arch_name
     } else {
         # download
         if (-Not (Test-Path -Path $dir_installer)) {
@@ -2305,7 +2305,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     # if ($false) {
     if ($mode_onoffdown -eq 1) {
         # pkgmgr
-        winget install --id $app_wgname -a $arch_name
+        winget install --id $app_wgname # -a $arch_name
     } else {
         # download
         if (-Not (Test-Path -Path $dir_installer)) {
@@ -2342,7 +2342,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # param
     $app_wgname = "Apple.iTunes"
-    $dir_installer = $app_shortname + "_" + $arch_name
+    $dir_installer = $app_shortname + "_" + "a64x64"
     $install_args = "`/qn `/norestart"
 
     # if ($false) {
@@ -2352,7 +2352,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     } else {
         # download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname $arch_name
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         # install
@@ -2429,7 +2429,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     # param
     $app_wgname = "Microsoft.Teams"
     $app_msstore_id = "XP8BT8DW290MPQ"
-    $dir_installer = $app_shortname + "_" + $arch_name
+    $dir_installer = $app_shortname + "_" + "a64x64"
     $install_args = ""
 
     # install
@@ -2615,7 +2615,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     # param
     $app_wgname = "Meta.Messenger"
     $app_msstore_id = "9WZDNCRF0083"
-    $dir_installer = $app_shortname + "_" + $arch_name
+    $dir_installer = $app_shortname + "_" + "a64x64"
     $install_args = ""
 
     # install
@@ -2643,30 +2643,8 @@ $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
     # param
-    switch ($app_wgname) {
-        "arm64" {
-            # arm64
-            $app_wgname = "Adobe.Acrobat.Reader.64-bit"
-            break
-        }
-        "x64" {
-            # x64
-            $app_wgname = "Adobe.Acrobat.Reader.64-bit"
-            break
-        }
-        "x86" {
-            # x86
-            $app_wgname = "Adobe.Acrobat.Reader.32-bit"
-            break
-        }
-        default {
-            # default
-            Write-Host "Architecture not recognized, defaulting to x64"
-            $app_wgname = "Adobe.Acrobat.Reader.64-bit"
-            break
-        }
-    }
-    $dir_installer = $app_shortname + "_" + $arch_name
+    $app_wgname = "Adobe.Acrobat.Reader.64-bit"
+    $dir_installer = $app_shortname + "_" + "x64"
     $install_args = "`/sPB `/rs"
     $path_file_shortcut = "$dir_startmenuprograms_allusers\Adobe Acrobat.lnk"
     # note for Acrobat XI it is "$dir_startmenuprograms_allusers\Adobe Acrobat XI Pro.lnk"
@@ -2678,7 +2656,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     } else {
         # download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "a64x64" # special case, as winget name is already separate
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         # install
@@ -2898,7 +2876,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     # param
     $app_wgname = "WhatsApp.WhatsApp"
     $app_msstore_id = "9NKSQGP7F2NH"
-    $dir_installer = $app_shortname + "_" + $arch_name
+    $dir_installer = $app_shortname + "_" + "a64x64"
     $install_args = ""
 
     # install
@@ -2973,7 +2951,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # param
     $app_wgname = "TeamViewer.TeamViewer"
-    $dir_installer = $app_shortname + "_" + $arch_name
+    $dir_installer = $app_shortname + "_" + "a64x64"
     $install_args = "`/S"
     $path_file_shortcut = "$dir_startmenuprograms_allusers\TeamViewer.lnk"
 
@@ -2984,7 +2962,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     } else {
         # download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname $arch_name
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         # install
@@ -3302,7 +3280,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # param
     $app_wgname = "OpenVPNTechnologies.OpenVPNConnect"
-    $dir_installer = $app_shortname + "_" + $arch_name
+    $dir_installer = $app_shortname + "_" + "a64x64"
     $install_args = "`/passive"
     $path_file_shortcut = "$dir_startmenuprograms_allusers\OpenVPN Connect\OpenVPN Connect.lnk"
 
@@ -3313,7 +3291,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     } else {
         # download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname $arch_name
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         # install
@@ -3440,7 +3418,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # param
     $app_wgname = "Mozilla.Thunderbird"
-    $dir_installer = $app_shortname + "_" + $arch_name
+    $dir_installer = $app_shortname + "_" + "a64x64"
     $install_args = "`/passive"
     $path_file_shortcut = "$dir_startmenuprograms_allusers\Thunderbird.lnk"
 
@@ -3451,7 +3429,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     } else {
         # download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname $arch_name
+            $url = Get-URL-FromWinget $app_wgname "a64x64"
             Downloa-Installe $url $dir_installer
         }
         # install
