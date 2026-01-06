@@ -2526,8 +2526,8 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     $install_args = "`/passive"
     $path_file_shortcut = "$dir_startmenuprograms_allusers\Google Chrome.lnk"
 
-    # if ($false) {
-    if ($mode_onoffdown -eq 1) {
+    if ($false) {
+    # if ($mode_onoffdown -eq 1) {
         # pkgmgr
         winget install --id $app_wgname -a $arch_name
     } else {
@@ -2643,8 +2643,8 @@ $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
     # param
-    $app_wgname = "Adobe.Acrobat.Reader.64-bit"
-    $dir_installer = $app_shortname + "_" + "x64"
+    $app_wgname = "Adobe.Acrobat.Reader.32-bit"
+    $dir_installer = $app_shortname + "_" + "x86"
     $install_args = "`/sPB `/rs"
     $path_file_shortcut = "$dir_startmenuprograms_allusers\Adobe Acrobat.lnk"
     # note for Acrobat XI it is "$dir_startmenuprograms_allusers\Adobe Acrobat XI Pro.lnk"
@@ -2652,11 +2652,11 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     # if ($false) {
     if ($mode_onoffdown -eq 1) {
         # pkgmgr
-        winget install --id $app_wgname # -a $arch_name
+        winget install --id $app_wgname -a "x86"
     } else {
         # download
         if (-Not (Test-Path -Path $dir_installer)) {
-            $url = Get-URL-FromWinget $app_wgname "a64x64"
+            $url = Get-URL-FromWinget $app_wgname "x86"
             Downloa-Installe $url $dir_installer
         }
         # install
