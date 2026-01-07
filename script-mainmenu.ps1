@@ -30,7 +30,7 @@ function Show-Menu {
     Write-Host "    2) Edit list of apps for Script1"
     Write-Host ""
     Write-Host "    4) All config"
-    # Write-Host "    5) Create new admin user"
+    Write-Host "    5) Disable Windows update"
     Write-Host "    6) Windows 11 Debloat"
     Write-Host ""
     Write-Host "    7) KMS"
@@ -78,7 +78,7 @@ Do {
         }
         5 {
             # 5
-            Start-Process -FilePath "powershell.exe" -ArgumentList ".\script-createnewuser.ps1" -Wait
+            Start-Process -FilePath "powershell.exe" -ArgumentList ".\script-disablewinupdate.ps1" -Wait
             break
         }
         6 {

@@ -23,6 +23,7 @@ $odhashtb_filesghlinks = [ordered]@{
     "script-msoffice.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-msoffice.ps1"
     "script-kms.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-kms.ps1"
     "script-endusersettings.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-endusersettings.ps1"
+    "script-disablewinupdate.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-disablewinupdate.ps1"
     "script-uninstall.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-uninstall.ps1"
     "script-createnewuser.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-createnewuser.ps1"
     "script-msstore.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-msstore.ps1"
