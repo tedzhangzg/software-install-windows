@@ -317,7 +317,9 @@ Function Instal-Ap($dir_installer, $install_args) {
     }
     
     # Clear var for next use
-    Remove-Variable installer_fileext
+    if ($null -ne $installer_fileext) {
+        Remove-Variable installer_fileext
+    }
     
     # Notes
     # Full commands that Invoke Expression actually do
