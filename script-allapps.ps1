@@ -1898,7 +1898,7 @@ $app_shortname = "VCPP14"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main
-if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1) -and ($arch_name -eq "arm64")) {
 
     # param
     $app_wgname = "Microsoft.VCRedist.2015+.arm64"
