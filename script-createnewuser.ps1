@@ -67,8 +67,6 @@ Write-Host ""
 
 # final
 
-Clear-PSHistory
-
 Write-Host ""
 
 Write-Host "Terminating script-createnewuser.ps1 ..."

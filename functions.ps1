@@ -14,11 +14,12 @@
 # Usage
 # Clear-PSHistory
 # 
-Function Clear-PSHistory() {
-    if (Test-Path -Path (Get-PSReadlineOption).HistorySavePath) {
-        Remove-Item -Path $(Split-Path -Path (Get-PSReadlineOption).HistorySavePath -Parent) -Recurse
-    }
-    Write-Host "Powershell history cleared."
+Function Clear-PSHistory-Auto() {
+    Write-Host "Adding command to clear Powershell history to profile ..."
+    New-Item -Path $PROFILE -Force | Out-Null
+    Add-Content -Path $PROFILE -Value "Remove-Item -Path (Get-PSReadlineOption).HistorySavePath"
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
+    Write-Host "From now on, Powershell History will be cleared automatically."
 }
 
 

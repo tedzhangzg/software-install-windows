@@ -3701,10 +3701,6 @@ Stop-Process -Name "Teams*" -Force
 Stop-Process -Name "GoogleDrive*" -Force
 Stop-Process -Name "Dropbox*" -Force
 
-# clear
-# Clear-RecycleBin -Force
-Clear-PSHistory
-
 Write-Host ""
 
 Write-Host "Terminating script-allapps.ps1 ..."

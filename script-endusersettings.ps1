@@ -414,8 +414,6 @@ Write-Host ""
 
 Invoke-Item -Path ..
 
-Clear-PSHistory
-
 Write-Host ""
 
 Write-Host "Terminating script-endusersettings.ps1 ..."
