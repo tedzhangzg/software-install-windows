@@ -28,25 +28,27 @@ Write-Host ""
 
 # ask
 $new_acc_name = Read-Host -Prompt "Enter word (no space) - Account name (if blank then defaults to IT): "
-# Defaults to ITSupport
+# Defaults to IT
 if ($new_acc_name -eq "") {
-    # Defaults to ITSupport
+    # Defaults to IT
 	$new_acc_name = "IT"
 }
 
 Write-Host "Creating account ..."
 New-LocalUser -Name $new_acc_name | Out-Null
+# cmd
+# net user Username /add
 
 Write-Host "Account PasswordNeverExpires ..."
 Set-LocalUser -Name $new_acc_name -PasswordNeverExpires $true
 # cmd (archive)
-# wmic UserAccount where Name='ITSupport' set PasswordExpires=False
+# wmic UserAccount where Name='Username' set PasswordExpires=False
 
 Write-Host "Account PasswordRequired ..."
 Invoke-Expression ("Get-WmiObject Win32_UserAccount -Filter 'Name = `"" + $new_acc_name + "`"' | Set-WmiInstance -Arguments @{PasswordRequired=`$true} | Out-Null")
-# Get-WmiObject Win32_UserAccount -Filter 'Name = "ITSupport"' | Set-WmiInstance -Arguments @{PasswordRequired=$true} | Out-Null
+# Get-WmiObject Win32_UserAccount -Filter 'Name = "IT"' | Set-WmiInstance -Arguments @{PasswordRequired=$true} | Out-Null
 
-Write-Host "Account AddTo Users ..."
+Write-Host "Account Add To Users ..."
 Add-LocalGroupMember -Group "Users" -Member $new_acc_name
 
 # make admin
@@ -58,7 +60,7 @@ if ($make_account_admin -eq "y") {
     Add-LocalGroupMember -Group "Administrators" -Member $new_acc_name
 }
 # cmd (archive)
-# net localgroup administrators ITSupport /add
+# net localgroup administrators Username /add
 
 Write-Host "Edit Accounts ..."
 Show-ControlPanelItem -CanonicalName "Microsoft.UserAccounts"
