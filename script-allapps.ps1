@@ -2131,14 +2131,17 @@ $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
     if ($mode_onoffdown -ne 3) {
-        # Restart
+        # restart
         Restart-Computer -Force
     }
+
     # done
     Write-Host ""
     # clear param
     # Remove-Variable path_file_shortcut
+
 }
 # 
 # done
