@@ -28,6 +28,7 @@ $odhashtb_filesghlinks = [ordered]@{
     "script-createnewuser.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-createnewuser.ps1"
     "script-msstore.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-msstore.ps1"
     "script-windowsupdate.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-windowsupdate.ps1"
+    "script-teamviewerqs.ps1" = "https://raw.githubusercontent.com/tedzhangzg/software-install-windows/main/script-teamviewerqs.ps1"
 }
 
 # loop over all key value pairs
