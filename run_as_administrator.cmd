@@ -12,10 +12,10 @@
 :: ==================================================
 
 
-echo Starting run_as_administrator.cmd ...
-
 :: echo off
 @echo off
+
+echo Starting run_as_administrator.cmd ...
 
 :: check if admin
 :: if not, show error and exit
