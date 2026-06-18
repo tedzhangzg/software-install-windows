@@ -1,3 +1,5 @@
+@echo off
+
 :: run_as_administrator.cmd
 :: ==================================================
 :: Description
@@ -11,9 +13,6 @@
 :: Right-click this file and select 'Run as administrator'
 :: ==================================================
 
-
-:: echo off
-@echo off
 
 echo Starting run_as_administrator.cmd ...
 
