@@ -2979,7 +2979,6 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     $install_args = "`/S"
     $path_file_shortcut = "$dir_startmenuprograms_allusers\TeamViewer.lnk"
 
-    # if ($false) {
     if ($mode_onoffdown -eq 1) {
         # pkgmgr
         winget install --id $app_wgname # -a $arch_name
@@ -3179,7 +3178,6 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     $install_args = "`/S"
     $path_file_shortcut = "$dir_startmenuprograms_allusers\VideoLAN\VLC media player.lnk"
 
-    # if ($false) {
     if ($mode_onoffdown -eq 1) {
         # pkgmgr
         winget install --id $app_wgname -a $arch_name
