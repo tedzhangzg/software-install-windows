@@ -107,7 +107,8 @@ $app_toinclude_WhatsApp = 1
 $app_toinclude_WeChat = 0
 # 
 $app_toinclude_TeamViewerLatest = 1
-$app_toinclude_TeamViewerQS13 = 1
+$app_toinclude_TeamViewerQS13 = 0
+$app_toinclude_RustDesk = 1
 $app_toinclude_SevenZip = 1
 $app_toinclude_WinRAR = 0
 $app_toinclude_VLC = 1

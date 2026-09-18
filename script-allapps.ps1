@@ -210,7 +210,7 @@ Write-Host "174 WhatsApp"
 Write-Host "175 WeChat"
 ##################################################
 Write-Host "---------- Utilities Apps ----------"
-Write-Host "181 TeamViewer"
+Write-Host "181 Remote Support - TeamViewer RustDesk"
 Write-Host "182 Archiving - SevenZip WinRAR"
 Write-Host "183 VLC"
 Write-Host "184 Java 8"
@@ -3008,52 +3008,102 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 # 
 # done
 
-# TeamViewer QuickSupport 13
+# # TeamViewer QuickSupport 13
+# # 
+# # param
+# $app_num = 181
+# $app_shortname = "TeamViewerQS13"
+# $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
+# # 
+# # main
+# if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+#     # param
+#     $url_appspecific = $url_TeamViewerQS13
+#     $dir_installer = $app_shortname + "_" + "x86"
+#     $path_file_shortcut = "$dir_startmenuprograms_allusers\TeamViewerQS.lnk"
+
+#     # download
+#     if (-Not (Test-Path -Path $dir_installer)) {
+#         $url = $url_appspecific
+#         Downloa-Installe $url $dir_installer
+#         $name_file = Get-ChildItem -Path $dir_installer -Filter "*.exe"
+#     }
+
+#     if ($mode_onoffdown -ne 3) {
+
+#         # Copying TeamViewerQS.exe and Create Shortcut
+#         Write-Host "Copying TeamViewerQS.exe ..."
+
+#         # Copy exe
+#         $dir_destination = "C:\"
+#         Copy-Item -Path "$dir_installer\$$name_file" -Destination $dir_destination -Recurse
+
+#         # Creating TeamViewerQS.lnk
+#         Write-Host "Creating TeamViewerQS.lnk ..."
+#         $path_origfile = "C:\$name_file"
+#         $path_lnkfile = "$dir_startmenuprograms_allusers\TeamViewerQS.lnk"
+#         # 
+#         # Create lnk file
+#         $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut($path_lnkfile)
+#         $shortcut.TargetPath = "$path_origfile"
+#         $shortcut.Save()
+#         # Make lnk file to Run as admin
+#         $bytes = [System.IO.File]::ReadAllBytes("$path_lnkfile")
+#         $bytes[0x15] = $bytes[0x15] -bor 0x20 #set byte 21 (0x15) bit 6 (0x20) ON
+#         [System.IO.File]::WriteAllBytes("$path_lnkfile", $bytes)
+
+#         Write-Host "... Done Copying"
+
+#     }
+
+#     # cp lnk
+#     if (Test-Path -Path $path_file_shortcut) {
+#         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
+#     }
+
+#     # done
+#     Write-Host ""
+#     # clear param
+#     Remove-Variable path_file_shortcut
+
+# }
+# # 
+# # done
+
+# RustDesk
 # 
 # param
 $app_num = 181
-$app_shortname = "TeamViewerQS13"
+$app_shortname = "RustDesk"
 $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
 # 
 # main
 if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
 
     # param
-    $url_appspecific = $url_TeamViewerQS13
-    $dir_installer = $app_shortname + "_" + "x86"
-    $path_file_shortcut = "$dir_startmenuprograms_allusers\TeamViewerQS.lnk"
+    # 
+    # get URL from json
+    $release = Invoke-RestMethod -Uri "https://api.github.com/repos/rustdesk/rustdesk/releases/latest"
+    if ($arch_name -eq "arm64") {
+        $asset = $release.assets | Where-Object { $_.name -like "*aarch64.msi" }
+    } else {
+        $asset = $release.assets | Where-Object { $_.name -like "*x86_64.msi" }
+    }
+    $url_appspecific = $asset.browser_download_url
+    # 
+    $dir_installer = $app_shortname + "_" + $arch_name
+    $install_args = "`/qn"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\RustDesk.lnk"
 
     # download
     if (-Not (Test-Path -Path $dir_installer)) {
-        $url = $url_appspecific
+        $url = Get-URL-FromWinget $app_wgname "a64x64"
         Downloa-Installe $url $dir_installer
     }
-
+    # install
     if ($mode_onoffdown -ne 3) {
-
-        # Copying TeamViewerQS.exe and Create Shortcut
-        Write-Host "Copying TeamViewerQS.exe ..."
-
-        # Copy exe
-        $dir_destination = "C:\"
-        Copy-Item -Path "$dir_installer\TeamViewerQS.exe" -Destination $dir_destination -Recurse
-
-        # Creating TeamViewerQS.lnk
-        Write-Host "Creating TeamViewerQS.lnk ..."
-        $path_origfile = "C:\TeamViewerQS.exe"
-        $path_lnkfile = "$dir_startmenuprograms_allusers\TeamViewerQS.lnk"
-        # 
-        # Create lnk file
-        $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut($path_lnkfile)
-        $shortcut.TargetPath = "$path_origfile"
-        $shortcut.Save()
-        # Make lnk file to Run as admin
-        $bytes = [System.IO.File]::ReadAllBytes("$path_lnkfile")
-        $bytes[0x15] = $bytes[0x15] -bor 0x20 #set byte 21 (0x15) bit 6 (0x20) ON
-        [System.IO.File]::WriteAllBytes("$path_lnkfile", $bytes)
-
-        "... Done Copying"
-
+        Instal-Ap $dir_installer $install_args
     }
 
     # cp lnk
@@ -3069,6 +3119,78 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 }
 # 
 # done
+
+# # RustDesk Portable
+# # 
+# # param
+# $app_num = 181
+# $app_shortname = "RustDesk"
+# $app_toinclude = (Get-Variable -Name $("app_toinclude_" + $app_shortname)).Value
+# # 
+# # main
+# if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinclude -eq 1)) {
+
+#     # param
+#     # 
+#     # get URL from json
+#     $release = Invoke-RestMethod -Uri "https://api.github.com/repos/rustdesk/rustdesk/releases/latest"
+#     if ($arch_name -eq "arm64") {
+#         $asset = $release.assets | Where-Object { $_.name -like "*aarch64.exe" }
+#     } else {
+#         $asset = $release.assets | Where-Object { $_.name -like "*x86_64.exe" }
+#     }
+#     $url_appspecific = $asset.browser_download_url
+#     # 
+#     $dir_installer = $app_shortname + "_" + $arch_name
+#     $path_file_shortcut = "$dir_startmenuprograms_allusers\RustDesk.lnk"
+
+#     # download
+#     if (-Not (Test-Path -Path $dir_installer)) {
+#         $url = $url_appspecific
+#         Downloa-Installe $url $dir_installer
+#         $name_file = Get-ChildItem -Path $dir_installer -Filter "*.exe"
+#     }
+
+#     if ($mode_onoffdown -ne 3) {
+
+#         # Copying RustDesk and Create Shortcut
+#         Write-Host "Copying RustDesk ..."
+
+#         # Copy exe
+#         $dir_destination = "C:\"
+#         Copy-Item -Path "$dir_installer\$name_file" -Destination $dir_destination -Recurse
+
+#         # Creating RustDesk.lnk
+#         Write-Host "Creating RustDesk.lnk ..."
+#         $path_origfile = "C:\$name_file"
+#         $path_lnkfile = "$dir_startmenuprograms_allusers\RustDesk.lnk"
+#         # 
+#         # Create lnk file
+#         $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut($path_lnkfile)
+#         $shortcut.TargetPath = "$path_origfile"
+#         $shortcut.Save()
+#         # Make lnk file to Run as admin
+#         $bytes = [System.IO.File]::ReadAllBytes("$path_lnkfile")
+#         $bytes[0x15] = $bytes[0x15] -bor 0x20 #set byte 21 (0x15) bit 6 (0x20) ON
+#         [System.IO.File]::WriteAllBytes("$path_lnkfile", $bytes)
+
+#         Write-Host "... Done Copying"
+
+#     }
+
+#     # cp lnk
+#     if (Test-Path -Path $path_file_shortcut) {
+#         Copy-Item -Path $path_file_shortcut -Destination "$dir_desktop_allusers" -Force
+#     }
+
+#     # done
+#     Write-Host ""
+#     # clear param
+#     Remove-Variable path_file_shortcut
+
+# }
+# # 
+# # done
 
 # SevenZip
 # 
