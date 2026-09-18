@@ -3098,7 +3098,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
 
     # download
     if (-Not (Test-Path -Path $dir_installer)) {
-        $url = Get-URL-FromWinget $app_wgname "a64x64"
+        $url = $url_appspecific
         Downloa-Installe $url $dir_installer
     }
     # install
