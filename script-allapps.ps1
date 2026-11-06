@@ -2670,7 +2670,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     }
     $dir_installer = $app_shortname + "_" + $arch_name
     $install_args = "`/sPB `/rs"
-    $path_file_shortcut = "$dir_startmenuprograms_allusers\Adobe Acrobat.lnk"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\Acrobat Reader.lnk"
     # note for Acrobat XI it is "$dir_startmenuprograms_allusers\Adobe Acrobat XI Pro.lnk"
 
     # if ($false) {
@@ -3094,7 +3094,7 @@ if (($app_num -in $appnum_toinstall_from..$appnum_toinstall_to) -and ($app_toinc
     # 
     $dir_installer = $app_shortname + "_" + $arch_name
     $install_args = "`/qn"
-    $path_file_shortcut = "$dir_startmenuprograms_allusers\RustDesk.lnk"
+    $path_file_shortcut = "$dir_startmenuprograms_allusers\RustDesk\RustDesk.lnk"
 
     # download
     if (-Not (Test-Path -Path $dir_installer)) {
