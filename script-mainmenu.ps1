@@ -63,7 +63,7 @@ Do {
         }
         2 {
             # 2
-            Start-Process -FilePath "notepad.exe" -ArgumentList "values.ps1" -Wait
+            Start-Process -FilePath "TRPad_x86\trpad.exe" -ArgumentList "values.ps1" -Wait
             break
         }
         3 {
